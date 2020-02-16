@@ -1,0 +1,125 @@
+body {
+    width: 95%;
+    height: 95%;
+}
+
+button {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-size: 1rem;
+    color: #e4dfdf;
+    border-color: #e4dfdf;
+    background-color: #71a36a;
+    hover: #ffd66b;
+}
+
+.header-text {
+    font-family: 'Comfortaa', cursive;
+    color: #065535;
+}
+
+.header-container {
+    margin: auto;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.header-links {
+    align-self: flex-end;
+}
+     
+.search-container {
+    width: 92%;
+    border: 1px solid;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: auto;
+}
+
+.search-drop {
+    padding: .5em;
+    order: 1;
+    align-self: flex-start;
+}
+
+.search-input {
+    padding: .5em;
+    order: 2;
+    align-self: flex-end;
+}
+
+.album-data-container {
+    width: 95%;
+    height: 70%;
+    margin: auto;
+    border: 1px solid;
+    border-color: #91b7a8;
+    background: #91b7a8;
+    border-radius: 12px;   
+    margin-top: .3em;
+}
+
+.header {
+    border: 1px solid;
+    padding: .25em;
+    border-radius: 12px;
+    border-color: #065535;
+}
+
+.grid-row {
+    padding: .25em;
+}
+    
+.album-row {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    flex-wrap: nowrap;
+    padding: .3em;
+    justify-content: space-evenly;
+    height: 50%;
+}
+
+.album-art {
+    width: 95%;
+    height: 95%;
+    padding: .25em;
+}
+
+.cover {
+   min-width: 20%;
+   max-width: 25%;
+}
+
+.album-name {
+   min-width: 20%;
+   max-width: 25%;
+}
+
+.artist_name {
+    min-width: 15%;
+    max-width: 20%;
+}
+
+.artist-page {
+    min-width: 15%;
+    max-width: 20%;
+}
+
+.spotify {
+    min-width: 15%;
+    max-width: 20%;
+}
+
+.review-link {
+    min-width: 10%;
+    max-width: 15%;
+}

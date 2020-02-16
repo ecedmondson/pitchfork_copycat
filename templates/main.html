@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>OSU CS 340 Project</title>
+    <link rel="stylesheet" href="static/main_page.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+  </head>
+  <body>
+    <div class='header-container'>
+        <div class='header-text'>
+            <i class="fas fa-volume-up"></i>
+            Pitchfork Copycat Music Review
+        </div>
+        <div class='header-links'>
+            <button href="/route_to_add_new_artist" type="button">Add Artist</button>
+            <button href="/route_to_add_new_album" type="button">Add Album</button>
+        </div>
+    </div> 
+    <div class='search-container'>
+        <div class='search-drop'>
+            <select id="search-type">
+                <option value="arist">Artist</option>
+                <option value="album">Album</option>
+                <option value="genre">Genre</option>
+            </select>
+        </div>
+        <div class='search-input'>
+            <input href="/route_to_search_results" type="text" placeholder="Search...">
+        </div>
+    </div>
+    <div class='album-data-container'>
+        <table id='albums_available_for_review_display_table'>
+            <tr class="album-row">
+                <th class="cover header">Album Cover</th>   
+                <th class="album-name header">Album Name</th>
+                <th class="artist-name header">Artist Name</th>
+                <th class="artist-page header">Artist Website</th>
+                <th class="spotify header">Spotify URL</th>
+                <th class="review-link header">Provide a Review</th>
+            </tr>
+            {% for album in albums_available_for_review %}
+            <tr class="album-row">
+                <td class="cover grid-row">
+                    <img src="{{ album.album_art }}" class='album-art'>
+                </td>
+                <td class="album-name grid-row">{{ album.album_title }}</td>
+                <td class="artist-name grid-row">{{ album.artist_id }}</td>
+                <td class="artist-page grid-row">{{ album.artist_website }}</td>
+                <td class="spotify grid-row"><button><a href="{{ album.spotify_url }}">Spotify Link</a></button></td>
+                <td class="review-link grid-row">
+                    <a href="/route_to_review_page" type="button" name="review-{{ album.album_title }}-{{ album.artist_id }}">Review this album!</a>
+                <td>
+            </tr>
+            {% endfor %}
+          </table>
+    </div>
+  </body>
+</html>
