@@ -6,6 +6,7 @@
 # a gloss above indicating such.
 
 import MySQLdb as mariadb
+import os
 
 # This function was added independently of OSU CS 340.
 def memoize(func):
@@ -22,7 +23,7 @@ def memoize(func):
 
 
 @memoize
-def connect_to_database(host=host, user=user, passwd=pw, db=db):
+def connect_to_database(host=os.environ['HOST'], user=os.environ['USER'], passwd=os.environ['PW'], db=os.environ['DB']):
     """
     connects to a database and returns a database objects
     """

@@ -79,6 +79,9 @@ class AlbumTable(DBConnection):
 
 
 class ReviewTable(DBConnection):
+    # https://stackoverflow.com/questions/7469656/fill-mysql-records-one-to-many-related-tables-in-one-action
+    # ^^ might need to adopt the above as a way to update the users with their reviews. not sure yet
+    # should ask in piazza
     def _review_page_review_data(self, query_tuple):
         review_text, rating, firstname, lastname = query_tuple
         return {

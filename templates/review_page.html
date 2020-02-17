@@ -13,7 +13,7 @@
           <table id='existing-reviews-table'>
               {% for review in existing_reviews %}
               <tr><th>User Name: {{ review.name }}</th><th>Rating  {{ review.rating }}</th></tr>
-              <tr><td>{{ review.review_text }}</td></tr>
+              <tr><td>{{ review.review_text }}<a href="/rout_to_edit">Edit this comment</a><a href="/route_to_delete">Delete this comment</a></td></tr>
               {% endfor %}
           </table>
           {% else %}
