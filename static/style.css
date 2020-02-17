@@ -1,3 +1,19 @@
-.form-field {
-    color: #5F9EA0i;
+body {
+    width: 95%;
+    height: 95%;
 }
+
+button {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-size: 1rem;
+    color: #e4dfdf;
+    border-color: #e4dfdf;
+    background-color: #71a36a;
+    hover: #ffd66b;
+}
+
+

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>OSU CS 340 Project</title>
     <link rel="stylesheet" href="static/main_page.css">
+    <link rel="stylesheet" href="static/style.css">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
   </head>
@@ -46,11 +47,11 @@
                     <img src="{{ album.album_art }}" class='album-art'>
                 </td>
                 <td class="album-name grid-row">{{ album.album_title }}</td>
-                <td class="artist-name grid-row">{{ album.artist_id }}</td>
-                <td class="artist-page grid-row">{{ album.artist_website }}</td>
+                <td class="artist-name grid-row">{{ album.artist_name }}</td>
+                <td class="artist-page grid-row"><button><a href="{{ album.artist_page }}">Artist Page</a></button></td>
                 <td class="spotify grid-row"><button><a href="{{ album.spotify_url }}">Spotify Link</a></button></td>
                 <td class="review-link grid-row">
-                    <a href="/route_to_review_page" type="button" name="review-{{ album.album_title }}-{{ album.artist_id }}">Review this album!</a>
+                    <a href="/route_to_review_page/{{ album.album_title }}/{{ album.artist_name }}" type="button" name="review-{{ album.album_title }}-{{ album.artist_name }}">Review this album!</a>
                 <td>
             </tr>
             {% endfor %}

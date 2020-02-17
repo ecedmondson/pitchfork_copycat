@@ -1,35 +1,69 @@
 from flask import Flask, render_template, request, url_for, redirect
 from forms.review_form import ReviewForm
-from database.models.tables import AlbumTable
+from database.models.tables import AlbumTable, ReviewTable, UserTable
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'derp'
+app.config["SECRET_KEY"] = "derp"
 
 albums = AlbumTable()
+reviews = ReviewTable()
+users = UserTable()
 
-@app.route('/', methods=('GET', 'POST'))
+
+def _route_syntax(value):
+    return value.lower().replace(" ", "_")
+
+
+def _readable_syntax(route):
+    return " ".join([x.capitalize() for x in route.split("_")])
+
+
+@app.route("/", methods=("GET", "POST"))
 def home():
-    return render_template('main.html', albums_available_for_review=albums.get_all_albums())
+    return render_template(
+        "main.html", albums_available_for_review=albums.main_page_album_query()
+    )
 
-@app.route('/route_to_review_page', methods=('GET', 'POST'))
-def route():
-    return redirect(url_for('review_page'))
 
-@app.route('/route_to_add_new_artist', methods=('GET', 'POST'))
+@app.route("/route_to_review_page/<album>/<artist>", methods=("GET", "POST"))
+def route(album, artist):
+    return redirect(
+        url_for("review_page", album=_route_syntax(album), artist=_route_syntax(artist))
+    )
+
+
+@app.route("/route_to_add_new_artist", methods=("GET", "POST"))
 def route_add_artist_page():
-    return redirect(url_for('add_artist_page'))
+    return redirect(url_for("add_artist_page"))
 
-@app.route('/reviews', methods=('GET', 'POST'))
-def review_page():
+
+@app.route("/reviews/<album>/<artist>", methods=("GET", "POST"))
+def review_page(album, artist):
     form = ReviewForm()
-    if form.validate_on_submit():
-        return redirect(url_for('success'))
-    return render_template('review_page.html', form=form)
+    if form.is_submitted():
+        # TODO: validate data
+        user_id = users.get_user_id_from_names_and_email(
+            firstname=form.firstname.data,
+            lastname=form.lastname.data,
+            email=form.email.data,
+        )
+        album_id = albums.get_album_id_from_name(name=_readable_syntax(album))
+        # TODO: add a real rating system in
+        reviews.add_new_review(form.body.data, "10", str(user_id), str(album_id))
+    return render_template(
+        "review_page.html",
+        form=form,
+        existing_reviews=reviews.get_reviews_for_an_album(
+            album_id=albums.get_album_id_from_name(_readable_syntax(album))
+        ),
+        album=_readable_syntax(album),
+    )
 
-@app.route('/add_artist', methods=('GET', 'POST'))
+
+@app.route("/add_artist", methods=("GET", "POST"))
 def add_artist_page():
-    return render_template('add_artist.html')
+    return render_template("add_artist.html")
+
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5162)
-
+    app.run(host="0.0.0.0", port=5162)
