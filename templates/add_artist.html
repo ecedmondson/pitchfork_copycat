@@ -1,1 +1,30 @@
-<body> ARTIST PAGE </body>
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+<body>     
+<h2>Add an Artist</h2>
+    <form action="/artists/create" method="POST">
+      <div class="form-group">
+        <label for="artistName">Artist Name</label>
+        <input name="artistName" type="text" class="form-control" id="artistName" placeholder="Enter an Artists name">
+      </div>
+      <div class="form-group">
+        <label for="artistWebsite">Website URL</label>
+        <input name="artistWebsite" type="text" class="form-control" id="artistWebsite" placeholder="Website URL">
+      </div>
+      <div class="form-group">
+        <label for="artistImage">Image URL</label>
+        <input name="artistImage" type="text" class="form-control" id="artistImage" placeholder="Image URL">
+      </div>
+      <div class="form-group">
+        <label for="artistDescription">Description</label>
+        <input name="artistDescription" type="text" class="form-control" id="artistDescription" placeholder="Description">
+      </div>
+      <div class="form-group">
+        <label for="albumGenres">Genres</label>
+        <input name="albumGenres" type="text" class="form-control" id="albumGenres" placeholder="Genres (comma seperated)">
+      </div>
+      <input type="submit" class="btn btn-primary"></button>
+    </form>  
+</body>
+{% endblock %}
