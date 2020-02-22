@@ -18,6 +18,16 @@ def _readable_syntax(route):
     return " ".join([x.capitalize() for x in route.split("_")])
 
 
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('404.html')
+
+
+@app.errorhandler(500)
+def server_error(e):
+    return render_template('500.html')
+
+
 @app.route("/", methods=("GET", "POST"))
 def home():
     return render_template(
