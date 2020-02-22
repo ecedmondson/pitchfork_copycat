@@ -1,0 +1,36 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+<h2>{{ artist.name }}</h2>
+<img src="{{ artist.image }}">
+<ul>
+    <li>
+        <h4>Description</h4>
+        <ul>
+            <li>{{ artist.description }}</li>
+        </ul>
+        <h4>Albums</h4>
+        <ul>
+            <a href="/albums/{{ albums.id }}"><li>{{ albums.title }} | {{ albums.release_date }}</a></li>
+        </ul>
+    </li>
+</ul>
+
+<br>
+<div class="editArtist">
+    <a class="btn btn-primary" role="button">Edit Artist</a>
+</div>
+<div class="deleteArtist">
+    <a class="btn btn-danger" role="button">Delete Artist</a>
+</div>
+
+<style>
+    img {
+    display: block;
+    max-width:1000px;
+    max-height:500px;
+    width: auto;
+    height: auto;
+    }
+</style>
+{% endblock %}

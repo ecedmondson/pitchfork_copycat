@@ -15,8 +15,8 @@
             Pitchfork Copycat Music Review
         </div>
         <div class='header-links'>
-            <button href="/route_to_add_new_artist" type="button">Add Artist</button>
-            <button href="/route_to_add_new_album" type="button">Add Album</button>
+           <a href="/route_to_add_new_artist"><button type="button">Add Artist</button></a>
+           <a href="/route_to_add_new_album"><button type="button">Add Album</button></a>
         </div>
     </div> 
     <div class='search-container'>
@@ -48,7 +48,7 @@
                 </td>
                 <td class="album-name grid-row">{{ album.album_title }}</td>
                 <td class="artist-name grid-row">{{ album.artist_name }}</td>
-                <td class="artist-page grid-row"><button><a href="{{ album.artist_page }}">Artist Page</a></button></td>
+                <td class="artist-page grid-row"><button><a href="/artists/{{ album.artist_name }}">Artist Page</a></button></td>
                 <td class="spotify grid-row"><button><a href="{{ album.spotify_url }}">Spotify Link</a></button></td>
                 <td class="review-link grid-row">
                     <a href="/route_to_review_page/{{ album.album_title }}/{{ album.artist_name }}" type="button" name="review-{{ album.album_title }}-{{ album.artist_name }}">Review this album!</a>
