@@ -1,0 +1,24 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+<h2>Genre Name: {{ query.genre_name }}</h2>
+<div> TODO: M:M table to get all albums for this genre</div>
+<ul>
+    <li>
+        <h4>Albums in this Genre</h4>
+        <ul>
+            {% for album in subquery %}
+            <li>TO DO: list albums in this genre</li>
+            {% endfor %}
+        </ul>
+    </li>
+</ul>
+
+<br>
+<div class="edit-genre">
+    <a class="btn btn-primary" role="button">Edit Genre Name</a>
+</div>
+<div class="delete-genre">
+    <a class="btn btn-danger" role="button">Delete Genre</a>
+</div>
+{% endblock %}

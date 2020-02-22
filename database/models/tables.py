@@ -12,11 +12,26 @@ search_dict = {
     "album": ("album", "title"),
     "artist": ("artist", "name"),
     "user": ("user", "firstname", "lastname"),
-    "genre": ("genre", "name")
+    "genre": ("genre", "name"),
 }
 
 
 class ArtistTable(DBConnection):
+    def _select_all_artist_data(self, query_tuple):
+        # Data formatted for select all artist call
+        artist_id, artist_name, website, image, location, description = query_tuple
+        return {
+            "artist_id": artist_id,
+            "artist_name": artist_name,
+            "website": website,
+            "image": image,
+            "location": location,
+            "description": description,
+        }
+
+    def _search_helper(self, *args):
+        return self._select_all_artist_data(*args)
+
     def add_new_artist(self):
         insert = insert_statement("artist", [], [])
         self.execute_query(insert)
@@ -31,8 +46,8 @@ class AlbumTable(DBConnection):
             album_title,
             album_art,
             release_date,
+            publisher,
             spotify_url,
-            review_id,
         ) = query_tuple
         return {
             "album_id": album_id,
@@ -40,9 +55,12 @@ class AlbumTable(DBConnection):
             "album_title": album_title,
             "album_art": album_art,
             "release_date": release_date,
+            "publisher": publisher,
             "spotify_url": spotify_url,
-            "review_id": review_id,
         }
+
+    def _search_helper(self, *args):
+        return self._album_data(*args)
 
     def _main_page_album_data(self, query_tuple):
         album_art, album_title, artist_name, artist_page, spotify_url = query_tuple
@@ -127,6 +145,19 @@ class ReviewTable(DBConnection):
 
 
 class UserTable(DBConnection):
+    def _select_all_user_data(self, query_tuple):
+        id_, firstname, lastname, email, created_date = query_tuple
+        return {
+            "user_id": id_,
+            "firstname": firstname,
+            "lastname": lastname,
+            "email": email,
+            "created_date": created_date,
+        }
+
+    def _search_helper(self, *args):
+        return self._select_all_user_data(*args)
+
     def add_new_user(self, firstname, lastname, email):
         insert = insert_statement(
             "user",
@@ -153,30 +184,74 @@ class UserTable(DBConnection):
             queries = self.execute_query(statement).fetchall()
         return only_item_of([query[0] for query in queries])
 
+
+class GenreTable(DBConnection):
+    def _select_all_genre_data(self, query_tuple):
+        id_, name = query_tuple
+        return {"genre_id": id_, "genre_name": name}
+
+    def _search_helper(self, *args):
+        return self._select_all_genre_data(*args)
+
+    def select_all_genres(self):
+        select = select_statement("genre", column="*")
+        print(f"DEBUG SQL STATEMENT: {select}")
+        queries = self.execute_query(select).fetchall()
+        return [_select_all_genre_data(query) for query in queries]
+
+
 class SearchSQL(DBConnection):
-    def _search_data(search_by, queries):
-        pass
-    
+
+    search_extract_dict = {
+        "artist": (lambda: ArtistTable(), "artist_name"),
+        "album": (lambda: AlbumTable(), "album_title"),
+        "genre": (lambda: GenreTable(), "genre_name"),
+        "user": (lambda: UserTable(), "firstname", "lastname"),
+    }
+
+    def _search_data(self, search_by, queries):
+        table, key = must_get_key(self.search_extract_dict, search_by)
+        table = table()
+        queries = [table._search_helper(query) for query in queries]
+        if len(queries) > 1:
+            return [query[key] for query in queries]
+        return queries
+
+    def _search_user_data(self, search_by, queries):
+        table, first, last = must_get_key(self.search_extract_dict, search_by)
+        table = table()
+        queries = [table._search_helper(query) for query in queries]
+        if len(queries) > 1:
+            return [f"{query['firstname']} {query['lastname']}" for query in queries]
+        return queries
+
+    def execute_user_search(self, search_keyword, search_info):
+        table, first, last = search_info
+        select = select_statement(table, column="*")[:-1]
+        where_first = where(table, first, "like", f"'%{search_keyword}%'")
+        where_last = where(
+            table, last, "like", f"'%{search_keyword}%'", chain=True, and_=False
+        )
+        where_ = where_first + where_last
+        statement = f"{select} {where_}"
+        print(f"DEBUG SQL STATEMENT: {statement}")
+        queries = self.execute_query(statement).fetchall()
+        if not queries:
+            return []
+        return (len(queries), self._search_user_data("user", queries))
+
     def execute_search(self, search_keyword, search_by):
         if not all([search_keyword, search_by]):
             return []
         search_info = must_get_key(search_dict, search_by)
         if search_by == "user":
-            table, first, last = search_info
+            return self.execute_user_search(search_keyword, search_info)
         table, column = search_info
         select = select_statement(table, column="*")[:-1]
-        if search_by == "user":
-            where_first = where(table, first, "like", f"'%{search_keyword}%'")
-            where_last = where(table, last, "like", f"'%{search_keyword}%'", chain=True, and_=False)
-            where_ = where_first + where_last
-        else:
-            where_ = where(table, column, "like", f"'%{search_keyword}%'") 
+        where_ = where(table, column, "like", f"'%{search_keyword}%'")
         statement = f"{select} {where_};"
         print(f"DEBUG SQL STATEMENT: {statement}")
         queries = self.execute_query(statement).fetchall()
-        print([query for query in queries])
         if not queries:
             return []
-        # return (len(queries), _search_data(search_by, queries))
-
-
+        return (len(queries), self._search_data(search_by, queries))

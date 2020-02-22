@@ -3,6 +3,7 @@ from forms.review_form import ReviewForm
 from forms.search_form import SearchForm
 from database.models.tables import AlbumTable, ReviewTable, UserTable, SearchSQL
 from flask_bootstrap import Bootstrap
+from jgt_common import must_get_key, only_item_of
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "derp"
@@ -13,38 +14,66 @@ users = UserTable()
 search = SearchSQL()
 Bootstrap(app)
 
+
 def _route_syntax(value):
     return value.lower().replace(" ", "_")
+
 
 def _readable_syntax(route):
     return " ".join([x.capitalize() for x in route.split("_")])
 
+
 def _sql_escapes(route):
     return route.replace("'", "\\'")
-    
+
 
 @app.errorhandler(404)
 def not_found(e):
-    return render_template('404.html')
+    return render_template("404.html")
 
 
 @app.errorhandler(500)
 def server_error(e):
-    return render_template('500.html')
+    return render_template("500.html")
 
 
 @app.route("/", methods=("GET", "POST"))
 def home():
     form = SearchForm()
-    print(dir(form))
     if form.is_submitted():
-       print(form.select_search.data)
-       print(form.search_keyword.data)
-    if form.select_search.data:
-        search_results = search.execute_search(form.search_keyword.data, form.select_search.data)
-    print(search_results)
+        if form.select_search.data:
+            search_results = search.execute_search(
+                form.search_keyword.data, form.select_search.data
+            )
+        if search_results:
+            result_length, query = search_results
+            if result_length == 1:
+                print(query)
+                return render_template(
+                    must_get_key(
+                        {
+                            "artist": "single_artist_page.html",
+                            "album": "single_album_page.html",
+                            "user": "single_user_page.html",
+                            "genre": "single_genre_page.html",
+                        },
+                        form.select_search.data,
+                    ),
+                    query=only_item_of(query),
+                    subquery=[],
+                )
+            return render_template(
+                "too_many_search_results.html",
+                query=query,
+                search_type=form.select_search.data,
+            )
+        return render_template(
+            "search_results_none.html", search_type=form.select_search.data
+        )
     return render_template(
-        "main2.html", form=form, albums_available_for_review=albums.main_page_album_query()
+        "main2.html",
+        form=form,
+        albums_available_for_review=albums.main_page_album_query(),
     )
 
 
@@ -60,6 +89,17 @@ def route_add_artist_page():
     return redirect(url_for("add_artist_page"))
 
 
+@app.route(
+    "/route_to_search_results/<search_type>/<search_desired>", methods=("GET", "POST")
+)
+def route_search(search_type, search_desired):
+    # TODO: implement single page for each
+    # Clicking on a link from a multiple results found
+    # search result will end in a TypeError since this function
+    # is not yet implemented
+    pass
+
+
 @app.route("/reviews/<album>/<artist>", methods=("GET", "POST"))
 def review_page(album, artist):
     form = ReviewForm()
@@ -67,7 +107,7 @@ def review_page(album, artist):
         # TODO: validate data
         print(form.firstname.data)
         print(form.lastname.data)
-        print(form.email.data) 
+        print(form.email.data)
         user_id = users.get_user_id_from_names_and_email(
             firstname=form.firstname.data,
             lastname=form.lastname.data,
@@ -80,7 +120,9 @@ def review_page(album, artist):
         "review_page.html",
         form=form,
         existing_reviews=reviews.get_reviews_for_an_album(
-            album_id=albums.get_album_id_from_name(_sql_escapes(_readable_syntax(album)))
+            album_id=albums.get_album_id_from_name(
+                _sql_escapes(_readable_syntax(album))
+            )
         ),
         album=_readable_syntax(album),
     )

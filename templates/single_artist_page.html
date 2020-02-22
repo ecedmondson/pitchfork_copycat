@@ -1,0 +1,30 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+<h2>{{ query.name }}</h2>
+<h1> located in: {{ query.location }}
+<img src="{{ query.image }}">
+<div> TODO: query for this artist albums and display them</div>
+<ul>
+    <li>
+        <h4>Description</h4>
+        <ul>
+            <li>{{ query.description }}</li>
+            <li> more info at: <a href="{{ query.website }}"</li>
+        </ul>
+        <h4>Albums</h4>
+        <ul>
+            <a href="/albums/{{ subquery.id }}"><li>{{ subquery.title }} | {{ subquery.release_date }}</a></li>
+        </ul>
+    </li>
+</ul>
+
+<br>
+<div class="editArtist">
+    <a class="btn btn-primary" role="button">Edit Artist</a>
+</div>
+<div class="deleteArtist">
+    <a class="btn btn-danger" role="button">Delete Artist</a>
+</div>
+{% endblock %}
+
