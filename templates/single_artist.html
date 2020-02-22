@@ -1,17 +1,20 @@
 {% extends "bootstrap/base.html" %}
 
 {% block content %}
-<h2>{{ artist.name }}</h2>
-<img src="{{ artist.image }}">
+<h2>{{ query.name }}</h2>
+<h1> located in: {{ query.location }}
+<img src="{{ query.image }}">
+<div> TODO: query for this artist albums and display them</div>
 <ul>
     <li>
         <h4>Description</h4>
         <ul>
-            <li>{{ artist.description }}</li>
+            <li>{{ query.description }}</li>
+            <li> more info at: <a href="{{ query.website }}"</li>
         </ul>
         <h4>Albums</h4>
         <ul>
-            <a href="/albums/{{ albums.id }}"><li>{{ albums.title }} | {{ albums.release_date }}</a></li>
+            <a href="/albums/{{ subquery.id }}"><li>{{ subquery.title }} | {{ subquery.release_date }}</a></li>
         </ul>
     </li>
 </ul>
@@ -23,14 +26,4 @@
 <div class="deleteArtist">
     <a class="btn btn-danger" role="button">Delete Artist</a>
 </div>
-
-<style>
-    img {
-    display: block;
-    max-width:1000px;
-    max-height:500px;
-    width: auto;
-    height: auto;
-    }
-</style>
 {% endblock %}
