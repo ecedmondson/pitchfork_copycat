@@ -1,1 +1,9 @@
 venv/
+*.pyc
+*.pyo
+eggs/
+develop-eggs/
+*.egg-info/
+*.egg
+.installed.cfg
+
