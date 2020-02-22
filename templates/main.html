@@ -59,7 +59,9 @@
             {% for album in albums_available_for_review %}
             <tr class="album-row">
                 <td class="cover grid-row">
+                    <div class="image">
                     <img src="{{ album.album_art }}" class='album-art'>
+                    </div>
                 </td>
                 <td class="album-name grid-row">{{ album.album_title }}</td>
                 <td class="artist-name grid-row">{{ album.artist_name }}</td>
@@ -75,6 +77,7 @@
             {% endfor %}
           </table>
     </div>
+    <footer class="header-text">Not so pitchfork.</footer>
     {% endblock %}
   </body>
 </html>
