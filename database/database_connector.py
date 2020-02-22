@@ -7,22 +7,8 @@
 
 import MySQLdb as mariadb
 import os
+from MySQLdb._exceptions import OperationalError
 
-# This function was added independently of OSU CS 340.
-def memoize(func):
-    cache = dict()
-
-    def memoizer(*args):
-        if (func, args) in cache:
-            return cache[(func, args)]
-        result = func(*args)
-        cache[(func, args)] = result
-        return result
-
-    return memoizer
-
-
-@memoize
 def connect_to_database(host=os.environ['HOST'], user=os.environ['USER'], passwd=os.environ['PW'], db=os.environ['DB']):
     """
     connects to a database and returns a database objects
@@ -34,6 +20,11 @@ def connect_to_database(host=os.environ['HOST'], user=os.environ['USER'], passwd
 class DBConnection:
     def __init__(self):
         self.db_connection = connect_to_database()
+
+    
+    def reset(self):
+        self.__init__()
+
 
     def execute_query(self, query=None, query_params=None):
         """
@@ -68,7 +59,13 @@ class DBConnection:
         """
         # TODO: Sanitize the query before executing it!!!
         # cursor.execute(query, query_params)
-        cursor.execute(query)
+        try:
+           cursor.execute(query)
+        except OperationalError as e:
+           print(f"DEBUG DB Connection: {e}")
+           self.reset()
+           cursor = self.db_connection.cursor()
+           cursor.execute(query)
         # this will actually commit any changes to the database. without this no
         # changes will be committed!
         # cursor.close()
