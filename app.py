@@ -3,7 +3,6 @@ from flask_bootstrap import Bootstrap
 from flask_nav.elements import Navbar, View
 from forms.review_form import ReviewForm
 from database.models.tables import AlbumTable, ReviewTable, UserTable
-from test_data import *
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "derp"
 
@@ -46,7 +45,7 @@ def route(album, artist):
     )
 @app.route("/artists/<artist_name>", methods=("GET", "POST"))
 def get_single_artist(artist_name):
-    return render_template("single_artist.html", artist=artists[0], albums=test_albums[0])
+    return render_template("single_artist.html")
 
 @app.route("/route_to_add_new_artist", methods=("GET", "POST"))
 def route_add_artist_page():
