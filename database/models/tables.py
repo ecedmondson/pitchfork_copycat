@@ -5,7 +5,15 @@ from database.models.statements import (
     inner_join,
     where,
 )
-from jgt_common import only_item_of
+from jgt_common import only_item_of, must_get_key
+
+
+search_dict = {
+    "album": ("album", "title"),
+    "artist": ("artist", "name"),
+    "user": ("user", "firstname", "lastname"),
+    "genre": ("genre", "name")
+}
 
 
 class ArtistTable(DBConnection):
@@ -48,6 +56,7 @@ class AlbumTable(DBConnection):
 
     def get_all_albums(self):
         select = select_statement("album")
+        print(f"DEBUG SQL STATEMENT: {select}")
         queries = self.execute_query(select).fetchall()
         return [self._album_data(query) for query in queries]
 
@@ -57,6 +66,7 @@ class AlbumTable(DBConnection):
         )[:-1]
         inner = inner_join("album", "artist", "artist_id", "id")
         statement = f"{select} {inner};"
+        print(f"DEBUG SQL STATEMENT: {statement}")
         queries = self.execute_query(statement).fetchall()
         return [self._main_page_album_data(query) for query in queries]
 
@@ -68,7 +78,7 @@ class AlbumTable(DBConnection):
         # That is why the where template call includes an f-string.
         where_ = where("album", "title", "=", f"'{name}'")
         statement = f"{select} {where_};"
-        print(statement)
+        print(f"DEBUG SQL STATEMENT: {statement}")
         queries = self.execute_query(statement).fetchall()
         # This should return only one ID. However, just in case
         # something goes wrong with the DB/SQL the only_item_of
@@ -101,6 +111,7 @@ class ReviewTable(DBConnection):
         inner = inner_join("review", "user", "user_id", "id")
         where_ = where("review", "album_id", "=", album_id)
         statement = f"{select} {inner} {where_};"
+        print(f"DEBUG SQL STATEMENT: {statement}")
         queries = self.execute_query(statement).fetchall()
         return [self._review_page_review_data(query) for query in queries]
 
@@ -111,6 +122,7 @@ class ReviewTable(DBConnection):
             ["review_text", "rating", "user_id", "album_id"],
             [f"'{review_text}'", rating, user_id, album_id],
         )
+        print(f"DEBUG SQL STATEMENT: {insert}")
         query = self.execute_query(f"{insert};")
 
 
@@ -121,6 +133,7 @@ class UserTable(DBConnection):
             ["firstname", "lastname", "email"],
             [f"'{firstname}'", f"'{lastname}'", f"'{email}'"],
         )
+        print(f"DEBUG SQL STATEMENT: {insert}")
         self.execute_query(f"{insert};")
 
     def get_user_id_from_names_and_email(
@@ -133,8 +146,37 @@ class UserTable(DBConnection):
         where_lastname = where("user", "lastname", "=", f"'{lastname}'", chain=True)
         where_email = where("user", "email", "=", f"'{email}'", chain=True)
         statement = f"{select} {where_firstname} {where_lastname} {where_email};"
+        print(f"DEBUG SQL STATEMENT: {statement}")
         queries = self.execute_query(statement).fetchall()
         if not queries:
             self.add_new_user(firstname, lastname, email)
             queries = self.execute_query(statement).fetchall()
         return only_item_of([query[0] for query in queries])
+
+class SearchSQL(DBConnection):
+    def _search_data(search_by, queries):
+        pass
+    
+    def execute_search(self, search_keyword, search_by):
+        if not all([search_keyword, search_by]):
+            return []
+        search_info = must_get_key(search_dict, search_by)
+        if search_by == "user":
+            table, first, last = search_info
+        table, column = search_info
+        select = select_statement(table, column="*")[:-1]
+        if search_by == "user":
+            where_first = where(table, first, "like", f"'%{search_keyword}%'")
+            where_last = where(table, last, "like", f"'%{search_keyword}%'", chain=True, and_=False)
+            where_ = where_first + where_last
+        else:
+            where_ = where(table, column, "like", f"'%{search_keyword}%'") 
+        statement = f"{select} {where_};"
+        print(f"DEBUG SQL STATEMENT: {statement}")
+        queries = self.execute_query(statement).fetchall()
+        print([query for query in queries])
+        if not queries:
+            return []
+        # return (len(queries), _search_data(search_by, queries))
+
+

@@ -10,6 +10,8 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    margin-top: .5em;
+    margin-bottom: .5em;
 }
 
 .header-links {
@@ -26,6 +28,13 @@
     margin: auto;
 }
 
+form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
 .search-drop {
     padding: .5em;
     order: 1;
@@ -35,7 +44,13 @@
 .search-input {
     padding: .5em;
     order: 2;
-    align-self: flex-end;
+    align-self: center;
+}
+
+.search-submit {
+    padding: .5em;
+    order: 3;
+    alisgn-self: flex-end;
 }
 
 .album-data-container {

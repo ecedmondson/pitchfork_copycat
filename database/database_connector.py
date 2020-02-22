@@ -7,6 +7,8 @@
 
 import MySQLdb as mariadb
 import os
+from MySQLdb._exceptions import OperationalError
+
 
 # This function was added independently of OSU CS 340.
 def memoize(func):
@@ -22,7 +24,8 @@ def memoize(func):
     return memoizer
 
 
-@memoize
+# @memoize
+# I keep getting a server error and I want to run some tests while this is not memoized.
 def connect_to_database(host=os.environ['HOST'], user=os.environ['USER'], passwd=os.environ['PW'], db=os.environ['DB']):
     """
     connects to a database and returns a database objects
@@ -35,6 +38,9 @@ class DBConnection:
     def __init__(self):
         self.db_connection = connect_to_database()
 
+    def reset(self):
+        self.__init__()
+
     def execute_query(self, query=None, query_params=None):
         """
         Executes a given SQL query on the given db connection and returns a Cursor object
@@ -45,7 +51,7 @@ class DBConnection:
         returns: A Cursor object as specified at https://www.python.org/dev/peps/pep-0249/#cursor-objects.
         You need to run .fetchall() or .fetchone() on that object to actually acccess the results.
         """
-
+        # print(dir(self.db_connection))
         if self.db_connection is None:
             print(
                 "No connection to the database found! Have you called connect_to_database() first?"
@@ -59,7 +65,7 @@ class DBConnection:
         # print(f"Executing {query} with {query_params}" % (query, query_params))
         # Create a cursor to execute query. C.f. PEP0249
         cursor = self.db_connection.cursor()
-
+       
         """
         params = tuple()
         #create a tuple of parameters to send with the query
@@ -68,7 +74,13 @@ class DBConnection:
         """
         # TODO: Sanitize the query before executing it!!!
         # cursor.execute(query, query_params)
-        cursor.execute(query)
+        try:
+            cursor.execute(query) 
+        except OperationalError as e:
+            print(f"DEBUG DB Connection: {e}")
+            self.reset()
+            cursor = self.db_connection.cursor()
+            cursor.execute(query)
         # this will actually commit any changes to the database. without this no
         # changes will be committed!
         # cursor.close()
