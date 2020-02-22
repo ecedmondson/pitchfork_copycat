@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect
 from flask_bootstrap import Bootstrap
 from flask_nav.elements import Navbar, View
 from forms.review_form import ReviewForm
-from forms.search_from import SearchForm
+from forms.search_form import SearchForm
 from database.models.tables import AlbumTable, ReviewTable, UserTable, SearchSQL
 from jgt_common import must_get_key, only_item_of
 
@@ -129,7 +129,7 @@ def review_page(album, artist):
         "review_page.html",
         form=form,
         existing_reviews=reviews.get_reviews_for_an_album(
-            album_id=albums.get_album_id_from_name(_sql_escape(_readable_syntax(album)))
+            album_id=albums.get_album_id_from_name(_sql_escapes(_readable_syntax(album)))
         ),
         album=_readable_syntax(album),
     )
