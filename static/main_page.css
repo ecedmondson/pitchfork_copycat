@@ -1,3 +1,11 @@
+form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+
 .header-text {
     font-family: 'Comfortaa', cursive;
     color: #065535;
@@ -10,6 +18,8 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    margin-top: .5em;
+    margin-bottom: .5em;
 }
 
 .header-links {
@@ -35,9 +45,14 @@
 .search-input {
     padding: .5em;
     order: 2;
-    align-self: flex-end;
+    align-self: center;
 }
 
+.search-submit {
+    padding: .5em;
+    order: 3;
+    align-self: flex-end;
+}
 .album-data-container {
     width: 95%;
     height: 70%;

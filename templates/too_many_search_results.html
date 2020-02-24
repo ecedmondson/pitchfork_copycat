@@ -1,0 +1,18 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+<h2>Whoops! That search returned too many results.</h2>
+<h1>We found all of these results based on your search.</h1>
+<h1>Did you mean one of these?</h1>
+<ul>
+    {% for result in query %}
+    <li>
+    	<a href="/route_to_search_results/{{ search_type }}/{{ result }}">
+    		{{ search_type.capitalize() }}: {{ result }}
+    	</a>
+	</li>
+    {% endfor %}
+</ul>
+<h1>Not finding what you're looking for?</h1>
+<div><a href="/">Return Home</a></div>
+{% endblock %}

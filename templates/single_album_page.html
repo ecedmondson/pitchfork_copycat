@@ -1,0 +1,30 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+<h2>{{ query.album_title }}</h2>
+<h1> recorded_by: {{ subquery.artist_name }}
+<img src="{{ query.album_art }}">
+<div> TODO: subquery for this artist and genre info</div>
+<ul>
+    <li>
+        <h4>Description</h4>
+        <ul>
+            <li>published by: {{ query.publisher }}</li>
+            <li>release on: {{ query.release_date }}</li>
+            <li> listen on spotify at: <a href="{{ query.spotify_url }}"
+        </ul>
+        <h4>Overall Rating</h4>
+        <ul>
+            <li>TODO: subquery about ratings (average? what else?)
+        </ul>
+    </li>
+</ul>
+
+<br>
+<div class="edit-album">
+    <a class="btn btn-primary" role="button">Edit Album</a>
+</div>
+<div class="delete-album">
+    <a class="btn btn-danger" role="button">Delete Album</a>
+</div>
+{% endblock %}

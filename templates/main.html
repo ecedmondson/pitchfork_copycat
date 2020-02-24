@@ -1,35 +1,50 @@
+{% extends "bootstrap/base.html" %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>OSU CS 340 Project</title>
+    {% block styles %}
+    {{super()}}
     <link rel="stylesheet" href="static/main_page.css">
     <link rel="stylesheet" href="static/style.css">
+    {% endblock %}
+    {% block scripts %}
     <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+    {% endblock %}
   </head>
   <body>
+    {% block content %}
     <div class='header-container'>
         <div class='header-text'>
             <i class="fas fa-volume-up"></i>
             Pitchfork Copycat Music Review
         </div>
         <div class='header-links'>
-           <a href="/route_to_add_new_artist"><button type="button">Add Artist</button></a>
-           <a href="/route_to_add_new_album"><button type="button">Add Album</button></a>
+           <a href="/route_to_add_new_artist" class="btn btn-primary" role="button">Add Artist</a>
+           <a href="/route_to_add_new_album" class="btn btn-primary" role="button">Add Album</a>
         </div>
     </div> 
-    <div class='search-container'>
-        <div class='search-drop'>
-            <select id="search-type">
-                <option value="arist">Artist</option>
-                <option value="album">Album</option>
-                <option value="genre">Genre</option>
-            </select>
-        </div>
-        <div class='search-input'>
-            <input href="/route_to_search_results" type="text" placeholder="Search...">
-        </div>
+ <div class='search-container'>
+        <form method="post">
+            <div class='search-drop'>
+                {{ form.select_search.label }}
+                <select id="search-type" name="select_search">
+                    <option value="artist">Artist</option>
+                    <option value="album">Album</option>
+                    <option value="user">User</option>
+                    <option value="genre">Genre</option>
+                </select>
+            </div>
+            <div class='search-input'>
+                {{ form.search_keyword.label }}
+                <input href="/route_to_search_results" name="search_keyword" type="text" placeholder="Search..." value="">
+            </div>
+            <div class="search-submit">
+            {{ form.submit() }}
+            </div>
+        </form>
     </div>
     <div class='album-data-container'>
         <table id='albums_available_for_review_display_table'>
@@ -48,14 +63,18 @@
                 </td>
                 <td class="album-name grid-row">{{ album.album_title }}</td>
                 <td class="artist-name grid-row">{{ album.artist_name }}</td>
-                <td class="artist-page grid-row"><button><a href="/artists/{{ album.artist_name }}">Artist Page</a></button></td>
-                <td class="spotify grid-row"><button><a href="{{ album.spotify_url }}">Spotify Link</a></button></td>
+                <td class="artist-page grid-row">
+                    <a href="/artists/{{ album.artist_name }}" role="button" class="btn btn-primary">Artist Page</a>
+                </td>
+                <td class="spotify grid-row">
+                    <a href="{{ album.spotify_url }}" class="btn btn-primary" role="button">Spotify Link</a>
                 <td class="review-link grid-row">
-                    <a href="/route_to_review_page/{{ album.album_title }}/{{ album.artist_name }}" type="button" name="review-{{ album.album_title }}-{{ album.artist_name }}">Review this album!</a>
+                    <a href="/route_to_review_page/{{ album.album_title }}/{{ album.artist_name }}" class="btn btn-primary" role="button" name="review-{{ album.album_title }}-{{ album.artist_name }}">Review this album!</a>
                 <td>
             </tr>
             {% endfor %}
           </table>
     </div>
+    {% endblock %}
   </body>
 </html>
