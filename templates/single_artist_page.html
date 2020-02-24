@@ -4,7 +4,6 @@
 <h2>{{ query.name }}</h2>
 <h1> located in: {{ query.location }}
 <img src="{{ query.image }}">
-<div> TODO: query for this artist albums and display them</div>
 <ul>
     <li>
         <h4>Description</h4>
@@ -29,4 +28,14 @@
 <div class="deleteArtist">
     <a class="btn btn-danger" role="button">Delete Artist</a>
 </div>
+
+<style>
+    img {
+    display: block;
+    max-width:1000px;
+    max-height:500px;
+    width: auto;
+    height: auto;
+    }
+</style>
 {% endblock %}
