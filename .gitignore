@@ -7,3 +7,4 @@ develop-eggs/
 *.egg
 .installed.cfg
 
+db.txt

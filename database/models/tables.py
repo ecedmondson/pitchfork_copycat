@@ -36,6 +36,24 @@ class ArtistTable(DBConnection):
         insert = insert_statement("artist", [], [])
         self.execute_query(insert)
 
+    def get_single_artist_info(self, artist_name):
+        select = select_statement("artist")[:-1]
+        _where = where("artist", "name", "=", f'"{artist_name}"')
+        statement = f"{select} {_where};" 
+        print(f"DEBUG SQL STATEMENT: {statement}")
+        query = self.execute_query(statement).fetchone()
+        return self._select_all_artist_data(query)
+    
+    def get_albums_for_artist(self, artist_name):
+        select = select_statement("album", column=["album.id", "title", "release_date"])[:-1]
+        inner = inner_join("album", "artist", "artist_id", "id")
+        _where = where("artist", "name", "=", f'"{artist_name}"')
+        statement = f"{select} {inner} {_where};"
+        print(f"DEBUG SQL STATEMENT: {statement}")
+        query = self.execute_query(statement).fetchall()
+        return query
+        
+
 
 class AlbumTable(DBConnection):
     def _album_data(self, query_tuple):

@@ -10,11 +10,14 @@
         <h4>Description</h4>
         <ul>
             <li>{{ query.description }}</li>
-            <li> more info at: <a href="{{ query.website }}"</li>
+            <a href="{{ query.website }}"><li> more info</li></a>
         </ul>
         <h4>Albums</h4>
+       
         <ul>
-            <a href="/albums/{{ subquery.id }}"><li>{{ subquery.title }} | {{ subquery.release_date }}</a></li>
+            {% for album in albums %}
+            <a href="/albums/{{ album.id }}"><li>{{ album.title }} | {{ album.release_date }}</li></a>
+            {% endfor %}
         </ul>
     </li>
 </ul>
