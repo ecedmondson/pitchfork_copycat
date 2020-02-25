@@ -40,8 +40,15 @@ insert into review (review_text, rating, user_id, album_id) values ("I went to P
 insert into review (review_text, rating, user_id, album_id) values ("This album's title is misleading, as it spent a lot of time singing about love interests that were outside of America (Ireland and France come to mind.)", 7, 2, 1);
 insert into review (review_text, rating, user_id, album_id) values ("Dios bendiga la reggaeton, amen u'\U0001F64F'", 9, 3, 4);
 
+-- Artist Genre Insertions:
+insert into artist_genre (artist_id, genre_id) values (1, 2);
+insert into artist_genre (artist_id, genre_id) values (1, 1);
+insert into artist_genre (artist_id, genre_id) values (4, 4);
+
 -- M:M General Select for Albums and Genres
 select   album.title,   genre.name from   album   inner join album_genre as ag on album.id = ag.album_id   inner join genre on ag.genre_id = genre.id;
+
+
 
 
 
