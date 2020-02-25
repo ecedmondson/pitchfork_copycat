@@ -3,23 +3,12 @@
 {% block content %}
 <h2>User: {{ query.firstname }} {{ query.lastname }}</h2>
 <h1>member since: {{ query.created_date }}
-<div> TODO: subquery to get albums this user has reviewed and display them</div>
 <ul>
     <li>
         <h4>This User's Reviewed Albums:</h4>
         <ul>
-            {% for album in subquery %}
-            <li>TO DO: list albums this user has reviewed</li>
-            {% endfor %}
+            {{ query.albums }}
         </ul>
     </li>
 </ul>
-
-<br>
-<div class="edit-user">
-    <a class="btn btn-primary" role="button">Edit User Name</a>
-</div>
-<div class="delete-genre">
-    <a class="btn btn-danger" role="button">Delete User</a>
-</div>
 {% endblock %}

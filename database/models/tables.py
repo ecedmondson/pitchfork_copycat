@@ -4,6 +4,7 @@ from database.models.statements import (
     select_statement,
     inner_join,
     where,
+    full_search_queries
 )
 from jgt_common import only_item_of, must_get_key
 
@@ -62,6 +63,40 @@ class AlbumTable(DBConnection):
     def _search_helper(self, *args):
         return self._album_data(*args)
 
+    
+    def _full_search_parse(self, queries):
+        ratings = []
+        genres = []
+        constants_checked = False
+        for query in queries:
+            if constants_checked:
+                genre =  query[-2]
+                rating = query[-1]
+            else:
+                title, art, release_date, publisher, spotify_url, artist, genre, rating = query
+            ratings.append(rating)
+            genres.append(genre)
+        genres = list(set(genres))
+        rating_multiplicative_factor = len(genres)
+        set_ratings = list(set(ratings))
+        rating_count = [{rating: ((ratings.count(rating) // rating_multiplicative_factor))} for rating in set_ratings]
+        total_unique_ratings = sum([v for set_ in rating_count for k, v in set_.items()])
+        rating_average = sum([ k * v for set_ in rating_count for k,v in set_.items()]) / total_unique_ratings
+        return {
+            "title": title,
+            "art": art,
+            "release_date": release_date,
+            "publisher":publisher,
+            "spotify_Url": spotify_url,
+            "artist": artist,
+            "genre": genres,
+            "total_ratings": total_unique_ratings,
+            "rating_average": rating_average,
+        }
+
+        
+        
+        
     def _main_page_album_data(self, query_tuple):
         album_art, album_title, artist_name, artist_page, spotify_url = query_tuple
         return {
@@ -94,7 +129,7 @@ class AlbumTable(DBConnection):
         select = select_statement("album", column="id")[:-1]
         # MySQL client/Maria DB got mad when quotes weren't included.
         # That is why the where template call includes an f-string.
-        where_ = where("album", "title", "=", f"'{name}'")
+        where_ = where("album", "title", "=", f"'{name}'", and_=True)
         statement = f"{select} {where_};"
         print(f"DEBUG SQL STATEMENT: {statement}")
         queries = self.execute_query(statement).fetchall()
@@ -127,7 +162,7 @@ class ReviewTable(DBConnection):
             "review", column=["review_text", "rating", "firstname", "lastname"]
         )[:-1]
         inner = inner_join("review", "user", "user_id", "id")
-        where_ = where("review", "album_id", "=", album_id)
+        where_ = where("review", "album_id", "=", album_id, and_=True)
         statement = f"{select} {inner} {where_};"
         print(f"DEBUG SQL STATEMENT: {statement}")
         queries = self.execute_query(statement).fetchall()
@@ -174,8 +209,8 @@ class UserTable(DBConnection):
             return None
         select = select_statement("user", column="id")[:-1]
         where_firstname = where("user", "firstname", "=", f"'{firstname}'")
-        where_lastname = where("user", "lastname", "=", f"'{lastname}'", chain=True)
-        where_email = where("user", "email", "=", f"'{email}'", chain=True)
+        where_lastname = where("user", "lastname", "=", f"'{lastname}'", chain=True, and_=True)
+        where_email = where("user", "email", "=", f"'{email}'", chain=True, and_=True)
         statement = f"{select} {where_firstname} {where_lastname} {where_email};"
         print(f"DEBUG SQL STATEMENT: {statement}")
         queries = self.execute_query(statement).fetchall()
@@ -224,7 +259,16 @@ class SearchSQL(DBConnection):
         if len(queries) > 1:
             return [f"{query['firstname']} {query['lastname']}" for query in queries]
         return queries
-
+    
+    def _full_search(self, key, search_data, table_name):
+        table = self.search_extract_dict[table_name][0]()
+        query_options = must_get_key(full_search_queries, key)
+        if self.execute_query(query_options['touch'].replace("<<<ID>>>", str(only_item_of(search_data)['album_id']))).fetchall():
+            queries = self.execute_query(query_options['reviews'].replace("<<<ID>>>", str(only_item_of(search_data)['album_id']))).fetchall()
+        else:
+            queries = self.execute_query(query_options['no_reviews'].replace("<<<ID>>>", str(only_item_of(search_data)['album_id']))).fetchall()
+        return (1, table._full_search_parse(queries))
+   
     def execute_user_search(self, search_keyword, search_info):
         table, first, last = search_info
         select = select_statement(table, column="*")[:-1]
@@ -254,4 +298,22 @@ class SearchSQL(DBConnection):
         queries = self.execute_query(statement).fetchall()
         if not queries:
             return []
+        if len(queries) > 1:
+            return (len(queries), self._search_data(search_by, queries))
+        if search_by == "album":
+            # This is temporary
+            return self._full_search(search_by, self._search_data(search_by, queries), table)
+        if search_by == "artist":
+            queries = self.execute_query(f"select artist.name, artist.location, artist.website, artist.description, artist.image, album.title, album.release_date from artist as artist inner join album on artist.id=album.artist_id where artist.name like " +  f"'%{search_keyword}%'" + ";").fetchall()
+            for query in queries:
+                name, location, website, description, image, album_title, album_release = query
+                return (1, { "name": name, "location": location, "website": website, "description": description, "image": image, "album_title": album_title, "album_release": album_release }) 
+        if search_by == "genre":
+            queries = self.execute_query("select genre.name, album.title from genre inner join album_genre on genre.id = album_genre.genre_id inner join album on album_genre.album_id=album.id where genre.name =" + f"'{search_keyword}';").fetchall()
+            print(queries)
+            albums = []
+            for query in queries:
+                name, album = query
+                albums.append(album)
+            return (1, {"name": name, "albums": albums})
         return (len(queries), self._search_data(search_by, queries))

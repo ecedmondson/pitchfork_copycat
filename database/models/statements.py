@@ -30,3 +30,20 @@ def where(table, table_value, operation, filter_field, chain=False, and_=False):
     if not chain:
         return f"WHERE {table}.{table_value} {operation} {filter_field}"
     return f"{conjunction} {table}.{table_value} {operation} {filter_field}"
+
+
+full_search_queries = {
+    "album": 
+		{"touch": 
+			"select * from  review where album_id=<<<ID>>>", 
+		"reviews":
+			"""select album.title, album.album_cover, album.release_date, album.publisher, album.spotify_url, artist.name, 
+			genre.name as genre_name, review.rating from album as album inner join artist as artist on album.artist_id = artist.id 
+			inner join album_genre on album.id = album_genre.album_id inner join genre as genre on album_genre.genre_id = genre.id 
+			inner join review on album.id = review.album_id where album.id = <<<ID>>>;""",
+		"no_reviews":
+			"""select album.title, album.album_cover, album.release_date, album.publisher, album.spotify_url, artist.name, 
+			genre.name as genre_name from album inner join artist on album.artist_id=artist.id inner join album_genre on 
+			album.id = album_genre.album_id inner join genre on album_genre.genre_id = genre.id where album.id =<<<ID>>>;""",
+                }
+}

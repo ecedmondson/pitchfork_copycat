@@ -1,0 +1,34 @@
+.album-info-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    min-height: 90%;
+    max-height: 98%;
+}
+
+.album-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    max-height: 50%;
+}
+
+.header-text {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-art {
+    order: 1;
+    // object-fit: cover;
+    max-height: 60%;
+}
+
+.album-facts {
+    display: flex;
+    flex-direction: row;
+    max-height: 50%;
+
+}
+

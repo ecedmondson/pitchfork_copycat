@@ -27,7 +27,7 @@ def _readable_syntax(route):
 
 
 def _sql_escapes(route):
-    return route.replace("'", "\\'")
+    return route.replace("'", "\\'").replace('"', '\\"').replace("%", "\\%").replace("_", "\\_")
 
 
 @app.errorhandler(404)
@@ -46,11 +46,15 @@ def home():
     if form.is_submitted():
         if form.select_search.data:
             search_results = search.execute_search(
-                form.search_keyword.data, form.select_search.data
+                _sql_escapes(form.search_keyword.data), form.select_search.data
             )
         if search_results:
+            print(search_results)
             result_length, query = search_results
+            print(query)
             if result_length == 1:
+                if isinstance(query, list):
+                    query = only_item_of(query)
                 return render_template(
                     must_get_key(
                         {
@@ -61,8 +65,7 @@ def home():
                         },
                         form.select_search.data,
                     ),
-                    query=only_item_of(query),
-                    subquery=[],
+                    query=query,
                 )
             return render_template(
                 "too_many_search_results.html",
@@ -101,17 +104,6 @@ def route_add_album_page():
 	return redirect(url_for("add_album_page"))
 
 
-@app.route(
-    "/route_to_search_results/<search_type>/<search_desired>", methods=("GET", "POST")
-)
-def route_search(search_type, search_desired):
-    #TODO: implement single page for each
-    # Clicking on a link from a multiple results found
-    # search result will end in a TypeError since this function
-    # is not yet implemented
-    pass
-
-
 @app.route("/reviews/<album>/<artist>", methods=("GET", "POST"))
 def review_page(album, artist):
     form = ReviewForm()
@@ -122,9 +114,9 @@ def review_page(album, artist):
             lastname=form.lastname.data,
             email=form.email.data,
         )
-        album_id = albums.get_album_id_from_name(name=_readable_syntax(album))
+        album_id = albums.get_album_id_from_name(name=_sql_escapes(_readable_syntax(album)))
         # TODO: add a real rating system in
-        reviews.add_new_review(form.body.data, "10", str(user_id), str(album_id))
+        reviews.add_new_review(_sql_escapes(form.body.data), "10", str(user_id), str(album_id))
     return render_template(
         "review_page.html",
         form=form,
@@ -135,6 +127,19 @@ def review_page(album, artist):
     )
 
 
+@app.route("/route_to_search_results/<type>/<key>", methods=("GET", "POST"))
+def route_to_search_results(type, key):
+    return render_template('404.html', title = '404'), 404
+
+
+@app.route("/route_to_edit", methods=("GET", "POST"))
+def route_to_edit():
+    return render_template('500.html', title = '500'), 500
+
+@app.route("/route_to_delete", methods=("GET", "POST"))
+def route_to_delete():
+    return render_template('500.html', title = '500'), 500
+
 @app.route("/add_artist", methods=("GET", "POST"))
 def add_artist_page():
     return render_template("add_artist.html")
@@ -143,5 +148,5 @@ def add_artist_page():
 def add_album_page():
 	return render_template("add_album.html")
 
-if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5162)
+# if __name__ == "__main__":
+    # app.run(debug=True, host="0.0.0.0", port=5162)
