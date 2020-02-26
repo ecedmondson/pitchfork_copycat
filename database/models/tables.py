@@ -317,3 +317,25 @@ class SearchSQL(DBConnection):
                 albums.append(album)
             return (1, {"name": name, "albums": albums})
         return (len(queries), self._search_data(search_by, queries))
+                
+# User needs a touch search too:
+
+# MariaDB [cs340_edmondem]> select   user.firstname,   user.lastname,   user.created_date,   album.title as album_name from   user   inner join review on user.id = review.user_id   inner join album on review.album_id = album_id where user.id = 6;
+# Empty set (0.001 sec)
+
+# MariaDB [cs340_edmondem]> select   user.firstname,   user.lastname,   user.created_date,   album.title as album_name from   user   inner join review on user.id = review.user_id   inner join album on review.album_id = album_id where user.id = 6;
+# Empty set (0.000 sec)
+
+# MariaDB [cs340_edmondem]> select   user.firstname,   user.lastname,   user.created_date from user inner join review on user.id = review.user_id   inner join album on review.album_id = album_id where user.id = 6;
+# Empty set (0.001 sec)
+
+# MariaDB [cs340_edmondem]> select   user.firstname,   user.lastname,   user.created_date from user where user.id = 6;
+# +---------------+--------------+---------------------+
+# | firstname     | lastname     | created_date        |
+# +---------------+--------------+---------------------+
+# | TestUserFirst | TestUserLast | 2020-02-24 17:43:57 |
+# +---------------+--------------+---------------------+
+# 1 row in set (0.001 sec)
+
+# MariaDB [cs340_edmondem]> select   user.firstname,   user.lastname,   user.created_date from user inner join review on user.id = review.user_id where user.id = 6;
+
