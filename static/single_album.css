@@ -1,34 +1,119 @@
+.header-container {
+    margin: auto;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+body {
+    height: 98%%;
+}
+
+h2, .header-text {
+    font-family: 'Comfortaa', cursive;
+    color: #191d6e;
+}
+
+h2 {
+    padding-left: 1em;
+    padding-bottom: .5em;
+}
+
 .album-info-container {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     min-height: 90%;
-    max-height: 98%;
+}
+
+.danger-zone {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding-bottom: .5em;
+}
+
+.edit-album {
+    padding-right: .5em;
+    // flex-basis: 50%;
+    align-self: center;
+}
+
+.delete-album {
+    padding-left: .5em;
+    // flex-basis: 50%;
+    align-self: center;
 }
 
 .album-header {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    max-height: 50%;
+    margin: auto;
+    padding-right: .5em;
+    padding-left: .75em;
 }
 
-.header-text {
+.album-header-text {
+    font-family: 'Comfortaa', cursive;
+    color: #191d6e;
+    flex-basis: 50%;
     order: 2;
     display: flex;
     flex-direction: column;
 }
 
+.art-container {
+    flex-basis: 50%;
+    max-height: 60%;
+    max-width: 70%;
+}
+
 .header-art {
     order: 1;
-    // object-fit: cover;
-    max-height: 60%;
+    overflow: hidden;
+    position: relative;
+    max-height: 90%;
+    max-width: 90%;
+    //padding-bottom: 100%;
 }
+
+img {
+    object-fit: fill;
+}
+
 
 .album-facts {
     display: flex;
-    flex-direction: row;
-    max-height: 50%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    //max-height: 50%;
+}
 
+.album-fact-header {
+    //flex-basis: 100%;
+    text-decoration: underline;
+    align-self: center;
+    padding-right: .25em;
+    font-family: 'Comfortaa', cursive;
+    color: #191d6e;
+}
+
+.album-fact-ind {
+    padding-bottom: 1em;
+}
+
+.btn-spotify {
+   background-color: #45B817;
+   border: none;  
+}
+
+.btn-spotify:hover {
+    background-color: #318310;
 }
 

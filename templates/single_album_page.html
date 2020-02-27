@@ -19,42 +19,45 @@
     {% block content %}
     <div class='header-container'>
         <div class='header-text'>
-            <i class="fas fa-volume-up"></i> Pitchfork Copycat Music Review
+            <i class="fas fa-volume-up"></i>Pitchfork Copycat Music Review
         </div>
         <div class='header-links'>
             <a href="/" class="btn btn-primary" role="button">Return Home</a>
         </div>
     </div>
+    <h2>Album Page: {{ query.title }}</h2>
     <div class="album-info-container">
         <div class="album-header">
-            <div class="header-text">
-            	<h2>Album Page: {{ query.title }}</h2>
-            	<h1> recorded_by: {{ query.artist }}</h1>
+            <div class="album-header-text">
+            	<h4> recorded by: {{ query.artist }}</h4>
+                    <div class="album-facts">
+       			 <div class="album-fact-header"><h4>Album Facts</h4></div>
+       				 <div class="album-fact-ind">published by: {{ query.publisher }}</div>
+       				 <div class="album-fact-ind">released on: {{ query.release_date }}</div>
+       				 <div class="album-fact-ind">listen on spotify at:
+           			 <a href="{{ query.spotify_url }}" role="button" class="btn btn-primary btn-spotify">
+                   			 <i class="fas fa-volume-up"></i>
+               			 </a>
+       			 </div>
+       			 <div class="album-fact-ind">
+           			 Genres associated with this album:
+                                 {% for genre in query.genre %}
+           		 	<div class="album-genre">{{ genre }}</div>
+           			 {% endfor %}
+       			 </div>
+       	                 <div class="album-fact-ind">
+            			Overall Rating: {{ query.rating_average }} (out of 10)
+       			 </div>
+       			 <div class="album-fact-ind">
+           			 Total reviews: {{ query.total_ratings }}
+       			 </div>
+   		 </div>
             </div>
-            <div cass="header-art">
-            	<img src="{{ query.art }}">
+            <div class="art-container">
+                <div class="header-art">
+            	    <img src="{{ query.art }}" class="album-art">
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="album-facts">
-        <h4>Album Facts</h4>
-        <div class="album-fact-ind">published by: {{ query.publisher }}</div>
-        <div class="album-fact-ind">released on: {{ query.release_date }}</div>
-        <div class="album-fact-ind">listen on spotify at:
-            <a href="{{ query.spotify_url }}" role="button" class="btn btn-primary btn-spotify">
-                    <i class="fas fa-volume-up"></i>
-                </a>
-        </div>
-        <div class="album-fact-ind">
-            Genres associated with this album: {% for genre in query.genre %}
-            <div class="album-genre">{{ genre }}</div>
-            {% endfor %}
-        </div>
-        <div class="album-fact-ind">
-            Overall Rating: {{ query.rating_average }} (out of 10)
-        </div>
-        <div class="album-fact-ind">
-            Total reviews: {{ query.total_ratings }}
         </div>
     </div>
     <div class="danger-zone">
