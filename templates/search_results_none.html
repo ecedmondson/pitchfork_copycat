@@ -1,6 +1,28 @@
-{% extends "bootstrap/base.html" %}
-
-{% block content %}
-<h2>That was a really cool search, but we can't seem to find what you're looking for...</h2>
-<div><a href="/">Return Home</a></div>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+   <head>
+      <title></title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Bootstrap -->
+      <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="/static/searching.css">
+      <link rel="stylesheet" href="static/style.css">
+   </head>
+   <body>
+      <div class='header-container'>
+         <div class='header-text'>
+            <i class="fas fa-volume-up"></i>
+            Pitchfork Copycat Music Review
+         </div>
+      </div>
+      <div class="search-incorrect-container">
+         <h1 class="header-text none">That was a really cool search, but we can't seem to find what you're looking for...</h1>
+         <div class="none img-none">
+            <img src="https://media1.giphy.com/media/7T8A2zA9msSW7wGZt9/giphy.gif">
+         </div>
+         <div class="footer-button none">
+            <a href="/" role="button" class="btn btn-primary">Return Home</a>
+         </div>
+      </div>
+   </body>
+</html>
