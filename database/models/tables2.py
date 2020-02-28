@@ -7,10 +7,11 @@ from database.models.statements import (
     full_search_queries,
 )
 from jgt_common import only_item_of, must_get_key
+from flask import abort
 
 
 class ArtistTable(DBConnection):
-    def _select_all_artist_data(self, query_tuple):
+    def _format_all_artist_data(self, query_tuple):
         # Data formatted for select all artist call
         artist_id, artist_name, website, image, location, description = query_tuple
         return {
@@ -40,6 +41,18 @@ class ArtistTable(DBConnection):
         statement = f"{statement} {where};"
         print(f"DEBUG SQL: {statement}")
         return self.execute_query(statement).fetchall()
+
+    def _search_entity_only(self, search_keyword):
+        select = select_statement("artist", column="*")[:-1]
+        where_ = where("artist", "name", "=", f"'{name}'")
+        statement = f"{statement} {where};"
+        print(f"DEBUG SQL: {statement}")
+        queries = self.execute_query(statement).fetchall()
+        return [self._format_all_artist_data(query) for query in query_tuple]
+
+    def _full_search(self, search_keyword):
+        # This is dependent on TJ
+        abort(404)
 
     def add_new_artist(self):
         insert = insert_statement("artist", [], [])
@@ -89,27 +102,70 @@ class AlbumTable(DBConnection):
         print(f"DEBUG SQL: {statement}")
         return self.execute_query(statement).fetchall()
 
+    def _format_entity_search(self, queries):
+        # Only 1 Genre
+        if len(queries) == 1:
+            for (
+                artist,
+                title,
+                art,
+                release_date,
+                publisher,
+                spotify_url,
+                genre,
+            ) in queries:
+                return {
+                    "artist": artist,
+                    "title": title,
+                    "art": art,
+                    "release_date": release_date,
+                    "publisher": publisher,
+                    "genre": genre,
+                }
+        # More than one Genre
+        genres = [query[-1] for query in queries]
+        # Other data should stay the same so return the first
+        for artist, title, art, release_date, publisher, spotify_url, genre in queries[
+            0
+        ]:
+            return {
+                "artist": artist,
+                "title": title,
+                "art": art,
+                "release_date": release_date,
+                "publisher": publisher,
+                "genre": genres,
+            }
+
+    def _search_entity_only(self, search_keyword):
+        # Search for when no reviews exist
+        statement = f"""
+            select artist.name, album.title, album.album_cover, album.release_date, album.publisher,
+            album.spotify_url, genre.name from album inner join artist on album.artist_id = artist.id
+            inner join album_genre on album.id = album_genre.album_id
+            inner join genre on album_genre.genre_id = genre.id
+            where album.title = '{search_keyword}'
+            """
+        print(f"DEBUG SQL: {statement}")
+        queries = self.execute_query(statement).fetchall()
+        return [self._format_entity_search(queries) for query in query_tuple]
+
     def _full_search_parse(self, queries):
-        ratings = []
-        genres = []
+        # Multiples
+        ratings = [query[-1] for query in queries]
+        genres = [query[-2] for query in queries]
         constants_checked = False
-        for query in queries:
-            if constants_checked:
-                genre = query[-2]
-                rating = query[-1]
-            else:
-                (
-                    title,
-                    art,
-                    release_date,
-                    publisher,
-                    spotify_url,
-                    artist,
-                    genre,
-                    rating,
-                ) = query
-            ratings.append(rating)
-            genres.append(genre)
+        # Other data should stay the same so return the first
+        (
+            title,
+            art,
+            release_date,
+            publisher,
+            spotify_url,
+            artist,
+            genre,
+            rating,
+        ) = queries[0]
         genres = list(set(genres))
         rating_multiplicative_factor = len(genres)
         set_ratings = list(set(ratings))
@@ -244,6 +300,36 @@ class UserTable(DBConnection):
         print(f"DEBUG SQL: {statement}")
         return self.execute_query(statement).fetchall()
 
+    def _search_entity_only(self, search_keyword):
+        statement = f"select * from user where user.id = {search_keyword}"
+        print(f"DEBUG SQL: {statement}")
+        queries = self.execute_query(statement).fetchall()
+        return only_item_of([self._select_all_user_data(query) for query in queries])
+
+    def _format_full_search_data(self, queries):
+        albums_artists = {query[-1]: query[-2] for query in queries}
+        # Rest of the data should be the same
+        for firstname, lastname, created_date, album, name in queries[0]:
+            return {
+                "firstname": firstname,
+                "lastname": lastname,
+                "created_date": created_date,
+                "album_artists": album_artists,
+            }
+
+    def _full_search(self, search_keyword):
+        statement = f"""
+            select distinct user.firstname, user.lastname, user.created_date, album.title as album_name,
+            artist.name from user inner join review on user.id = review.user_id
+            inner join album on review.album_id = album_id
+            inner join artist on album.artist_id = artist.id
+            where
+            user.id = {search_keyword};
+            """
+        print(f"DEBUG SQL: {statement}")
+        queries = self.execute_query(statement).fetchall()
+        return self._format_full_search_data(queries)
+
     def add_new_user(self, firstname, lastname, email):
         insert = insert_statement(
             "user",
@@ -301,6 +387,30 @@ class GenreTable(DBConnection):
     def _format_search_helper(self, *args):
         return self._select_all_genre_data(*args)
 
+    def _search_entity_only(self, search_keyword):
+        statement = f"select * from genre where genre.name = '{search_keyword}'"
+        print(f"DEBUG SQL: {statement}")
+        queries = self.execute_query(statement).fetchall()
+        return only_item_of([self._select_all_genre_data(query) for query in queries])
+
+    def _format_full_search_data(queries):
+        album_artist = {query[-2]: {query[-2]} for query in queries}
+        # Other data should be the same
+        for genre, title, artist in queries[0]:
+            return {"genre": genre, "album_artist": album_artist}
+
+    def _full_search(self, search_keyword):
+        statement = f"""
+            select genre.name, album.title, artist.name from genre 
+            inner join album_genre on genre.id = album_genre.genre_id 
+            inner join album on album_genre.album_id=album.id
+            inner join artist on album.artist_id = artist.id 
+            where genre.id = {search_keyword}
+            """
+        print(f"DEBUG SQL: {statement}")
+        queries = self.execute_query(statement).fetchall()
+        return self._format_full_search_data(queries)
+
     def _touch_helper(self, search_keyword):
         id = self._select_genre_id_by_name(search_keyword)
         select = select_statement("album_genre", column="album_id")[:-1]
@@ -351,29 +461,11 @@ class SearchSQL(DBConnection):
     def _touch_database(self, search_keyword, table):
         return table._touch_helper(search_keyword)
 
-    def _search_table_only(self, search_keyword, column, table):
-        pass
+    def _search_entity_only(self, search_keyword, table):
+        return table._search_entity_only(search_keyword)
 
-    def _full_search(self, key, search_data, table_name):
-        table = self.search_extract_dict[table_name][0]()
-        query_options = must_get_key(full_search_queries, key)
-        if self.execute_query(
-            query_options["touch"].replace(
-                "<<<ID>>>", str(only_item_of(search_data)["album_id"])
-            )
-        ).fetchall():
-            queries = self.execute_query(
-                query_options["reviews"].replace(
-                    "<<<ID>>>", str(only_item_of(search_data)["album_id"])
-                )
-            ).fetchall()
-        else:
-            queries = self.execute_query(
-                query_options["no_reviews"].replace(
-                    "<<<ID>>>", str(only_item_of(search_data)["album_id"])
-                )
-            ).fetchall()
-        return (1, table._full_search_parse(queries))
+    def _full_search(self, search_keyword, table):
+        return table._full_search(search_keyword)
 
     def execute_search(self, search_keyword, search_by):
         """ 
@@ -417,54 +509,13 @@ class SearchSQL(DBConnection):
         # Provide actual value so that a where like doesn't occur again
         search_keyword = only_item_of(queries)
         touch = self._touch_database(search_keyword, table)
-        if touch:
+        print(f" TOUCH QUERY RESULTS: {touch}")
+        if not touch:
             # Search against entity only
-            return (1, self._search_table_only(search_keyword))
+            results = self._search_entity_only(search_keyword, table)
+            print(f"ENTITY ONLY: {results}")
+            return (1, results)
         # Full Search
-        return (1, self._full_search(search_keyword))
-
-        if search_by == "album":
-            # This is temporary
-            return self._full_search(
-                search_by, self._search_data(search_by, queries), table
-            )
-        if search_by == "artist":
-            queries = self.execute_query(
-                f"select artist.name, artist.location, artist.website, artist.description, artist.image, album.title, album.release_date from artist as artist inner join album on artist.id=album.artist_id where artist.name like "
-                + f"'%{search_keyword}%'"
-                + ";"
-            ).fetchall()
-            for query in queries:
-                (
-                    name,
-                    location,
-                    website,
-                    description,
-                    image,
-                    album_title,
-                    album_release,
-                ) = query
-                return (
-                    1,
-                    {
-                        "name": name,
-                        "location": location,
-                        "website": website,
-                        "description": description,
-                        "image": image,
-                        "album_title": album_title,
-                        "album_release": album_release,
-                    },
-                )
-        if search_by == "genre":
-            queries = self.execute_query(
-                "select genre.name, album.title from genre inner join album_genre on genre.id = album_genre.genre_id inner join album on album_genre.album_id=album.id where genre.name ="
-                + f"'{search_keyword}';"
-            ).fetchall()
-            print(queries)
-            albums = []
-            for query in queries:
-                name, album = query
-                albums.append(album)
-            return (1, {"name": name, "albums": albums})
-        return (len(queries), self._format_search_data(search_by, queries))
+        full = self._full_search(search_keyword, table)
+        print(f"FULL ONLY: {full}")
+        return (1, full)
