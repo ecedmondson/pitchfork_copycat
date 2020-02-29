@@ -148,5 +148,5 @@ def add_artist_page():
 def add_album_page():
 	return render_template("add_album.html")
 
-# if __name__ == "__main__":
-    # app.run(debug=True, host="0.0.0.0", port=5162)
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=5123)
