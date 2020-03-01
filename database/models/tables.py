@@ -3,7 +3,7 @@ from jgt_common import only_item_of, must_get_key
 from flask import abort
 import logging
 
-logging.basicConfig(filename='runtime_sql_queries.log')
+logging.basicConfig(filename='runtime_sql_queries.log', level=logging.DEBUG)
 
 
 class ArtistTable(DBConnection):
