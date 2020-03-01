@@ -1,18 +1,48 @@
 {% extends "bootstrap/base.html" %}
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Album Review Page</title>
+    {% block styles %}
+    {{super()}}
+    <link rel="stylesheet" type="text/css" href="/static/searching.css">
+    <link rel="stylesheet" href="static/style.css">
+    {% endblock %}
+    {% block scripts %}
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+    {% endblock %}
+</head>
+
 {% block content %}
-<h2>Whoops! That search returned too many results.</h2>
-<h1>We found all of these results based on your search.</h1>
-<h1>Did you mean one of these?</h1>
+<div class='header-container'>
+    <div class='header-text'>
+        <i class="fas fa-volume-up"></i>
+        Pitchfork Copycat Music Review
+    </div>
+</div>
+<div class="search-incorrect-container">
+    <div class="text-top">
+    <h1 class="header-text">Whoops! That search returned too many results.</h2>
+    <h2 class="header-text">We found all of these results based on your search.</h1>
+    <h2 class="header-text">Did you mean one of these?</h1>
+    </div>
 <ul>
     {% for result in query %}
     <li>
-    	<a href="/route_to_search_results/{{ search_type }}/{{ result }}">
-    		{{ search_type.capitalize() }}: {{ result }}
+    	<div class="too-many-result search-text">
+        {{ search_type.capitalize() }}: 
+        <a href="/route_to_search_results/{{ search_type }}/{{ result }}" role="button" class="btn btn-primary">
+            {{ result }}
     	</a>
-	</li>
+        </div>
+    </li>
     {% endfor %}
 </ul>
-<h1>Not finding what you're looking for?</h1>
-<div><a href="/">Return Home</a></div>
+</div>
+<h1 class="header-text footer">Not finding what you're looking for?</h1>
+<div class="footer-button"><a href="/" role="button" class="btn btn-primary">Return Home</a></div>
 {% endblock %}
