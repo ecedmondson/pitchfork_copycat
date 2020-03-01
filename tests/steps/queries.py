@@ -100,9 +100,9 @@ def _validate(when, then, and_, response):
     type_search = {
         'non-existing': "can't seem to find",
         'vague': 'Whoops!',
-        'existing': {'artist': 'Artist Name', 'album': 'publisher', 'user': 'member since', 'genre': 'Genre Name'},
-        'albumless': {'artist': 'Artist Name', 'album': 'publisher', 'user': 'member since', 'genre': 'Genre Name'},
-        'reviewless':{'artist': 'Artist Name', 'album': 'publisher', 'user': 'member since', 'genre': 'Genre Name'},
+        'existing': {'artist': 'Artist Name', 'album': 'associated with this album', 'user': 'member since', 'genre': 'Genre Name'},
+        'albumless': {'artist': 'Artist Name', 'album': 'assocaited with this album', 'user': 'member since', 'genre': 'Genre Name'},
+        'reviewless':{'artist': 'Artist Name', 'album': 'associated with this album', 'user': 'member since', 'genre': 'Genre Name'},
     }
     type_ = when.split(" ")[-1]
     search = when.split(" ")[-2] 
@@ -151,15 +151,18 @@ def functional_test_of_search_options():
                     type_
                 ]
             )
+    num = 0
+    print(len(tests))
     for test in tests:
         when, payload, type = test
-        try:
-            r = post_search(payload)
-        except Exception as e:
-            print(f"{when}\n{then}\n{and_}...ALL FAILED\nwith error {e}")
-        if r:
-            print()
-            _validate(when, then, and_, r)
+        # try:
+        print(f"TEST NUMBER: {num + 1}")
+        r = post_search(payload)
+        #except Exception as e:
+            #print(f"{when}\n{then}\n{and_}...ALL FAILED\nwith error {e}")
+        num += 1 
+        print()
+        _validate(when, then, and_, r)
 
 functional_test_of_search_options()
 

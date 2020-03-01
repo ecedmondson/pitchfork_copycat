@@ -7,22 +7,9 @@
 
 import MySQLdb as mariadb
 import os
+import logging
+from jgt_common import must_get_key
 
-# This function was added independently of OSU CS 340.
-def memoize(func):
-    cache = dict()
-
-    def memoizer(*args):
-        if (func, args) in cache:
-            return cache[(func, args)]
-        result = func(*args)
-        cache[(func, args)] = result
-        return result
-
-    return memoizer
-
-
-@memoize
 def connect_to_database(host=os.environ['HOST'], user=os.environ['USER'], passwd=os.environ['PW'], db=os.environ['DB']):
     """
     connects to a database and returns a database objects
@@ -56,20 +43,26 @@ class DBConnection:
             print("Query is empty! Please pass a SQL query in the query param")
             return None
 
-        # print(f"Executing {query} with {query_params}" % (query, query_params))
+        #(f"Executing {query} with {query_params}" % (query, query_params))
         # Create a cursor to execute query. C.f. PEP0249
         cursor = self.db_connection.cursor()
-
-        """
-        params = tuple()
+        print("Executing %s with %s" % (query, query_params));
+        
+        # params = tuple()
         #create a tuple of parameters to send with the query
-        for q in query_params:
-            params = params + (q)
-        """
+        # for q in query_params:
+            # params = params + (q)
+        
         # TODO: Sanitize the query before executing it!!!
-        # cursor.execute(query, query_params)
-        cursor.execute(query)
-        # this will actually commit any changes to the database. without this no
+        print(query_params)
+        print(type(query_params)) 
+        query_execution = must_get_key({True: lambda: cursor.execute(query, query_params), False: lambda: cursor.execute(query)}, bool(query_params))
+        try:
+            query_execution()
+        except Exception as e:
+            self.db_connection = connect_to_database()
+            cursor = self.db_connection.cursor()
+            query_execution()
         # changes will be committed!
         # cursor.close()
         self.db_connection.commit()

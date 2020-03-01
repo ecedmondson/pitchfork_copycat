@@ -27,7 +27,8 @@ def _readable_syntax(route):
 
 
 def _sql_escapes(route):
-    return route.replace("'", "\\'").replace('"', '\\"').replace("%", "\\%").replace("_", "\\_")
+    return route
+    # return route.replace("'", "\\'").replace('"', '\\"').replace("%", "\\%").replace("_", "\\_")
 
 
 @app.errorhandler(404)
