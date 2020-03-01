@@ -1,58 +1,131 @@
 input[type=textarea] {
-    width: 100%;
-    height: 60%;
-    resize: none;
-    box-sizing: border-box;
+    width: 750px;
+    height: 100px;
+    padding-left: .25em;
+    padding-bottom: .25em;
+}
+
+input[type=text] {
+    min-width: 225px;
+    max-width: 250px;
+    height: 50px;
+}
+
+form {
+    padding-top: .5em;
+    order: 2;
+    flex-grow: 1;
+}
+
+h1 {
+    font-family: 'Comfortaa', cursive;
+    color: #191d6e;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.title {
+    padding-left: .25em;
+    align-self: flex-start;
+}
+
+.home-button {
+    padding-right: .25em;
+    align-self: flex-end;
+}
+
+.header {
+    text-align: center;
+    margin: auto;
+    padding: .25em;
 }
 
 .review-container {
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     min-width: 95%;
     max-width: 98%;
     min-height: 95%;
     max-width: 98%;
+    margin: auto;
 }
 
-.existing-reviews-container {
-    align-self: flex-start;
-    width: 97%;
-    min-height: 40%;
-    max-height: 50%;
-    margin: auto;
-    border: 1px solid;
-    border-radius: 12px;
-    border-color: #91b7a8;
-    background: #91b7a8;
-}
 
 .review-submission-container {
     align-self: flex-end;
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     width: 95%;
     min-height: 45%;
     max-height: 55%;
-    border: 1px solid;
-    border-radius: 12px;
-    border-color: #91b7a8;
-    padding-top: .25em;
+    justify-content: center;
 }
 
 .review-text-container {
-    align-self: flex-start;
-}
-
-.review-user-creds-container {
-    align-self: flex-end;
+    align-self: center;
+    order: 1;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    padding-top: .25em;
+    padding-right: .5em;
+}
+
+.review-user-creds-container {
+    align-self: center;
+    display: flex;
+    order: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: .5em;
+    padding-left:.5em;
+}
+
+.submission-container {
+    align-self: flex-end;
+    order: 3;
+    padding-top: .25em;
+    padding-bottom .25em;
 }
 
 .user-creds-input {
-    min-width: 30%;
-    max-width: 35%;
+    max-width: 100%;
+    padding-left: .25em;
+}
+
+#existing-reviews-table {
+    padding-left: .5em;
+    margin: auto;
+    padding-bottom: .5em;
+}
+
+#existing-reviews-table td{ 
+    padding:7px;
+    border:#4e95f4 1px solid;
+}
+
+#existing-reviews-table th{ 
+    padding:7px;
+    border:#4e95f4 1px solid;
+}
+
+#existing-reviews-table tr{
+    background: #b8d1f3;
+}
+
+#existing-reviews-table tr:nth-child(odd){ 
+    background: #b8d1f3;
+}
+
+#existing-reviews-table tr:nth-child(even){
+    background: #eee9e5;
+}
+
+.existing-reviews-container {
+    order: 1;
+    flex-grow: 1;
 }

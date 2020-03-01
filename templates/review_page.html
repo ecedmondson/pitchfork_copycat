@@ -1,47 +1,81 @@
+{% extends "bootstrap/base.html" %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Album Review Page</title>
-    <link rel="stylesheet" type="text/css" href="/static/review_page.css">    
-  </head>
-  <body>
-    <h1>Reviews: {{ album }}</h1>
+    {% block styles %}
+    {{super()}}
+    <link rel="stylesheet" type="text/css" href="/static/review_page.css">
+    <link rel="stylesheet" href="static/style.css">
+    {% endblock %}
+    {% block scripts %}
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+    <h1><div class="title">Album Reviews: {{ album }}</div>
+    <div class="home-button"><a href="/" role="button" class="btn btn-primary">Return Home</a></div>
+    </h1>
     <div class="review-container">
-      <p class="existing-reviews-container">
-          {% if existing_reviews %}
-          <table id='existing-reviews-table'>
-              {% for review in existing_reviews %}
-              <tr><th>User Name: {{ review.name }}</th><th>Rating  {{ review.rating }}</th></tr>
-              <tr><td>{{ review.review_text }}<a href="/rout_to_edit">Edit this comment</a><a href="/route_to_delete">Delete this comment</a></td></tr>
-              {% endfor %}
-          </table>
-          {% else %}
-          <table id='no-existing-reviews-table'>
-              <tr><div>There are no existing reviews for this album.</div></tr>
-          </table>
-          {% endif %}
-      </p>
-      <form method="post">
-          <p class="review-submission-container">
-             <div class="review-text-container">
-                {{ form.hidden_tag() }}
-                {{ form.body.label }}
-                <input type="textarea" name="body" id="review-box" placeholder="Enter review..."</input>
-             </div>
-             <div class="review-user-creds-container">
-              {{ form.firstname.label }}
-              <input class="user-creds-input" type="text" name="firstname" id="user-fname-field" placeholder="First Name"</input>
-              {{ form.lastname.label }}
-              <input class="user-creds-input" type="text" name="lastname" id="user-lname-field" placeholder="Last Name"</input>
-              {{ form.email.label }}
-              <input class="user-creds-input" type="text" name="email" id="user-email-field" placeholder="E-Mail"</input>
-             </div>
-             <div class="submission-container">
-             {{ form.submit() }}
-             </div>
-          </p>
-      </form>
+        <div class="existing-reviews-container">
+            {% if existing_reviews %}
+            <table id='existing-reviews-table'>
+                {% for review in existing_reviews %}
+                <tr class="review-row">
+                    <th class="user header">User Name</th>
+                    <th class="rating header">Rating</th>
+                    <th class="review-text header">Review Text</th>
+                    <th class="edit header">Edit this Comment</th>
+                    <th class="delete header">Delete this Comment</th>
+                </tr>
+                <tr class="review-row">
+                    <td class="user row">{{ review.name }}</td>
+                    <td class="rating row">{{ review.rating }}</td>
+                    <td class="review-text row">{{ review.review_text }}</td>
+                    <td class="edit row">
+                        <a href="/route_to_edit" role="button" class="btn btn-primary">
+                            Edit this comment
+                        </a>
+                    </td>
+                    <td class="delete row">
+                        <a href="/route_to_delete" role="button" class="btn btn-danger">
+                            Delete this comment
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <table id='no-existing-reviews-table'>
+                <tr class="review-row">
+                    <th class="none header">There are no existing reviews for this album.</th>
+                </tr>
+            </table>
+            {% endif %}
+        </div>
+        <form method="post">
+            <div class="review-submission-container">
+                <div class="review-text-container">
+                    {{ form.hidden_tag() }} {{ form.body.label }}
+                    <input type="textarea" name="body" id="review-box" placeholder="Enter review...">
+                </div>
+            	<div class="review-user-creds-container">
+                	{{ form.firstname.label }}
+                	<input class="user-creds-input" type="text" name="firstname" id="user-fname-field" placeholder="First Name"> {{ form.lastname.label }}
+                	<input class="user-creds-input" type="text" name="lastname" id="user-lname-field" placeholder="Last Name"> {{ form.email.label }}
+                	<input class="user-creds-input" type="text" name="email" id="user-email-field" placeholder="E-Mail">
+            	</div>
+            	<div class="submission-container">
+                {{ form.submit() }}
+            	</div>
+	    </div>
+        </form>
     </div>
-  </body>
+    {% endblock %}
+</body>
+
 </html>
