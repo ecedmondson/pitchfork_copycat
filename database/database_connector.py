@@ -39,8 +39,8 @@ class DBConnection:
         if query is None or len(query.strip()) == 0:
             print("Query is empty! Please pass a SQL query in the query param")
             return None
-        if query_params:
-            print(f"Executing {query} with {query_params}" % (query, query_params))
+        if bool(query_params):
+            print(f"Executing %s with %s" % (query, query_params))
         # Create a cursor to execute query. C.f. PEP0249
         cursor = db_connection.cursor()
         query_execution = must_get_key({True: lambda: cursor.execute(query, query_params), False: lambda: cursor.execute(query)}, bool(query_params))
