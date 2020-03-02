@@ -82,6 +82,10 @@ def route(album, artist):
         url_for("review_page", album=_route_syntax(album), artist=_route_syntax(artist))
     )
 
+@app.route("/artists")
+def all_artists():
+    artists = artist.all_artists()
+    return render_template("all_artists.html", artists=artists)
 
 @app.route("/artists/<artist_name>", methods=("GET", "POST"))
 def route_single_artist_page(artist_name):
@@ -137,6 +141,9 @@ def review_page(album, artist):
 
 @app.route("/add_artist", methods=("GET", "POST"))
 def add_artist_page():
+    if request.method == 'POST':
+        artist.add_new_artist(request)
+        return redirect(url_for("home"))
     return render_template("add_artist.html")
 
 @app.route("/add_album", methods=("GET","POST"))
