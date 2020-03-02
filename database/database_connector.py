@@ -8,6 +8,7 @@
 import MySQLdb as mariadb
 import os
 from MySQLdb._exceptions import OperationalError
+from jgt_common import must_get_key
 
 def connect_to_database(host=os.environ['HOST'], user=os.environ['USER'], passwd=os.environ['PW'], db=os.environ['DB']):
     """
@@ -18,14 +19,6 @@ def connect_to_database(host=os.environ['HOST'], user=os.environ['USER'], passwd
 
 
 class DBConnection:
-    def __init__(self):
-        self.db_connection = connect_to_database()
-
-    
-    def reset(self):
-        self.__init__()
-
-
     def execute_query(self, query=None, query_params=None):
         """
         Executes a given SQL query on the given db connection and returns a Cursor object
@@ -36,21 +29,21 @@ class DBConnection:
         returns: A Cursor object as specified at https://www.python.org/dev/peps/pep-0249/#cursor-objects.
         You need to run .fetchall() or .fetchone() on that object to actually acccess the results.
         """
-
-        if self.db_connection is None:
-            print(
-                "No connection to the database found! Have you called connect_to_database() first?"
-            )
-            return None
+        db_connection = connect_to_database()
+        #if db_connection is None:
+            #print(
+                #"No connection to the database found! Have you called connect_to_database() first?"
+            #)
+            #return None
 
         if query is None or len(query.strip()) == 0:
             print("Query is empty! Please pass a SQL query in the query param")
             return None
-
-        # print(f"Executing {query} with {query_params}" % (query, query_params))
+        if bool(query_params):
+            print(f"Executing %s with %s" % (query, query_params))
         # Create a cursor to execute query. C.f. PEP0249
-        cursor = self.db_connection.cursor()
-
+        cursor = db_connection.cursor()
+        query_execution = must_get_key({True: lambda: cursor.execute(query, query_params), False: lambda: cursor.execute(query)}, bool(query_params))
         """
         params = tuple()
         #create a tuple of parameters to send with the query
@@ -60,14 +53,15 @@ class DBConnection:
         # TODO: Sanitize the query before executing it!!!
         # cursor.execute(query, query_params)
         try:
-           cursor.execute(query)
+            query_execution()
         except OperationalError as e:
            print(f"DEBUG DB Connection: {e}")
-           self.reset()
-           cursor = self.db_connection.cursor()
-           cursor.execute(query)
+           db_connection = connect_to_database()
+           cursor = db_connection.cursor()
+           query_execution = must_get_key({True: lambda: cursor.execute(query, query_params), False: lambda: cursor.execute(query)}, bool(query_params))
+           query_execution()
         # this will actually commit any changes to the database. without this no
         # changes will be committed!
         # cursor.close()
-        self.db_connection.commit()
+        db_connection.commit()
         return cursor

@@ -27,10 +27,6 @@ def _readable_syntax(route):
     return " ".join([x.capitalize() for x in route.split("_")])
 
 
-def _sql_escapes(route):
-    return route.replace("'", "\\'")
-
-
 @app.errorhandler(404)
 def not_found(e):
     return render_template('404.html')
@@ -140,7 +136,7 @@ def review_page(album, artist):
         "review_page.html",
         form=form,
         existing_reviews=reviews.get_reviews_for_an_album(
-            album_id=albums.get_album_id_from_name(_sql_escapes(_readable_syntax(album)))
+            album_id=albums.get_album_id_from_name(_readable_syntax(album))
         ),
         album=_readable_syntax(album),
     )
