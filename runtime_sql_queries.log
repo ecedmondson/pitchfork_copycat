@@ -1,0 +1,718 @@
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Running on http://0.0.0.0:5162/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Main Page Albums Query: 
+            SELECT album_cover, title, name, website, spotify_url from album 
+            INNER JOIN artist on album.artist_id=artist.id;
+            
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:30:03] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:30:03] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:30:04] "GET /artists/Harrison%20Lemke HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:30:04] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:30:04] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:30:04] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:30:04] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:30:04] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:30:04] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:5162/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:14] "GET /artists/Harrison%20Lemke HTTP/1.1" 500 -
+DEBUG:root:Main Page Albums Query: 
+            SELECT album_cover, title, name, website, spotify_url from album 
+            INNER JOIN artist on album.artist_id=artist.id;
+            
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:22] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:22] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:24] "GET /artists/Harrison%20Lemke HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:24] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:24] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:24] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:24] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:24] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:24] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:43] "GET /artists/Harrison%20Lemke HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:43] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:43] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:43] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:43] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:43] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:32:43] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:33:43] "GET /artists/Harrison%20Lemke HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:33:43] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:33:43] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:33:43] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:33:43] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:33:43] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:33:43] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:34:05] "GET /artists/Harrison%20Lemke HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:34:05] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:34:05] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:34:05] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:34:05] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:34:05] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:34:05] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:34:22] "GET /artists/Harrison%20Lemke HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:34:22] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:34:22] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:34:22] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:34:22] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:34:22] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:34:22] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:5162/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:40:51] "GET /artists/Harrison%20Lemke HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:40:51] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:40:51] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:40:51] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:40:51] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:40:51] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:40:51] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:41:10] "GET /artists/Harrison%20Lemke HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:41:10] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:41:10] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:41:10] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:41:10] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:41:10] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:41:10] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:41:40] "GET /artists/Harrison%20Lemke HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:41:40] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:41:40] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:41:40] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:41:40] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:41:40] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:41:40] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:45:01] "GET /artists/Harrison%20Lemke HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:45:01] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:45:01] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:45:01] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:45:01] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:45:01] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:45:01] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:45:18] "GET /artists/Harrison%20Lemke HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:45:18] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:45:18] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:45:18] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:45:18] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:45:18] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:45:18] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:5162/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:47:57] "GET /artists/Harrison%20Lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:47:57] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:48:11] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:5162/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:49:04] "GET /artists/Harrison%20Lemke HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:49:04] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:49:04] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:49:04] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:49:04] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:49:04] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:49:04] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:49:29] "GET /artists/Harrison%20Lemke HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:49:29] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:49:29] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:49:29] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:49:29] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:49:29] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:49:29] "GET /artists/Harrison%20Lemke?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:50:01] "GET /artists/Harrison%20Lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:50:01] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:50:06] "GET /albums/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:50:06] "GET /albums/static/404.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:50:07] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:50:09] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:50:59] "GET /artists/Harrison%20Lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:50:59] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:5162/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:52:04] "GET /artists/Harrison%20Lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:52:04] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:52:45] "GET /artists/Harrison%20Lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:52:45] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:53:00] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:53:08] "GET /artists/Harrison%20Lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:53:08] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:53:09] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:53:14] "GET /route_to_review_page/More%20Postcards%20from%20Purgatory/Harrison%20Lemke HTTP/1.1" 302 -
+DEBUG:root:Get Album Id From Name: SELECT id from album WHERE album.title = %s kwargs: (More Postcards From Purgatory)
+DEBUG:root:DEBUG SQL STATEMENT: {statement} KWARGS: ({album_id})
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:53:14] "GET /reviews/more_postcards_from_purgatory/harrison_lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:53:14] "GET /reviews/more_postcards_from_purgatory/static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:53:14] "GET /static/review_page.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:53:14] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:53:17] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Main Page Albums Query: 
+            SELECT album_cover, title, name, website, spotify_url from album 
+            INNER JOIN artist on album.artist_id=artist.id;
+            
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:58:37] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:58:37] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:58:39] "GET /artists/Harrison%20Lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:58:39] "GET /artists/static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:58:39] "GET /static/artist_page.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:58:39] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:58:47] "GET /albums/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:58:47] "GET /albums/static/404.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:58:47] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:58:49] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:58:58] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:59:00] "GET /route_to_review_page/More%20Postcards%20from%20Purgatory/Harrison%20Lemke HTTP/1.1" 302 -
+DEBUG:root:Get Album Id From Name: SELECT id from album WHERE album.title = %s kwargs: (More Postcards From Purgatory)
+DEBUG:root:DEBUG SQL STATEMENT: {statement} KWARGS: ({album_id})
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:59:01] "GET /reviews/more_postcards_from_purgatory/harrison_lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:59:01] "GET /reviews/more_postcards_from_purgatory/static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:59:01] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:59:13] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:59:17] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:59:21] "GET /artists/Harrison%20Lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:59:21] "GET /artists/static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:59:21] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 18:59:26] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:01:08] "GET /artists/Harrison%20Lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:01:09] "GET /artists/static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:01:09] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:01:10] "GET /route_to_review_page/More%20Postcards%20from%20Purgatory/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:01:10] "GET /route_to_review_page/More%20Postcards%20from%20Purgatory/static/404.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:01:10] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:01:27] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:01:50] "GET /artists/Harrison%20Lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:01:50] "GET /artists/static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:01:50] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:01:54] "GET /route_to_review_page/More%20Postcards%20from%20Purgatory/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:01:54] "GET /route_to_review_page/More%20Postcards%20from%20Purgatory/static/404.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:01:54] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:02:19] "GET /route_to_review_page/More%20Postcards%20from%20Purgatory/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:02:19] "GET /route_to_review_page/More%20Postcards%20from%20Purgatory/static/404.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:02:19] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:02:20] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:02:22] "GET /route_to_review_page/More%20Postcards%20from%20Purgatory/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:02:22] "GET /route_to_review_page/More%20Postcards%20from%20Purgatory/static/404.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:02:22] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:02:23] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:02:26] "GET /artists/Harrison%20Lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:02:26] "GET /artists/static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:02:26] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (Harrison Lemke,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:03:51] "GET /artists/Harrison%20Lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:03:51] "GET /artists/static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:03:51] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:03:52] "GET /route_to_review_page/More%20Postcards%20from%20Purgatory/Harrison%20Lemke HTTP/1.1" 302 -
+DEBUG:root:Get Album Id From Name: SELECT id from album WHERE album.title = %s kwargs: (More Postcards From Purgatory)
+DEBUG:root:DEBUG SQL STATEMENT: {statement} KWARGS: ({album_id})
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:03:53] "GET /reviews/more_postcards_from_purgatory/harrison_lemke HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:03:53] "GET /reviews/more_postcards_from_purgatory/static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:03:53] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:03:58] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:07] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (The Stillwater Hobos,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:11] "GET /artists/The%20Stillwater%20Hobos HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:11] "GET /artists/static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:12] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:13] "GET /route_to_review_page/My%20Love,%20She's%20in%20America/The%20Stillwater%20Hobos HTTP/1.1" 302 -
+DEBUG:root:Get Album Id From Name: SELECT id from album WHERE album.title = %s kwargs: (My Love, She's In America)
+DEBUG:root:DEBUG SQL STATEMENT: {statement} KWARGS: ({album_id})
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:14] "GET /reviews/my_love%2C_she%27s_in_america/the_stillwater_hobos HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:14] "GET /reviews/my_love%2C_she%27s_in_america/static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:14] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:18] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:21] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (J Balvin,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:24] "GET /artists/J%20Balvin HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:25] "GET /artists/static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:26] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:31] "GET /route_to_review_page/Oasis/J%20Balvin HTTP/1.1" 302 -
+DEBUG:root:Get Album Id From Name: SELECT id from album WHERE album.title = %s kwargs: (Oasis)
+DEBUG:root:DEBUG SQL STATEMENT: {statement} KWARGS: ({album_id})
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:32] "GET /reviews/oasis/j_balvin HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:32] "GET /reviews/oasis/static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:32] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:37] "GET /route_to_edit HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:37] "GET /static/404.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:37] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:40] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:40] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:41] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:04:41] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:06:05] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:06:07] "GET /route_to_add_new_artist HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:06:07] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:06:07] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (create,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:06:08] "POST /artists/create HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:06:08] "GET /artists/create?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:06:08] "GET /artists/create?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:06:08] "GET /artists/create?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:06:08] "GET /artists/create?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:06:08] "GET /artists/create?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:06:08] "GET /artists/create?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:06:11] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:5162/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:10:50] "GET /add_artist HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:10:50] "GET /add_artist?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:10:50] "GET /add_artist?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:10:50] "GET /add_artist?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:10:51] "GET /add_artist?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:10:51] "GET /add_artist?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:10:51] "GET /add_artist?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:11:05] "GET /add_artist HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:11:05] "GET /add_artist?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:11:05] "GET /add_artist?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:11:05] "GET /add_artist?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:11:05] "GET /add_artist?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:11:05] "GET /add_artist?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:11:05] "GET /add_artist?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:5162/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:12:06] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:12:06] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (create,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:12:10] "POST /artists/create HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:12:10] "GET /artists/create?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:12:10] "GET /artists/create?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:12:10] "GET /artists/create?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:12:10] "GET /artists/create?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:12:10] "GET /artists/create?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:5162/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Artist ID from Artist Name: SELECT id from artist WHERE artist.name = %s, KWARGS (create,)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:13:12] "POST /artists/create HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:13:12] "GET /artists/create?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:13:12] "GET /artists/create?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:13:12] "GET /artists/create?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:13:12] "GET /artists/create?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:13:12] "GET /artists/create?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:13:12] "GET /artists/create?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+DEBUG:root:Main Page Albums Query: 
+            SELECT album_cover, title, name, website, spotify_url from album 
+            INNER JOIN artist on album.artist_id=artist.id;
+            
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:13:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:13:16] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:13:18] "GET /route_to_add_new_artist HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:13:18] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:13:18] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:13:21] "POST /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:13:21] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:5162/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+DEBUG:root:Main Page Albums Query: 
+            SELECT album_cover, title, name, website, spotify_url from album 
+            INNER JOIN artist on album.artist_id=artist.id;
+            
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:21:24] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:21:24] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:21:25] "GET /route_to_add_new_artist HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:21:25] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:21:25] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:21:28] "POST /add_artist HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:21:28] "GET /add_artist?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:21:28] "GET /add_artist?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:21:28] "GET /add_artist?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:21:28] "GET /add_artist?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:21:28] "GET /add_artist?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:21:28] "GET /add_artist?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:22:28] "POST /add_artist HTTP/1.1" 302 -
+DEBUG:root:Main Page Albums Query: 
+            SELECT album_cover, title, name, website, spotify_url from album 
+            INNER JOIN artist on album.artist_id=artist.id;
+            
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:22:29] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:22:29] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:22:47] "GET /route_to_add_new_artist HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:22:47] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:22:47] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:22:50] "POST /add_artist HTTP/1.1" 302 -
+DEBUG:root:Main Page Albums Query: 
+            SELECT album_cover, title, name, website, spotify_url from album 
+            INNER JOIN artist on album.artist_id=artist.id;
+            
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:22:51] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2020 19:22:51] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 262-025-126

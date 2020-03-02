@@ -50,11 +50,20 @@ class ArtistTable(DBConnection):
         # This is dependent on PR 9
         abort(404)
 
-    def add_new_artist(self):
-        # TODO
-        abort(500)
+    def add_new_artist(self, request):
+        
+        return
 
+    def _select_single_artist_page(self, artist_id):
+        statement = ("SELECT * FROM artist WHERE artist.id = %s" % artist_id) 
+        queries = self.execute_query(statement).fetchone()
+        return self._format_all_artist_data(queries)
 
+    def _select_albums_from_artist(self, artist_id):
+        statement = ("SELECT * FROM album WHERE artist_id = %s" % artist_id)
+        queries = self.execute_query(statement).fetchall()
+        return [AlbumTable._album_data(AlbumTable, query) for query in queries]
+        
 class AlbumTable(DBConnection):
     def _album_data(self, query_tuple):
         # Data formatter for get_all_albums call

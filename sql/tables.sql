@@ -50,7 +50,7 @@ CREATE TABLE `review` (
     `user_id` int(11) NOT NULL,
     `album_id` int(11) NOT NULL,
     `created_date` timestamp NOT NULL,
-    FOREIGN KEY (user_id) references user(id) ON DELTE CASCADE,
+    FOREIGN KEY (user_id) references user(id) ON DELETE CASCADE,
     FOREIGN KEY (album_id) references album(id) ON DELETE CASCADE
 );
 

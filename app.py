@@ -3,7 +3,7 @@ from flask_bootstrap import Bootstrap
 from flask_nav.elements import Navbar, View
 from forms.review_form import ReviewForm
 from forms.search_form import SearchForm
-from database.models.tables import AlbumTable, ReviewTable, UserTable, SearchSQL
+from database.models.tables import AlbumTable, ReviewTable, UserTable, SearchSQL, ArtistTable
 from jgt_common import must_get_key, only_item_of
 
 
@@ -13,6 +13,7 @@ app.config["SECRET_KEY"] = "derp"
 Bootstrap(app)
 
 albums = AlbumTable()
+artist = ArtistTable()
 reviews = ReviewTable()
 users = UserTable()
 search = SearchSQL()
@@ -83,8 +84,11 @@ def route(album, artist):
 
 
 @app.route("/artists/<artist_name>", methods=("GET", "POST"))
-def get_single_artist(artist_name):
-    return render_template("single_artist.html")
+def route_single_artist_page(artist_name):
+    artist_id = artist._select_artist_id_from_name(artist_name)
+    single_artist = artist._select_single_artist_page(artist_id)
+    albums = artist._select_albums_from_artist(artist_id)
+    return render_template("single_artist_page.html", query=single_artist, albums=albums)
 
 
 @app.route("/route_to_add_new_artist", methods=("GET", "POST"))

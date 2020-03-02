@@ -1,20 +1,31 @@
 {% extends "bootstrap/base.html" %}
 
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="/static/artist_page.css">
+<link rel="stylesheet" href="static/style.css">
+{% endblock %}
+{% block scripts %}
+<link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-<h2>{{ query.name }}</h2>
+<h2>{{ query.artist_name }}</h2>
 <h1> located in: {{ query.location }}
 <img src="{{ query.image }}">
-<div> TODO: query for this artist albums and display them</div>
 <ul>
     <li>
         <h4>Description</h4>
         <ul>
             <li>{{ query.description }}</li>
-            <li> more info at: <a href="{{ query.website }}"</li>
+            <a href="{{ query.website }}"><li> more info</li></a>
         </ul>
         <h4>Albums</h4>
+       
         <ul>
-            <a href="/albums/{{ subquery.id }}"><li>{{ subquery.title }} | {{ subquery.release_date }}</a></li>
+            {% for album in albums %}
+            <a href="/route_to_review_page/{{ album.album_title }}/{{ query.artist_name }}"><li>{{ album.album_title }} | {{ album.release_date }}</li></a>
+            {% endfor %}
         </ul>
     </li>
 </ul>
@@ -26,4 +37,6 @@
 <div class="deleteArtist">
     <a class="btn btn-danger" role="button">Delete Artist</a>
 </div>
+
+
 {% endblock %}

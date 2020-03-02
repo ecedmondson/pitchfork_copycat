@@ -1,0 +1,7 @@
+img {
+    display: block;
+    max-width:1000px;
+    max-height:500px;
+    width: auto;
+    height: auto;
+}
