@@ -8,3 +8,5 @@ develop-eggs/
 .installed.cfg
 
 db.txt
+db.txt
+.vscode/
