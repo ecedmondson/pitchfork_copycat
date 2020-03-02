@@ -6,6 +6,7 @@ from forms.search_form import SearchForm
 from database.models.tables import AlbumTable, ReviewTable, UserTable, SearchSQL, ArtistTable
 from jgt_common import must_get_key, only_item_of
 
+#THIS IS A COMMENT TO TEST HOW GIT WORKS
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "derp"
