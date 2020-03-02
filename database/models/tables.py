@@ -51,8 +51,25 @@ class ArtistTable(DBConnection):
         abort(404)
 
     def add_new_artist(self, request):
-        
+        #TODO: GenreTable and related ones need to be updated when a new artist is added
+        artist_to_add = request.form.to_dict()
+        statement = (
+            "INSERT INTO artist (name, website, image, location, description) VALUES ('{}', '{}', '{}', '{}', '{}')".format
+                (
+                    artist_to_add['artistName'], 
+                    artist_to_add['artistWebsite'],
+                    artist_to_add['artistImage'],
+                    artist_to_add['artistLocation'],
+                    artist_to_add['artistDescription']
+                )
+        )
+        self.execute_query(statement)
         return
+
+    def all_artists(self):
+        statement = ("SELECT * FROM artist")
+        queries = self.execute_query(statement).fetchall()
+        return [self._format_all_artist_data(query) for query in queries]
 
     def _select_single_artist_page(self, artist_id):
         statement = ("SELECT * FROM artist WHERE artist.id = %s" % artist_id) 

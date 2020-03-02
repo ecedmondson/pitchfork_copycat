@@ -1,6 +1,16 @@
 {% extends "bootstrap/base.html" %}
 
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="static/style.css">
+{% endblock %}
+{% block scripts %}
+<link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+{% endblock %}
+
+
 {% block content %}
+<div class="home-button" style="float: right;"><a href="/" role="button" class="btn btn-primary">Return Home</a></div>
 <body>     
 <h2>Add an Artist</h2>
     <form action="/add_artist" method="POST">
@@ -17,12 +27,16 @@
         <input name="artistImage" type="text" class="form-control" id="artistImage" placeholder="Image URL">
       </div>
       <div class="form-group">
+        <label for="artistLocation">Location</label>
+        <input name="artistLocation" type="text" class="form-control" id="artistLocation" placeholder="Location">
+      </div>
+      <div class="form-group">
         <label for="artistDescription">Description</label>
         <input name="artistDescription" type="text" class="form-control" id="artistDescription" placeholder="Description">
       </div>
       <div class="form-group">
-        <label for="albumGenres">Genres</label>
-        <input name="albumGenres" type="text" class="form-control" id="albumGenres" placeholder="Genres (comma seperated)">
+        <label for="artistGenres">Genres</label>
+        <input name="artistGenres" type="text" class="form-control" id="artistGenres" placeholder="Genres (comma seperated)">
       </div>
       <input type="submit" class="btn btn-primary"></button>
     </form>  
