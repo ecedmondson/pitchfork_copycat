@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, flash, render_template, request, url_for, redirect
 from flask_bootstrap import Bootstrap
 from flask_nav.elements import Navbar, View
 from forms.review_form import ReviewForm
@@ -86,6 +86,21 @@ def route(album, artist):
 def all_artists():
     artists = artist.all_artists()
     return render_template("all_artists.html", artists=artists)
+
+@app.route("/create_user", methods=("GET", "POST"))
+def create_new_user():
+   valid_email_endings = ['.com', '.net', '.org', '.edu'] 
+   if request.method == 'POST':
+        data = request.form.to_dict()
+        exists = users.get_user_id_from_names_and_email(data['firstname'], data['lastname'], data['email'])
+        if exists:
+           flash(f"User already exists.")
+        if '@' in data['email'] and not exists:
+           users.add_new_user(data['firstname'], data['lastname'], data['email'])
+           flash(f"(User {data['firstname']} {data['lastname']} added.")
+        if '@' not in data['email']:
+            flash("Please enter valid e-mail.") 
+   return render_template("create_user.html")
 
 @app.route("/artists/<artist_name>", methods=("GET", "POST"))
 def route_single_artist_page(artist_name):
