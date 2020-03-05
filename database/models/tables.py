@@ -346,13 +346,32 @@ class ReviewTable(DBConnection):
     # ^^ might need to adopt the above as a way to update the users with their reviews. not sure yet
     # should ask in piazza
     def _review_page_review_data(self, query_tuple):
-        review_text, rating, firstname, lastname, user_id = query_tuple
+        review_id, review_text, rating, firstname, lastname, user_id = query_tuple
         return {
+            "review_id": review_id,
             "review_text": review_text,
             "rating": rating,
             "name": f"{firstname} {lastname}",
             "user_id": user_id,
         }
+    
+    def _edit_review(self, query_tuple):
+        review_text, rating, user_id = query_tuple
+        return {
+             "review_text": review_text,
+             "rating": rating,
+             "user_id": user_id,
+        }
+
+    def get_single_review_by_id(self, id):
+        statement = (
+                """
+                SELECT review.review_text, review.rating, review.id from review where review_id = %s;
+                """
+        )
+        print(f"DEBUG GET SINGLE REVIEW ID: {statement}, id: {id}")
+        queries = self.execute_query(statement, (id,)).fetchall()
+        return only_item_of([self._edit_review(query) for query in queries])
 
     def get_reviews_for_an_album(self, album_id=None):
         # I only have one review in the DB Table right now so this statement works
@@ -361,7 +380,7 @@ class ReviewTable(DBConnection):
             return []
         statement = (
             """
-            SELECT review.review_text, review.rating, user.firstname, user.lastname, user.id from review 
+            SELECT review.id, review.review_text, review.rating, user.firstname, user.lastname, user.id from review 
             INNER JOIN user on review.user_id=user.id WHERE review.album_id = %s
             """
         )

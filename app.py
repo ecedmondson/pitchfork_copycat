@@ -109,6 +109,25 @@ def route_single_artist_page(artist_name):
     albums = artist._select_albums_from_artist(artist_id)
     return render_template("single_artist_page.html", query=single_artist, albums=albums)
 
+@app.route("/route_to_edit/<page>/<validator>/<content>", methods=("GET", "POST"))
+def route_to_edit_page(page, validator, content):
+    return redirect(url_for(*(must_get_key({"review": ("edit_review_comment", user_id=validator, content=content)}, page))
+
+@app.route("edit_review_comment", methods=("GET", "POST"))
+def edit_review_comment(user_id=None, content=None):
+    if not user_id and not content:
+        abort(500)
+    review = reviews.get_single_review_by_id(content['id'])
+    if request.method == 'POST':
+        data = request.form.to_dict()
+        submitted_user_id = get_user_id_from_names_and_email(data['firstname'], data['lastname'], data['email'])
+        if user_id == submitted_user_id:
+            reviews.update_comment(data['comment'], data['rating'])
+            return redirect(url_for("review_page", album =content['album'], artist=content['artist']))
+        else:
+            flash("Error: User details submitted for edit do not match user details associated with this review.")
+    return render_template("edit_review_comment.html", review=review)
+    
 
 @app.route("/route_to_add_new_artist", methods=("GET", "POST"))
 def route_add_artist_page():
@@ -153,6 +172,7 @@ def review_page(album, artist):
             album_id=albums.get_album_id_from_name(_readable_syntax(album))
         ),
         album=_readable_syntax(album),
+        artist=_readable_syntax(artist),
     )
 
 

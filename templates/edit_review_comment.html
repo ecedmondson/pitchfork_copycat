@@ -1,0 +1,68 @@
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="static/style.css">
+<link rel="stylesheet" type="text/css" href="/static/review_page.css">
+<link rel="stylesheet" type="text/css" href="/static/ud.css">
+{% endblock %}
+{% block scripts %}
+<link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+<div class="home-button" style="float: right;"><a href="/" role="button" class="btn btn-primary">Return Home</a></div>
+<body>
+<h2>Edit Comment</h2>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-secondary" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+  <div class="ud-whole">
+    <div class="existing-reviews-container">
+      <table id='existing-reviews-table'>
+          <tr class="review-row">
+            <th class="rating header">Rating</th>
+            <th class="review-text header">Review Text</th>
+          </tr>
+          <tr class="review-row">
+            <td class="rating row">{{ review.rating }}</td>
+            <td class="review-text row">{{ review.review_text }}</td>
+          </tr>
+      </table>
+    </div>
+    <div class="ud-container">
+    <form action="/edit_review_comment" method="POST">
+      <div class="form-group">
+        <label for="comment">Update Review</label>
+        <input name="comment" type="textarea" class="form-control" id="comment" placeholder="Enter New Comment">
+      </div>
+      <div class="form-group">
+        <label for="rating">Update Rating</label>
+        <select id="rating" name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+      </div>
+      <input type="submit" class="btn btn-primary"></button>
+    </form>
+    </div>
+  </div>
+</body>
+{% endblock %}
+            
