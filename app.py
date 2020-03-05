@@ -151,4 +151,4 @@ def add_album_page():
 	return render_template("add_album.html")
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5162)
+    app.run(debug=True, host="0.0.0.0", port=4740)

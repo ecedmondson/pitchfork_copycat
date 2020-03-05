@@ -122,7 +122,7 @@ class AlbumTable(DBConnection):
         # Touch on review since it is the inner join
         # ID needed for relational query
         id = self._select_id_by_album_title(search_keyword)
-        statement = "SELECT id from review WHERE review.album_id = %s"
+        statement = "SELECT review.id from review inner join album on review.album_id = album.id where album.title = %s"
         print(f"Album touch helper: {statement}, kwargs: ({search_keyword},)")
         logging.debug(f"Album touch helper: {statement}, kwargs: ({search_keyword},)")
         return self.execute_query(statement, (search_keyword, )).fetchall()
@@ -230,7 +230,7 @@ class AlbumTable(DBConnection):
         print(f"Album Full Search: {statement}, Kwargs: ({search_keyword},)")
         logging.debug(f"Album Full Search: {statement}, Kwargs: ({search_keyword},)")
         queries = self.execute_query(statement, (search_keyword, )).fetchall()
-        return self._full_search_parse(queries)
+        return [self._full_search_parse(queries)]
 
     def _main_page_album_data(self, query_tuple):
         album_art, album_title, artist_name, artist_page, spotify_url = query_tuple
