@@ -346,11 +346,12 @@ class ReviewTable(DBConnection):
     # ^^ might need to adopt the above as a way to update the users with their reviews. not sure yet
     # should ask in piazza
     def _review_page_review_data(self, query_tuple):
-        review_text, rating, firstname, lastname = query_tuple
+        review_text, rating, firstname, lastname, user_id = query_tuple
         return {
             "review_text": review_text,
             "rating": rating,
             "name": f"{firstname} {lastname}",
+            "user_id": user_id,
         }
 
     def get_reviews_for_an_album(self, album_id=None):
@@ -360,7 +361,7 @@ class ReviewTable(DBConnection):
             return []
         statement = (
             """
-            SELECT review_text, rating, firstname, lastname from review 
+            SELECT review.review_text, review.rating, user.firstname, user.lastname, user.id from review 
             INNER JOIN user on review.user_id=user.id WHERE review.album_id = %s
             """
         )

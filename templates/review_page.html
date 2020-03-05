@@ -37,12 +37,12 @@
                     <td class="rating row">{{ review.rating }}</td>
                     <td class="review-text row">{{ review.review_text }}</td>
                     <td class="edit row">
-                        <a href="/route_to_edit" role="button" class="btn btn-primary">
+                        <a href="/route_to_edit" role="button" class="btn btn-primary", data-action="{{ review.user_id }}">
                             Edit this comment
                         </a>
                     </td>
                     <td class="delete row">
-                        <a href="/route_to_delete" role="button" class="btn btn-danger">
+                        <a href="/route_to_delete" role="button" class="btn btn-danger" data-action="{{ review.user_id }}">
                             Delete this comment
                         </a>
                     </td>
@@ -62,6 +62,19 @@
                 <div class="review-text-container">
                     {{ form.hidden_tag() }} {{ form.body.label }}
                     <input type="textarea" name="body" id="review-box" placeholder="Enter review...">
+                    {{ form.review_select.label }}
+                    <select id="review-select" name="review_select">
+                    	<option value="1">1</option>
+                    	<option value="2">2</option>
+                    	<option value="3">3</option>
+                    	<option value="4">4</option>
+                    	<option value="5">5</option>
+                    	<option value="6">6</option>
+                    	<option value="7">7</option>
+                    	<option value="8">8</option>
+                    	<option value="9">9</option>
+                    	<option value="10">10</option>
+                    </select> 
                 </div>
             	<div class="review-user-creds-container">
                 	{{ form.firstname.label }}

@@ -143,7 +143,7 @@ def review_page(album, artist):
         if user_id:
             album_id = albums.get_album_id_from_name(name=_readable_syntax(album))
             # TODO: add a real rating system in
-            reviews.add_new_review(form.body.data, "10", str(user_id), str(album_id))
+            reviews.add_new_review(form.body.data, form.review_select.data, str(user_id), str(album_id))
         else:
            flash("User not found")
     return render_template(
