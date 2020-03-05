@@ -37,17 +37,25 @@ class ArtistTable(DBConnection):
     def _touch_helper(self, search_keyword):
         # NEEDS WORK
         id = self._select_artist_id_from_name(search_keyword)
-        statement = "SELECT id from review WHERE review.album_id = %s"
+        statement = "SELECT id from album WHERE album.artist_id = %s"
         print(f"Artist Touch Helper: {statement}, KWARGS: ({search_keyword},)")
         logging.debug(f"Artist Touch Helper: {statement}, KWARGS: ({search_keyword},)")
         return self.execute_query(statement, (search_keyword, )).fetchall()
 
     def _search_entity_only(self, search_keyword):
-        # This is dependent on PR 9
-        abort(404)
+        return self._select_single_artist_page(search_keyword)
 
     def _full_search(self, search_keyword):
-        # This is dependent on PR 9
+        statement = (
+            """
+            select artist.name, artist.location, artist.website, artist.description,
+            artist.image, album.title, album.release_date, genre.name from artist as artist 
+            inner join album on artist.id=album.artist_id
+            inner join artist_genre on artist_genre.artist_id=artist.id
+            inner join genre on artist_genre.genre_id=genre.id
+            where artist.id = %s
+            """
+        )
         abort(404)
 
     def add_new_artist(self, request):
@@ -73,6 +81,7 @@ class ArtistTable(DBConnection):
 
     def _select_single_artist_page(self, artist_id):
         statement = ("SELECT * FROM artist WHERE artist.id = %s" % artist_id) 
+        print(f"DEBUG SELECT SINGLE ARTIST PAGE: {statement} and artist id {artist_id}")
         queries = self.execute_query(statement).fetchone()
         return self._format_all_artist_data(queries)
 
