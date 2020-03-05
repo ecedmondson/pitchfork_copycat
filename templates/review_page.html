@@ -37,7 +37,7 @@
                     <td class="rating row">{{ review.rating }}</td>
                     <td class="review-text row">{{ review.review_text }}</td>
                     <td class="edit row">
-                        <a href="/route_to_edit/review/{{ review.user_id }}-{{ album }}-{{ artist }}" role="button" class="btn btn-primary", data-action="{{ review.user_id }}">
+                        <a href="/route_to_edit/review/{{ review.user_id }}/{{ album }}-{{ artist }}-{{ review.review_id }}" role="button" class="btn btn-primary", data-action="{{ review.user_id }}">
                             Edit this comment
                         </a>
                     </td>

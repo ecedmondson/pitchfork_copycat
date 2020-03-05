@@ -109,20 +109,36 @@ def route_single_artist_page(artist_name):
     albums = artist._select_albums_from_artist(artist_id)
     return render_template("single_artist_page.html", query=single_artist, albums=albums)
 
+
+ud_context = []
+
+def _parse_edit_review_content(content):
+    print(content.split("-"))
+    album, artist, review_id = content.split("-")
+    return {
+        "album": album,
+        "artist": artist,
+        "review_id": review_id
+    }
+
 @app.route("/route_to_edit/<page>/<validator>/<content>", methods=("GET", "POST"))
 def route_to_edit_page(page, validator, content):
-    return redirect(url_for(*(must_get_key({"review": ("edit_review_comment", user_id=validator, content=content)}, page))
+     kwargs = {"user_id": validator, "content": content}
+     ud_context.append(kwargs)
+     return redirect(url_for((must_get_key({"review": "edit_review_comment"}, page))))
 
-@app.route("edit_review_comment", methods=("GET", "POST"))
-def edit_review_comment(user_id=None, content=None):
-    if not user_id and not content:
-        abort(500)
-    review = reviews.get_single_review_by_id(content['id'])
+@app.route("/edit_review_comment", methods=("GET", "POST"))
+def edit_review_comment(**kwargs):
+    context = only_item_of(ud_context)
+    user_id = context['user_id']
+    content = _parse_edit_review_content(context['content'])
+    review = reviews.get_single_review_by_id(content['review_id'])
     if request.method == 'POST':
         data = request.form.to_dict()
-        submitted_user_id = get_user_id_from_names_and_email(data['firstname'], data['lastname'], data['email'])
-        if user_id == submitted_user_id:
-            reviews.update_comment(data['comment'], data['rating'])
+        submitted_user_id = users.get_user_id_from_names_and_email(data['firstname'], data['lastname'], data['email'])
+        if user_id == str(submitted_user_id):
+            thing = reviews.update_comment(data['comment'], data['rating'], content['review_id'])
+            ud_context.clear()
             return redirect(url_for("review_page", album =content['album'], artist=content['artist']))
         else:
             flash("Error: User details submitted for edit do not match user details associated with this review.")

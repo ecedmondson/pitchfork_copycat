@@ -356,22 +356,30 @@ class ReviewTable(DBConnection):
         }
     
     def _edit_review(self, query_tuple):
-        review_text, rating, user_id = query_tuple
+        review_text, rating = query_tuple
         return {
              "review_text": review_text,
              "rating": rating,
-             "user_id": user_id,
         }
 
     def get_single_review_by_id(self, id):
         statement = (
                 """
-                SELECT review.review_text, review.rating, review.id from review where review_id = %s;
+                SELECT review.review_text, review.rating from review where review.id = %s;
                 """
         )
         print(f"DEBUG GET SINGLE REVIEW ID: {statement}, id: {id}")
         queries = self.execute_query(statement, (id,)).fetchall()
         return only_item_of([self._edit_review(query) for query in queries])
+
+    def update_comment(self, review_text, rating, review_id):
+        statement = (
+                 """
+                 UPDATE review set review_text = %s, rating = %s where review.id = %s;
+                 """
+        )
+        queries = self.execute_query(statement, (review_text, rating, review_id,)).fetchall()
+        return queries
 
     def get_reviews_for_an_album(self, album_id=None):
         # I only have one review in the DB Table right now so this statement works
