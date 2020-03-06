@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, flash, render_template, request, url_for, redirect
 from flask_bootstrap import Bootstrap
 from flask_nav.elements import Navbar, View
 from forms.review_form import ReviewForm
 from forms.search_form import SearchForm
-from database.models.tables import AlbumTable, ReviewTable, UserTable, SearchSQL, ArtistTable
+from database.models.tables import AlbumTable, ReviewTable, UserTable, SearchSQL, ArtistTable, GenreTable
 from jgt_common import must_get_key, only_item_of
 
 
@@ -17,7 +17,7 @@ artist = ArtistTable()
 reviews = ReviewTable()
 users = UserTable()
 search = SearchSQL()
-
+genres = GenreTable()
 
 def _route_syntax(value):
     return value.lower().replace(" ", "_")
@@ -141,10 +141,16 @@ def review_page(album, artist):
 
 @app.route("/add_artist", methods=("GET", "POST"))
 def add_artist_page():
+    genre_all = genres.select_all_genres()
     if request.method == 'POST':
-        artist.add_new_artist(request)
-        return redirect(url_for("home"))
-    return render_template("add_artist.html")
+        data = request.form.to_dict()
+        print(data)
+        result = artist.add_new_artist(request)
+        if isinstance(result, str):
+            flash(f"ERROR: {result}")
+        else:
+            return redirect(url_for("home"))
+    return render_template("add_artist.html", genres=genre_all)
 
 @app.route("/add_album", methods=("GET","POST"))
 def add_album_page():
