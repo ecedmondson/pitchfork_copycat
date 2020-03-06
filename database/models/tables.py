@@ -21,7 +21,7 @@ class ArtistTable(DBConnection):
     
     def _get_search_keyword(self, queries):
         if len(queries) == 1:
-            return only_item_of(queries)[1]
+            return only_item_of(queries)[0]
         return None
 
     def _select_artist_id_from_name(self, name):
@@ -36,14 +36,36 @@ class ArtistTable(DBConnection):
 
     def _touch_helper(self, search_keyword):
         # NEEDS WORK
-        id = self._select_artist_id_from_name(search_keyword)
+        # id = self._select_artist_id_from_name(search_keyword)
         statement = "SELECT id from album WHERE album.artist_id = %s"
         print(f"Artist Touch Helper: {statement}, KWARGS: ({search_keyword},)")
         logging.debug(f"Artist Touch Helper: {statement}, KWARGS: ({search_keyword},)")
         return self.execute_query(statement, (search_keyword, )).fetchall()
 
     def _search_entity_only(self, search_keyword):
-        return self._select_single_artist_page(search_keyword)
+        results = self._select_single_artist_page(search_keyword)
+        results["full"] = False
+        results["artist_website"] = results["website"]
+        results["artist"] = results["artist_name"]
+        results["artist_image"] = results["image"]
+        print(results)
+        return [results]
+
+    def _full_search_parse(self, queries):
+       genres = list(set([query[-1] for query in queries]))
+       albums = [{query[-3]: query[-2]} for query in queries]
+       # the rest should be the same
+       artist, location, artist_website, description, artist_image, album, release, genre = queries[0]
+       return {
+           "artist": artist,
+           "location": location,
+           "artist_website": artist_website,
+           "description": description,
+           "artist_image": artist_image,
+           "album": albums,
+           "genre": genres,
+           "full": True,
+       }
 
     def _full_search(self, search_keyword):
         statement = (
@@ -56,7 +78,10 @@ class ArtistTable(DBConnection):
             where artist.id = %s
             """
         )
-        abort(404)
+        print(f"Artist Full Search Debug: {statement} and artist id {search_keyword}")
+        logging.debug(f"Artist Full Search Debug: {statement} and artist id {search_keyword}")
+        queries = self.execute_query(statement, (search_keyword,)).fetchall()
+        return [self._full_search_parse(queries)]
 
     def add_new_artist(self, request):
         #TODO: GenreTable and related ones need to be updated when a new artist is added
@@ -330,6 +355,7 @@ class UserTable(DBConnection):
             "lastname": lastname,
             "email": email,
             "created_date": created_date,
+            "full": False,
         }
 
     def _get_search_keyword(self, queries):
@@ -354,7 +380,7 @@ class UserTable(DBConnection):
         print(f"User Search Entity Only: {statement}, Kwargs: ({search_keyword},)")
         logging.debug(f"User Search Entity Only: {statement}, Kwargs: ({search_keyword},)")
         queries = self.execute_query(statement, (search_keyword,)).fetchall()
-        return only_item_of([self._select_all_user_data(query) for query in queries])
+        return [self._select_all_user_data(query) for query in queries]
 
     def _format_full_search_data(self, queries):
         albums_artists = [{query[-2]: [query[-3], query[-1]]} for query in queries]
@@ -365,6 +391,7 @@ class UserTable(DBConnection):
             "lastname": lastname,
             "created_date": created_date,
             "album_artists": albums_artists,
+            "full": True,
         }
 
     def _full_search(self, search_keyword):
@@ -379,7 +406,7 @@ class UserTable(DBConnection):
         print(f"User Full Search: {statement}, Kwargs: ({search_keyword},)")
         logging.debug(f"User Full Search: {statement}, Kwargs: ({search_keyword},)")
         queries = self.execute_query(statement, (search_keyword,)).fetchall()
-        return self._format_full_search_data(queries)
+        return [self._format_full_search_data(queries)]
 
     def add_new_user(self, firstname, lastname, email):
         statement = "INSERT INTO user (firstname, lastname, email) values (%s, %s, %s)"
@@ -422,7 +449,7 @@ class UserTable(DBConnection):
 class GenreTable(DBConnection):
     def _select_all_genre_data(self, query_tuple):
         id_, name = query_tuple
-        return {"genre_id": id_, "genre_name": name}
+        return {"genre_id": id_, "genre_name": namei, "full": false}
     
     def _get_search_keyword(self, queries):
         if len(queries) == 1:
@@ -445,13 +472,13 @@ class GenreTable(DBConnection):
         print(f"Search Entity Only: {statement}, Kwargs: ({search_keyword},)")
         logging.debug(f"Search Entity Only: {statement}, Kwargs: ({search_keyword},)")
         queries = self.execute_query(statement, (search_keyword,)).fetchall()
-        return only_item_of([self._select_all_genre_data(query) for query in queries])
+        return [self._select_all_genre_data(query) for query in queries]
 
     def _format_full_search_data(self, queries):
         album_artist = [{query[-2]: query[-1]} for query in queries]
         # Other data should be the same
         genre, title, artist = queries[0]
-        return {"genre": genre, "album_artist": album_artist}
+        return {"genre": genre, "album_artist": album_artist, "full": True}
 
     def _full_search(self, search_keyword):
         search_keyword = self._select_genre_id_by_name(search_keyword)
@@ -465,7 +492,7 @@ class GenreTable(DBConnection):
         print(f"Genre Full Search: {statement}, ({search_keyword},)")
         logging.debug(f"Genre Full Search: {statement}, ({search_keyword},)")
         queries = self.execute_query(statement, (search_keyword,)).fetchall()
-        return self._format_full_search_data(queries)
+        return [self._format_full_search_data(queries)]
 
     def _touch_helper(self, search_keyword):
         statement = "SELECT album_id from album_genre WHERE album_genre.genre_id = %s"
@@ -568,6 +595,7 @@ class SearchSQL(DBConnection):
             return (len(queries), self._format_search_data(search_by, queries, table, key))
         # Option 4
         touch = self._touch_database(search_keyword, table)
+        print(touch)
         logging.debug(f"SEARCH BY {search_by} for {search_keyword} TOUCH QUERY RESULTS: {touch}")
         if not touch:
             # Search against entity only

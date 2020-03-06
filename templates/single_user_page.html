@@ -1,25 +1,62 @@
 {% extends "bootstrap/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Single User Page</title>
+    {% block styles %}
+    {{super()}}
+    <link rel="stylesheet" href="static/single_album.css">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/main_page.css">
+    {% endblock %}
+    {% block scripts %}
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+    {% endblock %}
+  </head>
 
-{% block content %}
-<h2>User: {{ query.firstname }} {{ query.lastname }}</h2>
-<h1>member since: {{ query.created_date }}
-<div> TODO: subquery to get albums this user has reviewed and display them</div>
-<ul>
-    <li>
-        <h4>This User's Reviewed Albums:</h4>
-        <ul>
-            {% for album in subquery %}
-            <li>TO DO: list albums this user has reviewed</li>
-            {% endfor %}
-        </ul>
-    </li>
-</ul>
+<body>
+    {% block content %}
+    <div class='header-container'>
+        <div class='header-text'>
+            <i class="fas fa-volume-up"></i>Pitchfork Copycat Music Review
+        </div>
+        <div class='header-links'>
+            <a href="/" class="btn btn-primary" role="button">Return Home</a>
+        </div>
+    </div>
+    <h2>User Page: {{ query.firstname }} {{ query.lastname}}</h2>
+    <div class="album-info-container">
+        <div class="album-header">
+            <div class="album-header-text">
+            	<h4> member since: {{ query.created_date }}</h4>
+            {% if query.full %}
+            <div class="search-table">
+                 Ratings by this user:
+                      <table id='albums_available_for_review_display_table'>
+                      <tr class="album-row">
+                        <th class="cover header">Artist Name</th>   
+                        <th class="album-name header">Album Name</th>
+                        <th class="artist-name header">User's Ratings</th>
+                      </tr>
+                      {% for album in query.album_artists %}
+                        {% for key, value in album.items() %}
+                            <tr class="album-row">
+                              <td> {{ key }} </td>
+                              <td> {{ value[0] }}</td>
+                              <td> {{ value[1] }}</td>
+                            </tr>
+                        {% endfor %}
+                      {% endfor %}
+                      </table>
+            </div>
+            {% else %}
+            <div class="user-none">This user hasn't submitted any reviews!</div>
+            {% endif %}
+   		 </div>
+    </div>
+    {% endblock %}
+</body>
 
-<br>
-<div class="edit-user">
-    <a class="btn btn-primary" role="button">Edit User Name</a>
-</div>
-<div class="delete-genre">
-    <a class="btn btn-danger" role="button">Delete User</a>
-</div>
-{% endblock %}
+</html>
