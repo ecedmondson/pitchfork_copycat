@@ -1835,3 +1835,67 @@ INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/data
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 262-025-126
+INFO:werkzeug: * Running on http://0.0.0.0:4740/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 629-249-117
+INFO:werkzeug: * Running on http://0.0.0.0:4740/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 629-249-117
+DEBUG:root:Main Page Albums Query: 
+            SELECT album_cover, title, name, website, spotify_url from album 
+            INNER JOIN artist on album.artist_id=artist.id;
+            
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:46] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:46] "GET /static/main_page.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:46] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:46] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:49] "GET /artists HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:49] "GET /static/artist_page.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:49] "GET /%22https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Pat_The_Bunny_Performs_Live_with_Ramshackle_Glory.png/320px-Pat_The_Bunny_Performs_Live_with_Ramshackle_Glory.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:49] "GET /tset HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:50] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Main Page Albums Query: 
+            SELECT album_cover, title, name, website, spotify_url from album 
+            INNER JOIN artist on album.artist_id=artist.id;
+            
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:52] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:53] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:54] "GET /route_to_add_new_artist HTTP/1.1" 302 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:54] "GET /add_artist HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:54] "GET /add_artist?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:54] "GET /add_artist?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:54] "GET /add_artist?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:54] "GET /add_artist?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:54] "GET /add_artist?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:57:54] "GET /add_artist?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:4740/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 629-249-117
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:06] "GET /add_artist HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:06] "GET /add_artist?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:06] "GET /add_artist?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:06] "GET /add_artist?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:06] "GET /add_artist?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:06] "GET /add_artist?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:06] "GET /add_artist?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:07] "GET /add_artist HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:07] "GET /add_artist?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:07] "GET /add_artist?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:07] "GET /add_artist?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:07] "GET /add_artist?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:07] "GET /add_artist?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:07] "GET /add_artist?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/thomasbanghart/bscs/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 629-249-117
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:27] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:27] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:27] "GET /favicon.ico HTTP/1.1" 200 -

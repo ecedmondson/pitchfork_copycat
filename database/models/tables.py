@@ -481,7 +481,7 @@ class UserTable(DBConnection):
 class GenreTable(DBConnection):
     def _select_all_genre_data(self, query_tuple):
         id_, name = query_tuple
-        return {"genre_id": id_, "genre_name": namei, "full": false}
+        return {"genre_id": id_, "genre_name": name, "full": False}
     
     def _get_search_keyword(self, queries):
         if len(queries) == 1:
