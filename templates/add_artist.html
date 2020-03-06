@@ -5,6 +5,8 @@
 <link rel="stylesheet" href="static/style.css">
 {% endblock %}
 {% block scripts %}
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+<script type="text/javascript" src="static/js_helpers.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
 {% endblock %}
 
@@ -13,6 +15,16 @@
 <div class="home-button" style="float: right;"><a href="/" role="button" class="btn btn-primary">Return Home</a></div>
 <body>     
 <h2>Add an Artist</h2>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-secondary" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      {{ message }}
+          </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
     <form action="/add_artist" method="POST">
       <div class="form-group">
         <label for="artistName">Artist Name</label>
@@ -35,10 +47,25 @@
         <input name="artistDescription" type="text" class="form-control" id="artistDescription" placeholder="Description">
       </div>
       <div class="form-group">
+        <div class="genres-selected">Genres Selected:</div>
+        <div class="select-genres">
         <label for="artistGenres">Genres</label>
-        <input name="artistGenres" type="text" class="form-control" id="artistGenres" placeholder="Genres (comma seperated)">
+        <input class="hidden-select" type="hidden" id="artistGenres" name="artistGenres" onclick="getValues()">
+        <select class="form control multi-select md-form" name="artistGenres" id="artistGenres" multiple searchable="Search here...">
+            {%  for genre in genres %}
+              {% if genre == genres[0] %}
+                <option selected="selected" id="genre-option" value="{{ genre.genre_id }}">{{ genre.genre_name }}</option>
+              {% else %}
+                <option id="genre-option" value="{{ genre.genre_id }}">{{ genre.genre_name }}</option>
+              {% endif %}
+            {%  endfor %}
+        </select>
+        </div>
+        <div class="form-group">
+            <button class="add add-genre btn btn-primary" name="add" id="add" onclick="addGenre()">Add Genre</button>
+        </div>
       </div>
-      <input type="submit" class="btn btn-primary"></button>
+      <input id="submit-form" type="submit" class="btn btn-primary"></button>
     </form>  
 </body>
 {% endblock %}

@@ -16,4 +16,17 @@ button {
     hover: #ffd66b;
 }
 
+.select-genres {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
 
+.genres-selected {
+    padding: .5em;
+    margin: .5em;
+}
+
+.fas {
+   pointer-events: none;
+}

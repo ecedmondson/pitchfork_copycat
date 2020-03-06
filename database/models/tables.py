@@ -50,9 +50,39 @@ class ArtistTable(DBConnection):
         # This is dependent on PR 9
         abort(404)
 
+    def _does_artist_exist(self, artist):
+        statement = "SELECT id from artist where artist.name = %s"
+        print(f"DEBUG IF ARTIST EXISTs: {statement} and {artist}")
+        logging.debug(f"DEBUG IF ARTIST EXISTs: {statement} and {artist}")
+        return self.execute_query(statement, (artist,)).fetchall()
+    
+    def _validate_insert_artist_data(self, data):
+        if not data['artistName']:
+            return (False, 'artist name must be present')
+        if data['artistImage'][:4] != 'http':
+           return (False, 'website was not URL')
+        if data['artistWebsite'][:4] != 'http':
+           return (False, 'image was not URL')
+        if self._does_artist_exist(data['artistName']):
+           return (False, 'artist already exists')
+        if not data['artistGenres']:
+           return (False, 'must add genre')
+        return False
+
+    def _update_artist_genre(self, genres, artist_id):
+       # Update M:M relationship in relational table
+       genres = [int(x) for x in genres.split(",")] 
+       statement = "INSERT into artist_genre (artist_id, genre_id) VALUES (%s, %s);"
+       for genre in genres:
+           logging.debug(f"UPDATING M:M SQL FOR ARTIST_GENRE: {statement} {genre}")
+           self.execute_query(statement, (artist_id, genre,)).fetchall()
+       
     def add_new_artist(self, request):
         #TODO: GenreTable and related ones need to be updated when a new artist is added
         artist_to_add = request.form.to_dict()
+        validated = self._validate_insert_artist_data(artist_to_add)
+        if validated:
+            return validated[1]
         statement = (
             "INSERT INTO artist (name, website, image, location, description) VALUES ('{}', '{}', '{}', '{}', '{}')".format
                 (
@@ -63,7 +93,8 @@ class ArtistTable(DBConnection):
                     artist_to_add['artistDescription']
                 )
         )
-        self.execute_query(statement)
+        id = self.execute_query(statement).lastrowid
+        self._update_artist_genre(artist_to_add['artistGenres'], id)
         return
 
     def all_artists(self):
@@ -471,7 +502,7 @@ class GenreTable(DBConnection):
         print(f"Select All Genres: {statement}")
         logging.debug(f"Select All Genres: {statement}")
         queries = self.execute_query(statement).fetchall()
-        return [_select_all_genre_data(query) for query in queries]
+        return [self._select_all_genre_data(query) for query in queries]
 
 
 # These dictionaries allow the code to by DRYish
