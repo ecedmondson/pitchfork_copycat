@@ -421,8 +421,9 @@ class UserTable(DBConnection):
         queries = self.execute_query(statement, (firstname, lastname, email,)).fetchall()
         # Handle this better
         if not queries:
-            self.add_new_user(firstname, lastname, email)
-            queries = self.execute_query(statement, (firstname, lastname, email,)).fetchall()
+            return None
+            # self.add_new_user(firstname, lastname, email)
+            # queries = self.execute_query(statement, (firstname, lastname, email,)).fetchall()
         return only_item_of([query[0] for query in queries])
 
     def select_user_id_by_first_or_last_name(self, name_):

@@ -87,6 +87,21 @@ def all_artists():
     artists = artist.all_artists()
     return render_template("all_artists.html", artists=artists)
 
+@app.route("/create_user", methods=("GET", "POST"))
+def create_new_user():
+   valid_email_endings = ['.com', '.net', '.org', '.edu'] 
+   if request.method == 'POST':
+        data = request.form.to_dict()
+        exists = users.get_user_id_from_names_and_email(data['firstname'], data['lastname'], data['email'])
+        if exists:
+           flash(f"User already exists.")
+        if '@' in data['email'] and not exists:
+           users.add_new_user(data['firstname'], data['lastname'], data['email'])
+           flash(f"(User {data['firstname']} {data['lastname']} added.")
+        if '@' not in data['email']:
+            flash("Please enter valid e-mail.") 
+   return render_template("create_user.html")
+
 @app.route("/artists/<artist_name>", methods=("GET", "POST"))
 def route_single_artist_page(artist_name):
     artist_id = artist._select_artist_id_from_name(artist_name)
@@ -120,15 +135,17 @@ def route_search(search_type, search_desired):
 def review_page(album, artist):
     form = ReviewForm()
     if form.is_submitted():
-        # TODO: validate data
         user_id = users.get_user_id_from_names_and_email(
             firstname=form.firstname.data,
             lastname=form.lastname.data,
             email=form.email.data,
         )
-        album_id = albums.get_album_id_from_name(name=_readable_syntax(album))
-        # TODO: add a real rating system in
-        reviews.add_new_review(form.body.data, "10", str(user_id), str(album_id))
+        if user_id:
+            album_id = albums.get_album_id_from_name(name=_readable_syntax(album))
+            # TODO: add a real rating system in
+            reviews.add_new_review(form.body.data, "10", str(user_id), str(album_id))
+        else:
+           flash("User not found")
     return render_template(
         "review_page.html",
         form=form,
@@ -157,4 +174,4 @@ def add_album_page():
 	return render_template("add_album.html")
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5162)
+    app.run(debug=True, host="0.0.0.0", port=4740)
