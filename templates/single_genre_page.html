@@ -1,24 +1,59 @@
 {% extends "bootstrap/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Single Genre Page</title>
+    {% block styles %}
+    {{super()}}
+    <link rel="stylesheet" href="static/single_album.css">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/main_page.css">
+    {% endblock %}
+    {% block scripts %}
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+    {% endblock %}
+  </head>
 
-{% block content %}
-<h2>Genre Name: {{ query.genre_name }}</h2>
-<div> TODO: M:M table to get all albums for this genre</div>
-<ul>
-    <li>
-        <h4>Albums in this Genre</h4>
-        <ul>
-            {% for album in subquery %}
-            <li>TO DO: list albums in this genre</li>
-            {% endfor %}
-        </ul>
-    </li>
-</ul>
+<body>
+    {% block content %}
+    <div class='header-container'>
+        <div class='header-text'>
+            <i class="fas fa-volume-up"></i>Pitchfork Copycat Music Review
+        </div>
+        <div class='header-links'>
+            <a href="/" class="btn btn-primary" role="button">Return Home</a>
+        </div>
+    </div>
+    <h2>Genre Page: {{ query.genre }}</h2>
+    <div class="album-info-container">
+        <div class="album-header">
+            <div class="album-header-text">
+            {% if query.full %}
+            <div class="search-table">
+                 Albums in this genre:
+                      <table id="albums_available_for_review_display_table">
+                      <tr class="album-row">
+                        <th class="cover header">Artist Name</th>   
+                        <th class="album-name header">Album Name</th>
+                      </tr>
+                      {% for album in query.album_artist %}
+                        {% for key, value in album.items() %}
+                            <tr class="album-row">
+                              <td> {{ value }} </td>
+                              <td> {{ key }}</td>
+                            </tr>
+                        {% endfor %}
+                      {% endfor %}
+                      </table>
+            </div>
+            {% else %}
+            <div class="user-none">This genre doesn't have any albums associated with it!</div>
+            {% endif %}
+   		 </div>
+    </div>
+    {% endblock %}
+</body>
 
-<br>
-<div class="edit-genre">
-    <a class="btn btn-primary" role="button">Edit Genre Name</a>
-</div>
-<div class="delete-genre">
-    <a class="btn btn-danger" role="button">Delete Genre</a>
-</div>
-{% endblock %}
+</html>

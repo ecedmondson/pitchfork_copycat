@@ -1,42 +1,69 @@
 {% extends "bootstrap/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Single Artist Page</title>
+    {% block styles %}
+    {{super()}}
+    <link rel="stylesheet" href="static/single_album.css">
+    <link rel="stylesheet" href="static/style.css">
+    {% endblock %}
+    {% block scripts %}
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+    {% endblock %}
+  </head>
 
-{% block styles %}
-{{super()}}
-<link rel="stylesheet" type="text/css" href="/static/artist_page.css">
-<link rel="stylesheet" href="static/style.css">
-{% endblock %}
-{% block scripts %}
-<link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
-{% endblock %}
+<body>
+    {% block content %}
+    <div class='header-container'>
+        <div class='header-text'>
+            <i class="fas fa-volume-up"></i>Pitchfork Copycat Music Review
+        </div>
+        <div class='header-links'>
+            <a href="/" class="btn btn-primary" role="button">Return Home</a>
+        </div>
+    </div>
+    <h2>Artist Page: {{ query.artist }}</h2>
+    <div class="album-info-container">
+        <div class="album-header">
+            <div class="album-header-text">
+            	<h4> located in: {{ query.location }}</h4>
+                    <div class="album-facts">
+       			 <div class="album-fact-header"><h4>Artist Facts</h4></div>
+       				 <div class="artist-desc">{{ query.description }}</div>
+       				 <div class="album-fact-ind">Personal website: {{ query.artist_website }}</div>
+       			 {% if query.full %}
+                          <div class="album-fact-ind">
+           			 Genres associated with this artist:
+                    {% if query.genre|length > 1 %}
+                      {% for genre in query.genre %}
+                          <div class="album-genre">{{ genre }}</div>
+           			      {% endfor %}
+                    {% else %}
+                      <div class="album-genre"> {{ query.genre[0] }}</div>
+                    {% endif %}
+       			 </div>
+            <div class="album-fact-ind">
+                 Albums associated with this artist:
+                      {% for album in query.albums %}
+                        {% for key, value in album.items() %}
+                          <div class="album-genre">{{ key }}, released on {{ value }}</div>
+                      {% endfor %}
+                      {% endfor %}
+            </div>
+            {% endif %}
+   		 </div>
+            </div>
+            <div class="art-container">
+                <div class="header-art">
+            	    <img src="{{ query.artist_image }}" class="album-art">
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
 
-{% block content %}
-<h2>{{ query.artist_name }}</h2>
-<h1> located in: {{ query.location }}
-<img src="{{ query.image }}">
-<ul>
-    <li>
-        <h4>Description</h4>
-        <ul>
-            <li>{{ query.description }}</li>
-            <a href="{{ query.website }}"><li> more info</li></a>
-        </ul>
-        <h4>Albums</h4>
-       
-        <ul>
-            {% for album in albums %}
-            <a href="/route_to_review_page/{{ album.album_title }}/{{ query.artist_name }}"><li>{{ album.album_title }} | {{ album.release_date }}</li></a>
-            {% endfor %}
-        </ul>
-    </li>
-</ul>
-
-<br>
-<div class="editArtist">
-    <a class="btn btn-primary" role="button">Edit Artist</a>
-</div>
-<div class="deleteArtist">
-    <a class="btn btn-danger" role="button">Delete Artist</a>
-</div>
-
-
-{% endblock %}
+</html>
