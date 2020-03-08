@@ -110,6 +110,41 @@ def route_single_artist_page(artist_name):
     return render_template("single_artist_page.html", query=single_artist, albums=albums)
 
 
+ud_context = []
+
+def _parse_edit_review_content(content):
+    print(content.split("-"))
+    album, artist, review_id = content.split("-")
+    return {
+        "album": album,
+        "artist": artist,
+        "review_id": review_id
+    }
+
+@app.route("/route_to_edit/<page>/<validator>/<content>", methods=("GET", "POST"))
+def route_to_edit_page(page, validator, content):
+     kwargs = {"user_id": validator, "content": content}
+     ud_context.append(kwargs)
+     return redirect(url_for((must_get_key({"review": "edit_review_comment"}, page))))
+
+@app.route("/edit_review_comment", methods=("GET", "POST"))
+def edit_review_comment(**kwargs):
+    context = only_item_of(ud_context)
+    user_id = context['user_id']
+    content = _parse_edit_review_content(context['content'])
+    review = reviews.get_single_review_by_id(content['review_id'])
+    if request.method == 'POST':
+        data = request.form.to_dict()
+        submitted_user_id = users.get_user_id_from_names_and_email(data['firstname'], data['lastname'], data['email'])
+        if user_id == str(submitted_user_id):
+            thing = reviews.update_comment(data['comment'], data['rating'], content['review_id'])
+            ud_context.clear()
+            return redirect(url_for("review_page", album =content['album'], artist=content['artist']))
+        else:
+            flash("Error: User details submitted for edit do not match user details associated with this review.")
+    return render_template("edit_review_comment.html", review=review)
+    
+
 @app.route("/route_to_add_new_artist", methods=("GET", "POST"))
 def route_add_artist_page():
     return redirect(url_for("add_artist_page"))
@@ -143,7 +178,7 @@ def review_page(album, artist):
         if user_id:
             album_id = albums.get_album_id_from_name(name=_readable_syntax(album))
             # TODO: add a real rating system in
-            reviews.add_new_review(form.body.data, "10", str(user_id), str(album_id))
+            reviews.add_new_review(form.body.data, form.review_select.data, str(user_id), str(album_id))
         else:
            flash("User not found")
     return render_template(
@@ -153,6 +188,7 @@ def review_page(album, artist):
             album_id=albums.get_album_id_from_name(_readable_syntax(album))
         ),
         album=_readable_syntax(album),
+        artist=_readable_syntax(artist),
     )
 
 
