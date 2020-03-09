@@ -20,6 +20,26 @@ function getValues() {
   input = document.getElementsByClassName("hidden-select")[0].setAttribute('value', values);
 }
 
+async function newGenre() {
+    let inputText = document.getElementById('new-genre-input').value;
+    if(inputText === "") {
+        alert("Please enter a genre.")
+    }
+    else {
+        response = await fetch('/new_genre',{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({'genre' : inputText})
+        })
+        res = await response.json()
+        if(res.id > 0){
+            location.reload();
+            document.getElementById("new-genre-success").getAttribute('type') = '';
+        }
+    }
+}
+
+
 document.addEventListener('click', function(e) {
     console.log(e.target);
     if(e.target.getAttribute("id") == "genre-option") {
@@ -49,6 +69,9 @@ document.addEventListener('click', function(e) {
         add = document.getElementById('add');
         document.getElementsByClassName("hidden-select")[0].click()
         add.setAttribute('value', 'false');
+    }
+    if(e.target.getAttribute('id') == 'new-genre') {
+        newGenre();
     }
 }, false);
 

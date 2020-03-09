@@ -50,7 +50,7 @@
         <div class="genres-selected">Genres Selected:</div>
         <div class="select-genres">
         <label for="artistGenres">Genres</label>
-        <input class="hidden-select" type="hidden" id="artistGenres" name="artistGenres" onclick="getValues()">
+        <input class="hidden-select" type="hidden" id="artistGenresHidden" name="artistGenres" onclick="getValues()">
         <select class="form control multi-select md-form" name="artistGenres" id="artistGenres" multiple searchable="Search here...">
             {%  for genre in genres %}
               {% if genre == genres[0] %}
@@ -67,5 +67,11 @@
       </div>
       <input id="submit-form" type="submit" class="btn btn-primary"></button>
     </form>  
+    <br>
+    <div class="new-genre-div">
+      <h4>If you can't find a genre that matches the artist you'd like to add please submit a new genre!</h4>
+        <input id='new-genre-input' type="text" placeholder="Please enter new genre">
+        <button class="btn btn-primary" id="new-genre">Add new genre</button>
+      </form>
 </body>
 {% endblock %}

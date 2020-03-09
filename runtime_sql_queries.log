@@ -1899,3 +1899,593 @@ DEBUG:root:Select All Genres: SELECT * from genre;
 INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:27] "GET /add_artist HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:27] "GET /static/js_helpers.js HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [06/Mar/2020 08:59:27] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:4740/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:46:17] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:46:17] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:4740/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:46:48] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:46:48] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:47:18] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:47:18] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:47:24] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:47:24] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:47:24] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:47:24] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:53:39] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:53:39] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:54:30] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:54:30] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:55:09] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:55:09] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:55:15] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:55:16] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:55:16] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:55:16] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:56:59] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:56:59] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:58:34] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:58:34] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:02] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:02] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:17] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:17] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:18] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:18] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:33] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:33] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:33] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:33] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:35] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:35] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:36] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:36] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:37] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:37] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:37] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:37] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:38] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:38] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:39] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:39] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:44] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:44] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:45] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 20:59:45] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:40] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:40] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:42] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:42] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:45] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:45] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:45] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:45] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:46] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:46] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:47] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:47] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:48] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:48] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:48] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:48] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:49] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:00:49] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:05:05] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:05:05] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:05:05] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:05:05] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:05:07] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:05:07] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:05:09] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:05:09] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:05:52] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:05:52] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:06:12] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:06:12] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:06:13] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:06:13] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:06:13] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:06:13] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:07:07] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:07:07] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:07:07] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:07:07] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:07:08] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:07:09] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:07:38] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:07:38] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:07:40] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:07:40] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:07:40] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:07:40] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:08:15] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:08:15] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:08:33] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:08:33] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:08:33] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:08:33] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:08:41] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:08:41] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:08:41] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:08:42] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:09:12] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:09:12] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:09:12] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:09:12] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:10:04] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:10:04] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:10:04] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:10:04] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:10:46] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:10:46] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:10:46] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:10:46] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:11:26] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:11:26] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:11:26] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:11:26] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:12:36] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:12:36] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:12:36] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:12:36] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:13:02] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:13:02] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:13:02] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:13:03] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:4740/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:27:11] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:27:11] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:27:20] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:27:20] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:27:20] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:27:20] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:27:22] "POST /new_genre HTTP/1.1" 500 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:28:12] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:28:12] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:28:12] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:28:12] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:28:14] "POST /new_genre HTTP/1.1" 500 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:28:26] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:28:26] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:28:26] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:28:26] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:28:27] "POST /new_genre HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:4740/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:29:02] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:29:02] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:29:02] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:29:02] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:29:03] "POST /new_genre HTTP/1.1" 500 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:29:27] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:29:27] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:29:27] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:29:28] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:29:29] "POST /new_genre HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:31:40] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:31:40] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:31:40] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:31:40] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:31:47] "POST /new_genre HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:4740/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:37:17] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:37:17] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:37:17] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:37:17] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:37:21] "POST /new_genre HTTP/1.1" 500 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:37:33] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:37:33] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:37:33] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:37:33] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:37:35] "POST /new_genre HTTP/1.1" 500 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:38:19] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:38:19] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:38:19] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:38:19] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:38:24] "POST /new_genre HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:38:55] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:38:55] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:38:55] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:38:55] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:38:58] "POST /new_genre HTTP/1.1" 500 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:39:43] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:39:43] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:39:43] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:39:43] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:39:46] "POST /new_genre HTTP/1.1" 500 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:40:03] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:40:03] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:40:03] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:40:03] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:40:06] "POST /new_genre HTTP/1.1" 500 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:40:24] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:40:24] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:40:27] "POST /new_genre HTTP/1.1" 500 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:40:48] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:40:48] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:40:48] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:40:48] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:40:50] "POST /new_genre HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:41:28] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:41:28] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:41:28] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:41:28] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:41:30] "POST /new_genre HTTP/1.1" 500 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:4740/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:45:33] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:45:33] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:45:33] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:45:33] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:45:35] "POST /new_genre HTTP/1.1" 500 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:45:47] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:45:47] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:45:50] "POST /new_genre HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:4740/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:47:08] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:47:08] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:47:08] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:47:08] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:47:11] "POST /new_genre HTTP/1.1" 500 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:47:38] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:47:38] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:47:38] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:47:38] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:47:40] "POST /new_genre HTTP/1.1" 500 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:48:35] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:48:35] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:48:35] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:48:35] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:48:37] "POST /new_genre HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:48:53] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:48:53] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:48:53] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:48:53] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:48:57] "POST /new_genre HTTP/1.1" 500 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:4740/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:49:47] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:49:47] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:49:47] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:49:48] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:49:52] "POST /new_genre HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/database/models/tables.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:53:09] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:53:09] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:53:09] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:53:09] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:55:56] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:55:56] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:55:56] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:55:56] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:57:30] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:57:30] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:57:30] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:57:30] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:57:39] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:57:39] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:57:39] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:57:39] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:59:24] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:59:24] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:59:24] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 21:59:24] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://0.0.0.0:4740/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:01:38] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:01:38] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:01:38] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:01:38] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:01:47] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:01:47] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:01:47] "GET /static/js_helpers.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:01:47] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:01:51] "POST /new_genre HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:01:51] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:01:51] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:02:17] "POST /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:02:17] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG:root:Main Page Albums Query: 
+            SELECT album_cover, title, name, website, spotify_url from album 
+            INNER JOIN artist on album.artist_id=artist.id;
+            
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:02:57] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:02:57] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:03:01] "GET /artists HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:03:01] "GET /%22https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Pat_The_Bunny_Performs_Live_with_Ramshackle_Glory.png/320px-Pat_The_Bunny_Performs_Live_with_Ramshackle_Glory.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:03:01] "GET /tset HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:03:01] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:03:03] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:03:04] "GET /route_to_add_new_artist HTTP/1.1" 302 -
+DEBUG:root:Select All Genres: SELECT * from genre;
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:03:04] "GET /add_artist HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:03:04] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:03:06] "GET /favicon.ico HTTP/1.1" 200 -

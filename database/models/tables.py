@@ -569,6 +569,12 @@ class GenreTable(DBConnection):
         queries = self.execute_query(statement).fetchall()
         return [self._select_all_genre_data(query) for query in queries]
 
+    def insert_genre(self, data):
+        statement = "INSERT INTO genre (name) VALUES (%s)"
+        newGenre = data.get('genre')
+        print(f"{(statement, (newGenre, ))}")
+        id = self.execute_query(statement, (newGenre, )).lastrowid
+        return id
 
 # These dictionaries allow the code to by DRYish
 search_dict = {
