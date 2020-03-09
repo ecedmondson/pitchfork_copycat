@@ -32,10 +32,7 @@ async function newGenre() {
             body: JSON.stringify({'genre' : inputText})
         })
         res = await response.json()
-        if(res.id > 0){
-            location.reload();
-            document.getElementById("new-genre-success").getAttribute('type') = '';
-        }
+        location.reload()
     }
 }
 
