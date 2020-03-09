@@ -196,7 +196,7 @@ def review_page(album, artist):
 def new_genre():
     id = genres.insert_genre(json.loads(request.data))
     if id > 0:
-        flash("Genre succesfully added!")
+        flash("Genre successfully added!")
     else:
         flash(f"ERROR: {id}")
     return json.dumps({"id": id})

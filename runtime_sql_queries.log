@@ -2489,3 +2489,7 @@ DEBUG:root:Select All Genres: SELECT * from genre;
 INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:03:04] "GET /add_artist HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:03:04] "GET /favicon.ico HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [08/Mar/2020 22:03:06] "GET /favicon.ico HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/banghart/BSCS/pitchfork_copycat/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 223-104-323
