@@ -205,9 +205,19 @@ def add_artist_page():
             return redirect(url_for("home"))
     return render_template("add_artist.html", genres=genre_all)
 
-@app.route("/add_album", methods=("GET","POST"))
+@app.route("/add_album", methods=("GET", "POST"))
 def add_album_page():
-	return render_template("add_album.html")
+    genre_all = genres.select_all_genres()
+    artist_all = artist.all_artists()
+    if request.method == 'POST':
+        data = request.form.to_dict()
+        print(data)
+        result = albums.create_new_album(data)
+        if isinstance(result, str):
+            flash(f"ERROR: {result}")
+        else:
+            return redirect(url_for("home"))
+    return render_template("add_album.html", genres=genre_all, artists=artist_all)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=4740)

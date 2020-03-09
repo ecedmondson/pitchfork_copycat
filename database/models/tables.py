@@ -340,6 +340,47 @@ class AlbumTable(DBConnection):
         # This is extra/verbose code that serves as a safeguard.
         return only_item_of([query[0] for query in queries])
 
+    def _does_album_exist(self, album):
+        statement = "SELECT id from album where album.title = %s;"
+        print(f"DEBUG IF ALBUM EXISTs: {statement} and {album}")
+        logging.debug(f"DEBUG IF ALBUM EXISTs: {statement} and {album}")
+        return self.execute_query(statement, (album,)).fetchall()
+
+    def _validate_insert_album_data(self, data):
+        if not data['albumTitle']:
+            return 'album name must be present'
+        if not data['albumArtist']:
+            return 'artist name must be present'
+        if data['albumCover'][:4] != 'http':
+           return 'website was not URL (hint: try leading with http)'
+        if self._does_album_exist(data['albumTitle']):
+           return 'album already exists'
+        if not data['albumGenres']:
+           return 'must add at least one genre'
+        return True
+
+    def _update_album_genre(self, genres, album_id):
+       # Update M:M relationship in relational table
+       print(genres)
+       print(len(genres))
+       genres = [int(x) for x in genres.split(",")] 
+       statement = "INSERT into album_genre (album_id, genre_id) VALUES (%s, %s);"
+       for genre in genres:
+           logging.debug(f"UPDATING M:M SQL FOR ALBUM_GENRE: {statement} {genre}")
+           self.execute_query(statement, (album_id, genre,)).fetchall()
+
+    def create_new_album(self, data):
+        validated = self._validate_insert_album_data(data)
+        if isinstance(validated, str):
+            return validated
+        statement = (
+	    """
+	    INSERT INTO album (title, artist_id, album_cover, release_date, publisher, spotify_url) VALUES (%s, %s, %s, %s, %s, %s);
+	    """
+	)
+        id = self.execute_query(statement, (data['albumTitle'], data['albumArtist'], data['albumCover'], data['albumDate'], data['albumPublisher'], data['spotifyURL'],)).lastrowid
+        self._update_album_genre(data['albumGenres'], id)
+        return
 
 class ReviewTable(DBConnection):
     # https://stackoverflow.com/questions/7469656/fill-mysql-records-one-to-many-related-tables-in-one-action
