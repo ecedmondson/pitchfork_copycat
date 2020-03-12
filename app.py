@@ -5,6 +5,7 @@ from forms.review_form import ReviewForm
 from forms.search_form import SearchForm
 from database.models.tables import AlbumTable, ReviewTable, UserTable, SearchSQL, ArtistTable, GenreTable
 from jgt_common import must_get_key, only_item_of
+import json
 
 
 app = Flask(__name__)
@@ -191,6 +192,14 @@ def review_page(album, artist):
         artist=_readable_syntax(artist),
     )
 
+@app.route("/new_genre", methods=(["POST"]))
+def new_genre():
+    id = genres.insert_genre(json.loads(request.data))
+    if id > 0:
+        flash("Genre successfully added!")
+    else:
+        flash(f"ERROR: {id}")
+    return json.dumps({"id": id})
 
 @app.route("/add_artist", methods=("GET", "POST"))
 def add_artist_page():
