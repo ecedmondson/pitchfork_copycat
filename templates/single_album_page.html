@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="static/style.css">
     {% endblock %}
     {% block scripts %}
+    <script type="text/javascript" src="static/js_helpers.js"></script
     <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
     {% endblock %}
@@ -26,6 +27,48 @@
         </div>
     </div>
     <h2>Album Page: {{ query.title }}</h2>
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+        <header class="edit-modal-header">Edit Album Art</header>
+        <!--- had to get span from here: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal -->
+        <span class="close" id="edit-close">&times;</span>
+            {% with messages = get_flashed_messages() %}
+      {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-secondary" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      {{ message }}
+          </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+        <form action="/edit_album" method="GET">
+            <div class="form-group">
+                <label for="album_art">Album Art: (add new URL or leave empty and submit to remove album art)</label>
+                <input name="album-art" type="text" class="form-control" placeholder="Edit Album Art URL..." value="">
+                <input class="hidden-select" type="hidden" id="album-uuid" name="album-uuid" value="{{ query.id }}">
+            </div>
+            <input id="submit-form" type="submit" class="btn btn-primary">
+        </form>
+       </div>
+    </div>
+        <div id="delete-modal" class="modal">
+        <div class="modal-content">
+        <header class="delete-modal-header">Edit Album Art</header>
+        <!--- had to get span from here: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal -->
+        <span class="close" id="delete-close">&times;</span>
+        <span class="delete-album-warning">ARE YOU SURE YOU WANT TO DELETE THIS ALBUM? DELETION WILL ALSO DELETE REVIEWS, REMOVE THE ALBUM FROM AN ARTIST, AND REMOVE ALBUM FROM GENRES.</span>
+        <form action="/delete_album" method="DELETE">
+            <div class="form-group">
+                Delete<input type="radio" id="delete-album-radio" name="delete-album" value="delete">
+                Don't Delete<input type="radio" id="leave-album-radio" name="delete-album" value="pass" checked>
+                <input class="hidden-select" type="hidden" id="album-uuid" name="album-uuid" value="{{ query.id }}">
+            </div>
+            <input id="submit-form" type="submit" class="btn btn-primary">
+        </form>
+       </div>
+    </div>
+        
     <div class="album-info-container">
         <div class="album-header">
             <div class="album-header-text">
@@ -35,7 +78,7 @@
        				 <div class="album-fact-ind">published by: {{ query.publisher }}</div>
        				 <div class="album-fact-ind">released on: {{ query.release_date }}</div>
        				 <div class="album-fact-ind">listen on spotify at:
-           			 <a href="{{ query.spotify_url }}" role="button" class="btn btn-primary btn-spotify">
+           			 <a href="{{ query.spotify_Url }}" role="button" class="btn btn-primary btn-spotify">
                    			 <i class="fas fa-volume-up"></i>
                			 </a>
        			 </div>
@@ -62,10 +105,10 @@
     </div>
     <div class="danger-zone">
         <div class="edit-album">
-            <a class="btn btn-primary" role="button">Edit Album</a>
+            <a class="btn btn-primary" id="edit-modal-button" role="button">Edit Album Art</a>
         </div>
         <div class="delete-album">
-            <a class="btn btn-danger" role="button">Delete Album</a>
+            <a class="btn btn-danger" id="delete-modal-button" role="button">Delete Album</a>
         </div>
     </div>
     {% endblock %}
