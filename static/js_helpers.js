@@ -36,9 +36,22 @@ async function newGenre() {
     }
 }
 
+function revealEditAlbum() {
+    var edit = document.getElementById("edit-modal");
+    edit.style.display = "block"
+}
+
+function revealDeleteAlbum() {
+    var del = document.getElementById("delete-modal");
+    del.style.display = "block"
+}
+
+function closeModal(kind) {
+    var mod = document.getElementById(kind.replace("-close", "-modal"));
+    mod.style.display = "none";
+}
 
 document.addEventListener('click', function(e) {
-    console.log(e.target);
     if(e.target.getAttribute("id") == "genre-option") {
        options = document.getElementsByTagName('option');
        selected = Array.from(options).filter( o => o.getAttribute('selected') == 'selected');
@@ -69,6 +82,15 @@ document.addEventListener('click', function(e) {
     }
     if(e.target.getAttribute('id') == 'new-genre') {
         newGenre();
+    }
+    if(e.target.getAttribute('id') == 'edit-modal-button') {
+       revealEditAlbum();
+    }
+    if(e.target.getAttribute('id') == 'delete-modal-button') {
+       revealDeleteAlbum();
+    }
+    if(e.target.getAttribute('class') == "close") {
+        closeModal(e.target.getAttribute('id'));
     }
 }, false);
 
