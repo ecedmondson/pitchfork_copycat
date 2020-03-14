@@ -14,7 +14,7 @@
 }
 
 .search-text {
-    font-family: "Comfortaa", cursive;
+    font-family: "Comfortaa", sans-serif;
     margin: auto;
 }
 
@@ -44,7 +44,7 @@ li {
 }
 
 .header-text {
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Comfortaa', sans-serif;
     color: #191d6e;
 }
 
