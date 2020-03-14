@@ -76,6 +76,27 @@ def home():
         albums_available_for_review=albums.main_page_album_query(),
     )
 
+@app.route("/edit_album", methods=("GET", "UPDATE"))
+def edit_album():
+    if request.method == 'GET':
+       data = request.args.to_dict()
+       if not data['album-art']:
+           albums.update_or_set_nullable_album_art("NULL", data['album-uuid'])
+           return redirect(url_for("home"))
+       if data['album-art'][:4].lower() == 'http':
+           albums.update_or_set_nullable_album_art(data['album-art'], data['album-uuid'])
+       else:
+           return render_template("edit_failed.html")
+    return redirect(url_for("home"))
+
+@app.route("/delete_album", methods=("GET", "POST"))
+def delete_album():
+    if request.method == 'GET':
+        data = request.args.to_dict()
+        if data['delete-album'] == 'delete':
+            # This function handles M:M deletes as well.
+            albums.delete_entire_album(data['album-uuid'])
+    return redirect(url_for("home"))
 
 @app.route("/route_to_review_page/<album>/<artist>", methods=("GET", "POST"))
 def route(album, artist):

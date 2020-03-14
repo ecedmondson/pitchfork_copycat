@@ -197,6 +197,7 @@ class AlbumTable(DBConnection):
         if len(queries) == 1:
             for (
                 artist,
+                id_,
                 title,
                 art,
                 release_date,
@@ -206,6 +207,7 @@ class AlbumTable(DBConnection):
             ) in queries:
                 return {
                     "artist": artist,
+                    "id": id_,
                     "title": title,
                     "art": art,
                     "release_date": release_date,
@@ -217,9 +219,10 @@ class AlbumTable(DBConnection):
         # Other data should stay the same so return the first
         print(queries)
         print(queries[0])
-        artist, title, art, release_date, publisher, spotify_url, genre = queries[0]
+        artist, id_, title, art, release_date, publisher, spotify_url, genre = queries[0]
         return {
                 "artist": artist,
+                "id": id_,
                 "title": title,
                 "art": art,
                 "release_date": release_date,
@@ -230,7 +233,7 @@ class AlbumTable(DBConnection):
     def _search_entity_only(self, search_keyword):
         # Search for when no reviews exist
         statement = ("""
-            SELECT artist.name, album.title, album.album_cover, album.release_date, album.publisher,
+            SELECT artist.name, album.id, album.title, album.album_cover, album.release_date, album.publisher,
             album.spotify_url, genre.name from album inner join artist on album.artist_id = artist.id
             INNER JOIN album_genre on album.id = album_genre.album_id
             INNER JOIN genre on album_genre.genre_id = genre.id
@@ -249,6 +252,7 @@ class AlbumTable(DBConnection):
         constants_checked = False
         # Other data should stay the same so return the first
         (
+            id_,
             title,
             art,
             release_date,
@@ -273,6 +277,7 @@ class AlbumTable(DBConnection):
             / total_unique_ratings
         )
         return {
+            "id": id_,
             "title": title,
             "art": art,
             "release_date": release_date,
@@ -286,7 +291,7 @@ class AlbumTable(DBConnection):
 
     def _full_search(self, search_keyword):
         statement = ("""
-            SELECT album.title, album.album_cover, album.release_date, album.publisher, album.spotify_url, artist.name, 
+            SELECT album.id, album.title, album.album_cover, album.release_date, album.publisher, album.spotify_url, artist.name, 
             genre.name as genre_name, review.rating from album as album INNER JOIN artist as artist on album.artist_id = artist.id 
             INNER JOIN album_genre on album.id = album_genre.album_id INNER JOIN genre as genre on album_genre.genre_id = genre.id 
             INNER JOIN review on album.id = review.album_id WHERE album.title = %s
@@ -313,6 +318,23 @@ class AlbumTable(DBConnection):
         logging.debug(f"Get All Albums: {statement}")
         queries = self.execute_query(statement).fetchall()
         return [self._album_data(query) for query in queries]
+
+    def update_or_set_nullable_album_art(self, value, id_):
+        statement = "UPDATE album set album_cover = %s where id = %s;"
+        print(f"Update or Nullify album debug: {statement} {value}, {id_}")
+        logging.debug(f"Update or Nullify album debug: {statement} {value}, {id_}")
+        queries = self.execute_query(statement, (value, id_,)).fetchone()
+        return
+
+    def _remove_from_album_genre(self, id_):
+        statement="DELETE from album_genre where album_id = %s;"
+        queries = self.execute_query(statement, (id_),).fetchall()
+
+    def delete_entire_album(self, id_):
+        self._remove_from_album_genre(id_)
+        statement = "DELETE from album where id = %s;"
+        queries = self.execute_query(statement, (id_,)).fetchone()
+        return
 
     def main_page_album_query(self):
         statement = (
