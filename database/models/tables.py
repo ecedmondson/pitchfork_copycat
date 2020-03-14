@@ -32,7 +32,9 @@ class ArtistTable(DBConnection):
         return only_item_of([query[0] for query in queries])
 
     def _format_search_helper(self, *args):
-        return self._format_all_artist_data(*args)
+        data = self._format_all_artist_data(*args)
+        data['id'] = data['artist_id']
+        return data
 
     def _touch_helper(self, search_keyword):
         # NEEDS WORK
@@ -169,7 +171,9 @@ class AlbumTable(DBConnection):
         }
 
     def _format_search_helper(self, *args):
-        return self._album_data(*args)
+        data = self._album_data(*args)
+        data['id'] = data['album_id']
+        return data
 
     def _get_search_keyword(self, queries):
         if len(queries) == 1:
@@ -463,6 +467,7 @@ class UserTable(DBConnection):
 
     def _format_search_helper(self, *args):
         data = self._select_all_user_data(*args)
+        data['id'] = data['user_id']
         data["name"] = f"{data['firstname']} {data['lastname']}"
         data.pop("firstname")
         data.pop("lastname")
@@ -566,7 +571,9 @@ class GenreTable(DBConnection):
         return only_item_of([query[0] for query in queries])
 
     def _format_search_helper(self, *args):
-        return self._select_all_genre_data(*args)
+        data = self._select_all_genre_data(*args)
+        data['id'] = data['genre_name']
+        return data
 
     def _search_entity_only(self, search_keyword):
         statement = "SELECT * from genre WHERE genre.name = %s"
@@ -631,7 +638,7 @@ class SearchSQL(DBConnection):
         queries = [table._format_search_helper(query) for query in queries]
         # If too many search results, return only the relevant information
         if len(queries) > 1:
-            return [query[key] for query in queries]
+            return [(query['id'], query[key]) for query in queries]
         return queries
 
     def _check_if_search_keyword_in_database(
@@ -662,6 +669,19 @@ class SearchSQL(DBConnection):
     def _full_search(self, search_keyword, table):
         return table._full_search(search_keyword)
 
+    def complete_full_search_from_main_or_redirect(self, table, search_keyword):
+        touch = self._touch_database(search_keyword, table)
+        logging.debug(f"SEARCH BY {table} for {search_keyword} TOUCH QUERY RESULTS: {touch}")
+        if not touch:
+            # Search against entity only
+            results = self._search_entity_only(search_keyword, table)
+            print(f"ENTITY ONLY: {results}")
+            return (1, results)
+        # Full Search
+        full = self._full_search(search_keyword, table)
+        print(f"FULL ONLY: {full}")
+        return (1, full)
+    
     def execute_search(self, search_keyword, search_by):
         """ 
         Main search execution function. 
@@ -701,15 +721,4 @@ class SearchSQL(DBConnection):
         if len(queries) > 1:
             return (len(queries), self._format_search_data(search_by, queries, table, key))
         # Option 4
-        touch = self._touch_database(search_keyword, table)
-        print(touch)
-        logging.debug(f"SEARCH BY {search_by} for {search_keyword} TOUCH QUERY RESULTS: {touch}")
-        if not touch:
-            # Search against entity only
-            results = self._search_entity_only(search_keyword, table)
-            print(f"ENTITY ONLY: {results}")
-            return (1, results)
-        # Full Search
-        full = self._full_search(search_keyword, table)
-        print(f"FULL ONLY: {full}")
-        return (1, full)
+        return self.complete_full_search_from_main_or_redirect(table, search_keyword)
