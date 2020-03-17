@@ -53,7 +53,14 @@ class ArtistTable(DBConnection):
 
     def _full_search_parse(self, queries):
        genres = list(set([query[-1] for query in queries]))
-       albums = [{query[-3]: query[-2]} for query in queries]
+       dates = list(set([query[-2] for query in queries]))
+       u_albums = list(set([query[-3] for query in queries]))
+       albums = []
+       for query in queries:
+          if query[-3] in u_albums and query[-2] in dates:
+              albums.append({query[-3]: query[-2]})
+              dates.remove(query[-2])
+              u_albums.remove(query[-3])
        # the rest should be the same
        artist, location, artist_website, description, artist_image, album, release, genre = queries[0]
        return {
