@@ -5,7 +5,9 @@ from forms.review_form import ReviewForm
 from forms.search_form import SearchForm
 from database.models.tables import AlbumTable, ReviewTable, UserTable, SearchSQL, ArtistTable, GenreTable
 from jgt_common import must_get_key, only_item_of
+from werkzeug.exceptions import HTTPException
 import json
+
 
 
 app = Flask(__name__)
@@ -27,6 +29,16 @@ def _route_syntax(value):
 def _readable_syntax(route):
     return " ".join([x.capitalize() for x in route.split("_")])
 
+@app.errorhandler(HTTPException)
+def handle_werk(e):
+    response = e.get_response()
+    response.data = json.dumps({
+        "code": e.code,
+        "name": e.name,
+        "description": e.description,
+    })
+    response.content_type = "application/json"
+    return response
 
 @app.errorhandler(404)
 def not_found(e):
@@ -35,7 +47,7 @@ def not_found(e):
 
 @app.errorhandler(500)
 def server_error(e):
-    return render_template('500.html')
+    return render_template('500.html', error=e)
 
 
 @app.route("/", methods=("GET", "POST"))
@@ -43,9 +55,12 @@ def home():
     form = SearchForm()
     if form.is_submitted():
         if form.select_search.data:
+            print(form.search_keyword.data)
+            print(form.select_search.data)
             search_results = search.execute_search(
                 form.search_keyword.data, form.select_search.data
             )
+            print(search_results)
         if search_results:
             result_length, query = search_results
             if result_length == 1:
@@ -181,11 +196,30 @@ def route_add_album_page():
     "/route_to_search_results/<search_type>/<search_desired>", methods=("GET", "POST")
 )
 def route_search(search_type, search_desired):
-    #TODO: implement single page for each
-    # Clicking on a link from a multiple results found
-    # search result will end in a TypeError since this function
-    # is not yet implemented
-    pass
+    # The main search will handle this if specific enough
+    # data is provided. If data returns multiple results, the app
+    # will redirect to a page providing the user with links to the
+    # various results. Those links are routed here, where the search is
+    # completed, hence the search table name from "main" or "redirect".
+    table = must_get_key({
+			"artist": artist,
+                        "album": albums,
+                        "user": users,
+                        "genre": genres,
+                        }, search_type)
+    length, full_search = search.complete_full_search_from_main_or_redirect(table, search_desired)
+    return render_template(
+                    must_get_key(
+                        {
+                            "artist": "single_artist_page.html",
+                            "album": "single_album_page.html",
+                            "user": "single_user_page.html",
+                            "genre": "single_genre_page.html",
+                        },
+                        search_type,
+                    ),
+                    query=only_item_of(full_search),
+    )
 
 
 @app.route("/reviews/<album>/<artist>", methods=("GET", "POST"))

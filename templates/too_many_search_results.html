@@ -35,8 +35,8 @@
     <li>
     	<div class="too-many-result search-text">
         {{ search_type.capitalize() }}: 
-        <a href="/route_to_search_results/{{ search_type }}/{{ result }}" role="button" class="btn btn-primary">
-            {{ result }}
+        <a href="/route_to_search_results/{{ search_type }}/{{ result[0] }}" role="button" class="btn btn-primary">
+            {{ result[1] }}
     	</a>
         </div>
     </li>
