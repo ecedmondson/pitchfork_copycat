@@ -47,7 +47,7 @@
        			 </div>
             <div class="album-fact-ind">
                  Albums associated with this artist:
-                      {% for album in query.albums %}
+                      {% for album in query.album %}
                         {% for key, value in album.items() %}
                           <div class="album-genre">{{ key }}, released on {{ value }}</div>
                       {% endfor %}
