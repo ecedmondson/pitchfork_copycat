@@ -30,7 +30,7 @@
                     <th class="rating header">Rating</th>
                     <th class="review-text header">Review Text</th>
                     <th class="edit header">Edit this Comment</th>
-                    <th class="delete header">Delete this Comment</th>
+                    <th class="delete header">Delete this Review</th>
                 </tr>
                 <tr class="review-row">
                     <td class="user row">{{ review.name }}</td>
@@ -42,8 +42,8 @@
                         </a>
                     </td>
                     <td class="delete row">
-                        <a href="/route_to_delete" role="button" class="btn btn-danger" data-action="{{ review.user_id }}">
-                            Delete this comment
+                        <a href="/route_to_delete/review/{{ review.user_id }}/{{ album }}-{{ artist }}-{{ review.review_id }}" role="button" class="btn btn-danger" data-action="{{ review.user_id }}">
+                            Delete this Review
                         </a>
                     </td>
                 </tr>

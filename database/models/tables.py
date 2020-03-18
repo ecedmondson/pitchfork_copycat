@@ -446,6 +446,15 @@ class ReviewTable(DBConnection):
         queries = self.execute_query(statement, (id,)).fetchall()
         return only_item_of([self._edit_review(query) for query in queries])
 
+    def delete_review(self, review_id):
+        statement = (
+            """
+            DELETE FROM review WHERE id = %s;
+            """
+        )
+        queries = self.execute_query(statement, (review_id, )).fetchone()
+        return queries
+
     def update_comment(self, review_text, rating, review_id):
         statement = (
                  """
