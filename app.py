@@ -154,7 +154,6 @@ def all_artists():
 @app.route("/create_user", methods=("GET", "POST"))
 def create_new_user():
    """Renders the create user form/page and handles POST requests to create form."""
-   valid_email_endings = ['.com', '.net', '.org', '.edu'] 
    if request.method == 'POST':
         data = request.form.to_dict()
         exists = users.get_user_id_from_names_and_email(data['firstname'], data['lastname'], data['email'])
@@ -175,7 +174,7 @@ def route_single_artist_page(artist_name):
     albums = artist._select_albums_from_artist(artist_id)
     return render_template("single_artist_page.html", query=single_artist, albums=albums)
 
-# Update/Delete Context. This list stores data to help render the appropriate
+# Update/Delete Context. This dict stores data to help render the appropriate
 # comment for editing/deletion when a request is made to edit or delete
 # a comment from a given reviews page.
 ud_context = {}
@@ -191,13 +190,16 @@ def _parse_edit_review_content(content):
 
 @app.route("/route_to_delete/<page>/<validator>/<content>", methods=("GET", "POST"))
 def route_to_delete_page(page, validator, content):
+    """Route to delete a review comment page based on which comment is being reviewed."""
     kwargs = {"user_id": validator, "content" : content}
-    ud_context.append(kwargs)
-    return redirect(url_for((must_get_key({"review" : "delete_review_comment"}, page))))
+    uuid_ = uuid.uuid4()
+    ud_context[str(uuid_)] = kwargs
+    return redirect(url_for((must_get_key({"review" : "delete_review_comment"}, page)), uuid=uuid))
 
-@app.route("/delete_review_comment", methods=("GET", "POST"))
-def delete_review_comment(**kwargs):
-    context = only_item_of(ud_context)
+@app.route("/delete_review_comment/<uuid>", methods=("GET", "POST"))
+def delete_review_comment(uuid,**kwargs):
+    """Renders the delete review comment form/page and handled POST requests to delete a review comment."""
+    context = ud_context[uuid]
     user_id = context['user_id']
     content = _parse_edit_review_content(context['content'])
     review = reviews.get_single_review_by_id(content['review_id'])
@@ -206,11 +208,10 @@ def delete_review_comment(**kwargs):
         submitted_user_id = users.get_user_id_from_names_and_email(data['firstname'], data['lastname'], data['email'])
         if user_id == str(submitted_user_id):
             thing = reviews.delete_review(content['review_id'])
-            ud_context.clear()
             return redirect(url_for("review_page", album=content['album'], artist=content['artist']))
         else:
             flash("Error: User details submitted for edit do not match user details associated with this review.")
-    return render_template("delete_review_comment.html", review=review)
+    return render_template("delete_review_comment.html", uuid=uuid, review=review)
 
 
 @app.route("/route_to_edit/<page>/<validator>/<content>", methods=("GET", "POST"))
@@ -242,11 +243,13 @@ def edit_review_comment(uuid, **kwargs):
 
 @app.route("/route_to_add_new_artist", methods=("GET", "POST"))
 def route_add_artist_page():
+    """Redirects to add artist page from a link."""
     return redirect(url_for("add_artist_page"))
 
 
 @app.route("/route_to_add_new_album", methods=("GET","POST"))
 def route_add_album_page():
+    """Redirects to add album page from a link."""
 	return redirect(url_for("add_album_page"))
 
 
@@ -328,7 +331,6 @@ def add_artist_page():
     genre_all = genres.select_all_genres()
     if request.method == 'POST':
         data = request.form.to_dict()
-        print(data)
         result = artist.add_new_artist(request)
         if isinstance(result, str):
             flash(f"ERROR: {result}")
@@ -340,10 +342,10 @@ def add_artist_page():
 def add_album_page():
    """Renders the add album form page and handles POST request to create a new album."""
     genre_all = genres.select_all_genres()
-    artist_all = artist.all_artists()
+    # Was getting a blank in there somewhow....
+    artist_all = list(filter(lambda x: x != "", artist.all_artists()))
     if request.method == 'POST':
         data = request.form.to_dict()
-        print(data)
         result = albums.create_new_album(data)
         if isinstance(result, str):
             flash(f"ERROR: {result}")
