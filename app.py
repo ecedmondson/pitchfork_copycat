@@ -7,6 +7,7 @@ from database.models.tables import AlbumTable, ReviewTable, UserTable, SearchSQL
 from jgt_common import must_get_key, only_item_of
 from werkzeug.exceptions import HTTPException
 import json
+import uuid
 
 
 
@@ -147,7 +148,7 @@ def route_single_artist_page(artist_name):
     return render_template("single_artist_page.html", query=single_artist, albums=albums)
 
 
-ud_context = []
+ud_context = {}
 
 def _parse_edit_review_content(content):
     print(content.split("-"))
@@ -185,12 +186,13 @@ def delete_review_comment(**kwargs):
 @app.route("/route_to_edit/<page>/<validator>/<content>", methods=("GET", "POST"))
 def route_to_edit_page(page, validator, content):
      kwargs = {"user_id": validator, "content": content}
-     ud_context.append(kwargs)
-     return redirect(url_for((must_get_key({"review": "edit_review_comment"}, page))))
+     uuid_ = uuid.uuid4()
+     ud_context[str(uuid_)] = kwargs
+     return redirect(url_for((must_get_key({"review": "edit_review_comment"}, page)), uuid=uuid_))
 
-@app.route("/edit_review_comment", methods=("GET", "POST"))
-def edit_review_comment(**kwargs):
-    context = only_item_of(ud_context)
+@app.route("/edit_review_comment/<uuid>", methods=("GET", "POST"))
+def edit_review_comment(uuid, **kwargs):
+    context = ud_context[uuid]
     user_id = context['user_id']
     content = _parse_edit_review_content(context['content'])
     review = reviews.get_single_review_by_id(content['review_id'])
@@ -203,7 +205,7 @@ def edit_review_comment(**kwargs):
             return redirect(url_for("review_page", album =content['album'], artist=content['artist']))
         else:
             flash("Error: User details submitted for edit do not match user details associated with this review.")
-    return render_template("edit_review_comment.html", review=review)
+    return render_template("edit_review_comment.html", uuid=uuid, review=review)
     
 
 @app.route("/route_to_add_new_artist", methods=("GET", "POST"))
@@ -308,4 +310,4 @@ def add_album_page():
     return render_template("add_album.html", genres=genre_all, artists=artist_all)
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=4740)
+    app.run(debug=True, host="0.0.0.0", port=5151)

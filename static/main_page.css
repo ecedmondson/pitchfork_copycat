@@ -69,6 +69,7 @@ footer {
 #albums_available_for_review_display_table{
     width:100%; 
     border-collapse:collapse; 
+    overflow: scroll;
 }
 
 #albums_available_for_review_display_table td{ 
