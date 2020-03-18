@@ -49,8 +49,6 @@ class ArtistTable(DBConnection):
         results["full"] = False
         results["artist_website"] = results["website"]
         results["artist"] = results["artist_name"]
-        results["artist_image"] = results["artist_image"]
-        print(results)
         return [results]
 
     def _full_search_parse(self, queries):
