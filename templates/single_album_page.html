@@ -98,7 +98,7 @@
             </div>
             <div class="art-container">
                 <div class="header-art">
-            	    <img src="{{ query.art }}" alt="static/null.png" class="album-art">
+            	    <img src="{{ query.art }}" alt="/static/null.png" class="album-art">
                 </div>
             </div>
         </div>
@@ -106,6 +106,9 @@
     <div class="danger-zone">
         <div class="edit-album">
             <a class="btn btn-primary" id="edit-modal-button" role="button">Edit Album Art</a>
+        </div>
+        <div class="review-album">
+            <a href="/route_to_review_page/{{ query.title }}/{{ query.artist }}" class="btn btn-primary btn-yellow" id="review-album-button" role="button">Review Album</a>
         </div>
         <div class="delete-album">
             <a class="btn btn-danger" id="delete-modal-button" role="button">Delete Album</a>

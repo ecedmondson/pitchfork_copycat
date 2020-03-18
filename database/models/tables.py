@@ -14,7 +14,7 @@ class ArtistTable(DBConnection):
             "artist_id": artist_id,
             "artist_name": artist_name,
             "website": website,
-            "image": image,
+            "artist_image": image,
             "location": location,
             "description": description,
         }
@@ -49,7 +49,7 @@ class ArtistTable(DBConnection):
         results["full"] = False
         results["artist_website"] = results["website"]
         results["artist"] = results["artist_name"]
-        results["artist_image"] = results["image"]
+        results["artist_image"] = results["artist_image"]
         print(results)
         return [results]
 
