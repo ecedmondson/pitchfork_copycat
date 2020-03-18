@@ -98,7 +98,11 @@
             </div>
             <div class="art-container">
                 <div class="header-art">
-            	    <img src="{{ query.art }}" alt="/static/null.png" class="album-art">
+                    {%  if not query.art %}
+                        <img src="/static/null.png" class="album-art">
+                    {%  else %}
+                        <img src="{{ query.artist_image }}" class="album-art">
+                    {% endif %}
                 </div>
             </div>
         </div>
