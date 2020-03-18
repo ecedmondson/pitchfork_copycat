@@ -58,8 +58,8 @@
             </div>
             <div class="art-container">
                 <div class="header-art">
-            	    {%  if not query.artist_image %}
-                        <img src="{{ query.artist_image }}" srcset="/static/null.png" class="album-art">
+            	      {% if not query.artist_image %}
+                        <img src="/static/null.png" class="album-art">
                     {%  else %}
                         <img src="{{ query.artist_image }}" class="album-art">
                     {% endif %}
