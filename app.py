@@ -158,6 +158,30 @@ def _parse_edit_review_content(content):
         "review_id": review_id
     }
 
+@app.route("/route_to_delete/<page>/<validator>/<content>", methods=("GET", "POST"))
+def route_to_delete_page(page, validator, content):
+    kwargs = {"user_id": validator, "content" : content}
+    ud_context.append(kwargs)
+    return redirect(url_for((must_get_key({"review" : "delete_review_comment"}, page))))
+
+@app.route("/delete_review_comment", methods=("GET", "POST"))
+def delete_review_comment(**kwargs):
+    context = only_item_of(ud_context)
+    user_id = context['user_id']
+    content = _parse_edit_review_content(context['content'])
+    review = reviews.get_single_review_by_id(content['review_id'])
+    if request.method == 'POST':
+        data = request.form.to_dict()
+        submitted_user_id = users.get_user_id_from_names_and_email(data['firstname'], data['lastname'], data['email'])
+        if user_id == str(submitted_user_id):
+            thing = reviews.delete_review(content['review_id'])
+            ud_context.clear()
+            return redirect(url_for("review_page", album=content['album'], artist=content['artist']))
+        else:
+            flash("Error: User details submitted for edit do not match user details associated with this review.")
+    return render_template("delete_review_comment.html", review=review)
+
+
 @app.route("/route_to_edit/<page>/<validator>/<content>", methods=("GET", "POST"))
 def route_to_edit_page(page, validator, content):
      kwargs = {"user_id": validator, "content": content}
