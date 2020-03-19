@@ -170,7 +170,7 @@ def create_new_user():
 def route_single_artist_page(artist_name):
     """Handles routing to single artist page when clicked from button (especially in grid)."""
     artist_id = artist._select_artist_id_from_name(artist_name)
-    single_artist = artist._select_single_artist_page(artist_id)
+    single_artist = only_item_of(artist._search_entity_only(artist_id))
     albums = artist._select_albums_from_artist(artist_id)
     return render_template("single_artist_page.html", query=single_artist, albums=albums)
 
@@ -344,6 +344,7 @@ def add_album_page():
     genre_all = genres.select_all_genres()
     # Was getting a blank in there somewhow....
     artist_all = list(filter(lambda x: x != "", artist.all_artists()))
+    print(artist_all)
     if request.method == 'POST':
         data = request.form.to_dict()
         result = albums.create_new_album(data)
