@@ -7,10 +7,19 @@
 {% endblock %}
 {% block scripts %}
 <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
 {% endblock %}
 
 
 {% block content %}
+<div class='header-container'>
+    <div class='header-text'>
+        <i class="fas fa-volume-up"></i>Pitchfork Copycat Music Review
+    </div>
+    <div class='header-links'>
+        <a href="/" class="btn btn-primary" role="button">Return Home</a>
+    </div>
+</div>
 
 {% for artist in artists %}
 <hr>
