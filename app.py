@@ -217,10 +217,10 @@ def delete_review_comment(uuid,**kwargs):
 @app.route("/route_to_edit/<page>/<validator>/<content>", methods=("GET", "POST"))
 def route_to_edit_page(page, validator, content):
     """Route to edit a review comment page based on which comment is being reviewed."""
-     kwargs = {"user_id": validator, "content": content}
-     uuid_ = uuid.uuid4()
-     ud_context[str(uuid_)] = kwargs
-     return redirect(url_for((must_get_key({"review": "edit_review_comment"}, page)), uuid=uuid_))
+    kwargs = {"user_id": validator, "content": content}
+    uuid_ = uuid.uuid4()
+    ud_context[str(uuid_)] = kwargs
+    return redirect(url_for((must_get_key({"review": "edit_review_comment"}, page)), uuid=uuid_))
 
 @app.route("/edit_review_comment/<uuid>", methods=("GET", "POST"))
 def edit_review_comment(uuid, **kwargs):
@@ -250,7 +250,7 @@ def route_add_artist_page():
 @app.route("/route_to_add_new_album", methods=("GET","POST"))
 def route_add_album_page():
     """Redirects to add album page from a link."""
-	return redirect(url_for("add_album_page"))
+    return redirect(url_for("add_album_page"))
 
 
 @app.route(
@@ -327,7 +327,7 @@ def new_genre():
 
 @app.route("/add_artist", methods=("GET", "POST"))
 def add_artist_page():
-   """Renders the add artist form page and handles POST request to create a new artist."""
+    """Renders the add artist form page and handles POST request to create a new artist."""
     genre_all = genres.select_all_genres()
     if request.method == 'POST':
         data = request.form.to_dict()
@@ -340,7 +340,7 @@ def add_artist_page():
 
 @app.route("/add_album", methods=("GET", "POST"))
 def add_album_page():
-   """Renders the add album form page and handles POST request to create a new album."""
+    """Renders the add album form page and handles POST request to create a new album."""
     genre_all = genres.select_all_genres()
     # Was getting a blank in there somewhow....
     artist_all = list(filter(lambda x: x != "", artist.all_artists()))
