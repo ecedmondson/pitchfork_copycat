@@ -170,7 +170,7 @@ def create_new_user():
 def route_single_artist_page(artist_name):
     """Handles routing to single artist page when clicked from button (especially in grid)."""
     artist_id = artist._select_artist_id_from_name(artist_name)
-    single_artist = artist._select_single_artist_page(artist_id)
+    single_artist = only_item_of(artist._search_entity_only(artist_id))
     albums = artist._select_albums_from_artist(artist_id)
     return render_template("single_artist_page.html", query=single_artist, albums=albums)
 
@@ -194,7 +194,7 @@ def route_to_delete_page(page, validator, content):
     kwargs = {"user_id": validator, "content" : content}
     uuid_ = uuid.uuid4()
     ud_context[str(uuid_)] = kwargs
-    return redirect(url_for((must_get_key({"review" : "delete_review_comment"}, page)), uuid=uuid))
+    return redirect(url_for((must_get_key({"review" : "delete_review_comment"}, page)), uuid=uuid_))
 
 @app.route("/delete_review_comment/<uuid>", methods=("GET", "POST"))
 def delete_review_comment(uuid,**kwargs):
@@ -216,11 +216,12 @@ def delete_review_comment(uuid,**kwargs):
 
 @app.route("/route_to_edit/<page>/<validator>/<content>", methods=("GET", "POST"))
 def route_to_edit_page(page, validator, content):
-    """Route to edit a review comment page based on which comment is being reviewed."""
-    kwargs = {"user_id": validator, "content": content}
-    uuid_ = uuid.uuid4()
-    ud_context[str(uuid_)] = kwargs
-    return redirect(url_for((must_get_key({"review": "edit_review_comment"}, page)), uuid=uuid_))
+   """Route to edit a review comment page based on which comment is being reviewed."""
+   kwargs = {"user_id": validator, "content": content}
+   uuid_ = uuid.uuid4()
+   ud_context[str(uuid_)] = kwargs
+   return redirect(url_for((must_get_key({"review": "edit_review_comment"}, page)), uuid=uuid_))
+
 
 @app.route("/edit_review_comment/<uuid>", methods=("GET", "POST"))
 def edit_review_comment(uuid, **kwargs):
@@ -344,6 +345,7 @@ def add_album_page():
     genre_all = genres.select_all_genres()
     # Was getting a blank in there somewhow....
     artist_all = list(filter(lambda x: x != "", artist.all_artists()))
+    print(artist_all)
     if request.method == 'POST':
         data = request.form.to_dict()
         result = albums.create_new_album(data)

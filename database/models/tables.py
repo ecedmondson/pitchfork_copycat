@@ -223,6 +223,7 @@ class AlbumTable(DBConnection):
     def _get_search_keyword(self, queries):
         """Search helpers. Returns id for matched album search queries."""
         if len(queries) == 1:
+            # print(only_item_of(queries))
             return only_item_of(queries)[2]
         return None
 
@@ -235,9 +236,19 @@ class AlbumTable(DBConnection):
         return only_item_of([query[0] for query in queries])
 
     # Read
+    def _select_title_by_album_id(self, id):
+        """Search helper from redirect."""
+        statement = "SELECT title from album where album.id = %s"
+        print(f"Select title by album id: {statement} kwargs {id}.")
+        logging.debug(f"Select title by album id {statement} kwargs {id}.")
+        queries = self.execute_query(statement, (id,)).fetchall()
+        return only_item_of([query[0] for query in queries])
+
+    # Read
     def _touch_helper(self, search_keyword):
         """Search helper to see if an album has any reviews."""
-        id = self._select_id_by_album_title(search_keyword)
+        if search_keyword.isnumeric():
+            search_keyword = self._select_title_by_album_id(search_keyword)
         statement = "SELECT review.id from review inner join album on review.album_id = album.id where album.title = %s"
         print(f"Album touch helper: {statement}, kwargs: ({search_keyword},)")
         logging.debug(f"Album touch helper: {statement}, kwargs: ({search_keyword},)")
@@ -269,8 +280,6 @@ class AlbumTable(DBConnection):
         # More than one Genre
         genres = [query[-1] for query in queries]
         # Other data should stay the same so return the first
-        print(queries)
-        print(queries[0])
         artist, id_, title, art, release_date, publisher, spotify_url, genre = queries[0]
         return {
                 "artist": artist,
@@ -285,6 +294,8 @@ class AlbumTable(DBConnection):
     # Read
     def _search_entity_only(self, search_keyword):
         """Search when there is an exact match for an album with no reviews."""
+        if search_keyword.isnumeric():
+           search_keyword = self._select_title_by_album_id(search_keyword)
         statement = ("""
             SELECT artist.name, album.id, album.title, album.album_cover, album.release_date, album.publisher,
             album.spotify_url, genre.name from album inner join artist on album.artist_id = artist.id
@@ -346,6 +357,8 @@ class AlbumTable(DBConnection):
     # Read
     def _full_search(self, search_keyword):
         """Search performed on an exact match where album has reviews in DB."""
+        if search_keyword.isnumeric():
+           search_keyword = self._select_title_by_album_id(search_keyword)
         statement = ("""
             SELECT album.id, album.title, album.album_cover, album.release_date, album.publisher, album.spotify_url, artist.name, 
             genre.name as genre_name, review.rating from album as album INNER JOIN artist as artist on album.artist_id = artist.id 

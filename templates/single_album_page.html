@@ -6,11 +6,11 @@
     <title>Single Album Page</title>
     {% block styles %}
     {{super()}}
-    <link rel="stylesheet" href="static/single_album.css">
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="/static/single_album.css">
+    <link rel="stylesheet" href="/static/style.css">
     {% endblock %}
     {% block scripts %}
-    <script type="text/javascript" src="static/js_helpers.js"></script>
+    <script type="text/javascript" src="/static/js_helpers.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
     {% endblock %}
@@ -84,10 +84,14 @@
        			 </div>
        			 <div class="album-fact-ind">
            			 Genres associated with this album:
-                                 {% for genre in query.genre %}
-           		 	<div class="album-genre">{{ genre }}</div>
-           			 {% endfor %}
-       			 </div>
+                                 {% if not query.genre is string %}
+                                    {% for genre in query.genre %}  
+           		 	    <div class="album-genre">{{ genre }}</div>
+           			    {% endfor %}
+                                 {% else %}
+                                    <div class="album-genre">{{ query.genre }}</div>
+       			         {% endif %}
+                         </div>
        	                 <div class="album-fact-ind">
             			Overall Rating: {{ query.rating_average }} (out of 10)
        			 </div>
