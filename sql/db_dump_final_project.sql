@@ -22,6 +22,12 @@ SET time_zone = "+00:00";
 -- Database: `cs340_edmondem`
 --
 
+--
+-- NOTE: This includes data inputs by student reviewer users of cs340
+-- as the project was reviewed throughout the draft steps.
+--
+--
+
 -- --------------------------------------------------------
 
 --
