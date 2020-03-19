@@ -84,10 +84,14 @@
        			 </div>
        			 <div class="album-fact-ind">
            			 Genres associated with this album:
-                                 {% for genre in query.genre %}
-           		 	<div class="album-genre">{{ genre }}</div>
-           			 {% endfor %}
-       			 </div>
+                                 {% if not query.genre is string %}
+                                    {% for genre in query.genre %}  
+           		 	    <div class="album-genre">{{ genre }}</div>
+           			    {% endfor %}
+                                 {% else %}
+                                    <div class="album-genre">{{ query.genre }}</div>
+       			         {% endif %}
+                         </div>
        	                 <div class="album-fact-ind">
             			Overall Rating: {{ query.rating_average }} (out of 10)
        			 </div>
