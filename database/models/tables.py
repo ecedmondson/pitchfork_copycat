@@ -403,8 +403,9 @@ class AlbumTable(DBConnection):
     # Delete
     def _remove_from_album_genre(self, id_):
         """Removes row from album_genre when a delete call to albums is made."""
-        statement="DELETE from album_genre where album_id = %s;"
-        queries = self.execute_query(statement, (id_),).fetchall()
+        # Couldn't get the formatting owrking on this one. 
+        statement=f"DELETE from album_genre where album_id = {id_};"
+        queries = self.execute_query(statement).fetchall()
 
     # Delete
     def delete_entire_album(self, id_):
