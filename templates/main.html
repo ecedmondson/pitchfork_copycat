@@ -62,7 +62,11 @@
             <tr class="album-row">
                 <td class="cover grid-row">
                     <div class="image">
-                    <img src="{{ album.album_art }}" alt="static/null.png" class='album-art'>
+                    {% if not album.album_art %}
+                        <img src="/static/null.png" class="album-art">
+                    {% else %}
+                        <img src="{{ album.album_art }}" class="album-art">
+                    {% endif %}
                     </div>
                 </td>
                 <td class="album-name grid-row">{{ album.album_title }}</td>

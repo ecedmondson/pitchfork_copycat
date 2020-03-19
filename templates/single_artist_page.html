@@ -6,8 +6,8 @@
     <title>Single Artist Page</title>
     {% block styles %}
     {{super()}}
-    <link rel="stylesheet" href="static/single_album.css">
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="/static/single_album.css">
+    <link rel="stylesheet" href="/static/style.css">
     {% endblock %}
     {% block scripts %}
     <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
@@ -58,7 +58,11 @@
             </div>
             <div class="art-container">
                 <div class="header-art">
-            	    <img src="{{ query.artist_image }}" alt="static/null.png" class="album-art">
+            	      {% if not query.artist_image %}
+                        <img src="/static/null.png" class="album-art">
+                    {%  else %}
+                        <img src="{{ query.artist_image }}" class="album-art">
+                    {% endif %}
                 </div>
             </div>
         </div>

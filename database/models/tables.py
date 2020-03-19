@@ -7,24 +7,32 @@ logging.basicConfig(filename='runtime_sql_queries.log', level=logging.DEBUG)
 
 
 class ArtistTable(DBConnection):
+    """This class handles all SQL queries for CRUD interactions with the Artist table.
+    
+    Occasionally there are joins with other tables on foreign keys.
+    """
+    
     def _format_all_artist_data(self, query_tuple):
-        # Data formatted for select all artist call
+        """Format the data returned from querying DB for all artist columns."""
         artist_id, artist_name, website, image, location, description = query_tuple
         return {
             "artist_id": artist_id,
             "artist_name": artist_name,
             "website": website,
-            "image": image,
+            "artist_image": image,
             "location": location,
             "description": description,
         }
     
     def _get_search_keyword(self, queries):
+        """Search helpers. Returns id for matched Artist search queries."""
         if len(queries) == 1:
             return only_item_of(queries)[0]
         return None
 
+    # Read
     def _select_artist_id_from_name(self, name):
+        """Retrieve artist id when singluar artist name provided."""
         statement = "SELECT id from artist WHERE artist.name = %s"
         print(f"Artist ID from Artist Name: {statement}, KWARGS ({name},)")
         logging.debug(f"Artist ID from Artist Name: {statement}, KWARGS ({name},)")
@@ -32,28 +40,34 @@ class ArtistTable(DBConnection):
         return only_item_of([query[0] for query in queries])
 
     def _format_search_helper(self, *args):
+        """Wrapper function for format all data used by Search."""
         data = self._format_all_artist_data(*args)
         data['id'] = data['artist_id']
         return data
 
+    # Read
     def _touch_helper(self, search_keyword):
-        # NEEDS WORK
-        # id = self._select_artist_id_from_name(search_keyword)
+        """Search helper to see if an artist has any albums."""
         statement = "SELECT id from album WHERE album.artist_id = %s"
         print(f"Artist Touch Helper: {statement}, KWARGS: ({search_keyword},)")
         logging.debug(f"Artist Touch Helper: {statement}, KWARGS: ({search_keyword},)")
         return self.execute_query(statement, (search_keyword, )).fetchall()
 
+    # Read
     def _search_entity_only(self, search_keyword):
+        """Search performed on exact match where artist has no albums in DB.
+        
+        This function is a wrapper on a function used for both search and
+        data population in JINJA templates.
+        """
         results = self._select_single_artist_page(search_keyword)
         results["full"] = False
         results["artist_website"] = results["website"]
         results["artist"] = results["artist_name"]
-        results["artist_image"] = results["image"]
-        print(results)
         return [results]
 
     def _full_search_parse(self, queries):
+       """Format data from full search."""
        genres = list(set([query[-1] for query in queries]))
        dates = list(set([query[-2] for query in queries]))
        u_albums = list(set([query[-3] for query in queries]))
@@ -63,7 +77,7 @@ class ArtistTable(DBConnection):
               albums.append({query[-3]: query[-2]})
               dates.remove(query[-2])
               u_albums.remove(query[-3])
-       # the rest should be the same
+       # Rest of the data should be the same in all the "rows"/tuples of the query.
        artist, location, artist_website, description, artist_image, album, release, genre = queries[0]
        return {
            "artist": artist,
@@ -75,8 +89,10 @@ class ArtistTable(DBConnection):
            "genre": genres,
            "full": True,
        }
-
+    
+    # Read
     def _full_search(self, search_keyword):
+        """Search performed on exact match where artist has albums in DB."""
         statement = (
             """
             select artist.name, artist.location, artist.website, artist.description,
@@ -92,13 +108,16 @@ class ArtistTable(DBConnection):
         queries = self.execute_query(statement, (search_keyword,)).fetchall()
         return [self._full_search_parse(queries)]
 
+    # Read
     def _does_artist_exist(self, artist):
+        """Checks to see if artist already lives in DB."""
         statement = "SELECT id from artist where artist.name = %s"
         print(f"DEBUG IF ARTIST EXISTs: {statement} and {artist}")
         logging.debug(f"DEBUG IF ARTIST EXISTs: {statement} and {artist}")
         return self.execute_query(statement, (artist,)).fetchall()
     
     def _validate_insert_artist_data(self, data):
+        """Helper to validate user input data for artist creation."""
         if not data['artistName']:
             return (False, 'artist name must be present')
         if data['artistImage'][:4] != 'http':
@@ -111,16 +130,21 @@ class ArtistTable(DBConnection):
            return (False, 'must add genre')
         return False
 
+    # Update
     def _update_artist_genre(self, genres, artist_id):
-       # Update M:M relationship in relational table
+       """Helper to update M:M relationship in relational table.
+       
+       Nota bene: table is artist_genre, not artist.
+       """
        genres = [int(x) for x in genres.split(",")] 
        statement = "INSERT into artist_genre (artist_id, genre_id) VALUES (%s, %s);"
        for genre in genres:
            logging.debug(f"UPDATING M:M SQL FOR ARTIST_GENRE: {statement} {genre}")
            self.execute_query(statement, (artist_id, genre,)).fetchall()
-       
+ 
+    # Create      
     def add_new_artist(self, request):
-        #TODO: GenreTable and related ones need to be updated when a new artist is added
+        """Query to insert new artist."""
         artist_to_add = request.form.to_dict()
         validated = self._validate_insert_artist_data(artist_to_add)
         if validated:
@@ -139,25 +163,38 @@ class ArtistTable(DBConnection):
         self._update_artist_genre(artist_to_add['artistGenres'], id)
         return
 
+    # Read
     def all_artists(self):
+        """Retrieve all artists currently in DB."""
         statement = ("SELECT * FROM artist")
         queries = self.execute_query(statement).fetchall()
         return [self._format_all_artist_data(query) for query in queries]
 
+    # Read
     def _select_single_artist_page(self, artist_id):
+        """Retrieve data for single artist page.
+        
+        When used with search, is used for exact match with no full search.
+        """
         statement = ("SELECT * FROM artist WHERE artist.id = %s" % artist_id) 
         print(f"DEBUG SELECT SINGLE ARTIST PAGE: {statement} and artist id {artist_id}")
         queries = self.execute_query(statement).fetchone()
         return self._format_all_artist_data(queries)
 
+    # Read
     def _select_albums_from_artist(self, artist_id):
+        """Retrieve albums per artist basis."""
         statement = ("SELECT * FROM album WHERE artist_id = %s" % artist_id)
         queries = self.execute_query(statement).fetchall()
         return [AlbumTable._album_data(AlbumTable, query) for query in queries]
         
 class AlbumTable(DBConnection):
+    """This class handles all SQL queries for CRUD interactions with the album table.
+    
+    Occasionally there are joins with other tables on foreign keys.
+    """
     def _album_data(self, query_tuple):
-        # Data formatter for get_all_albums call
+        """Data formatter for get_all_albums call."""
         (
             album_id,
             artist_id,
